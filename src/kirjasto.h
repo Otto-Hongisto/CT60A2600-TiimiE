@@ -19,5 +19,8 @@ typedef struct verkkolista
 } VERKKOLISTA;
 
 int valikko();
+char *tiedostoNimi();
+NIMILISTA *varaaMuisti();
+NIMILISTA *lueTiedot();
 
 #endif // KIRJASTO_H
