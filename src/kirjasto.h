@@ -22,5 +22,7 @@ int valikko();
 char *tiedostoNimi();
 NIMILISTA *varaaMuisti();
 NIMILISTA *lueTiedot();
+void tyhjennaMuisti1();
+void tyhjennaMuisti2();
 
 #endif // KIRJASTO_H
