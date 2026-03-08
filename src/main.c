@@ -24,7 +24,7 @@ int main()
             kirjoitaTiedostoTakaperin(pAlku);
             break;
         case 4:
-            tyhjennaMuisti(pAlku);
+            pAlku = tyhjennaMuisti(pAlku);
             break;
         case 0:
             printf("Lopetetaan...");
@@ -36,7 +36,7 @@ int main()
 
     } while (valinta != 0);
 
-    tyhjennaMuisti(pAlku);
+    pAlku = tyhjennaMuisti(pAlku);
     pAlku = NULL;
 
     printf("\n");

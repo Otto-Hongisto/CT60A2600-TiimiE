@@ -89,7 +89,7 @@ NIMILISTA *lueTiedot()
             pUusi->prev = NULL;
         }
         else
-        {
+        {   
             pUusi->prev = pLoppu;
             pLoppu->next = pUusi;
             pLoppu = pUusi;
@@ -165,14 +165,13 @@ void tyhjennaMuisti1(VERKKOLISTA * lista)
     printf("Muisti vapautettu.\n");
 }
 
-void tyhjennaMuisti(NIMILISTA * lista)
-{
-    NIMILISTA *ptr;
-    while (lista != NULL)
-    {
-        ptr = lista;
-        lista = lista->next;
+NIMILISTA *tyhjennaMuisti(NIMILISTA *pA) {
+    NIMILISTA *ptr = pA;
+    while (ptr != NULL) {
+        pA = ptr->next;
         free(ptr);
+        ptr = pA;
     }
     printf("Muisti vapautettu.\n");
+    return(pA);
 }
