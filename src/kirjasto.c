@@ -90,7 +90,7 @@ NIMILISTA *lueTiedot()
         }
         else
         {
-            pUuusi->prev = pLoppu
+            pUuusi->prev = pLoppu;
             pLoppu->next = pUusi;
             pLoppu = pUusi;
         }
