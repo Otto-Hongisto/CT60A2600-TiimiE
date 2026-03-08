@@ -123,6 +123,34 @@ void kirjoitaTiedosto(NIMILISTA *pAlku) {
     return;
 }
 
+void kirjoitaTiedostoTakaperin(NIMILISTA *pAlku) {
+    char *tiedostonNimi = tiedostoNimi();
+    FILE *TIEDOSTO;
+    NIMILISTA *ptr = pAlku;
+
+    if ((TIEDOSTO = fopen(tiedostonNimi, "w")) == NULL) {
+        perror("Tiedoston avaaminen epäonnistui");
+        exit(0);
+    }
+
+    if (ptr != NULL) {
+        while (ptr->next != NULL) {
+            ptr = ptr->next;
+        }
+    }
+    
+
+    while (ptr != NULL) {
+        fprintf(TIEDOSTO, "%s;%d\n", ptr->nimi, ptr->nimiLkm);
+        ptr = ptr->prev;
+    }
+    printf("Tiedosto '%s' kirjoitettu .\n", tiedostonNimi);
+    fclose(TIEDOSTO);
+    free(tiedostonNimi);
+
+    return;
+}
+
 void tyhjennaMuisti1(VERKKOLISTA * lista)
 {
     VERKKOLISTA *ptr;
