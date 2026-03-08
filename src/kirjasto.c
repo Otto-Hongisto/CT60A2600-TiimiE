@@ -103,6 +103,26 @@ NIMILISTA *lueTiedot()
     return pAlku;
 }
 
+void kirjoitaTiedosto(NIMILISTA *pAlku) {
+    char *tiedostonNimi = tiedostoNimi();
+    FILE *TIEDOSTO;
+
+    if ((TIEDOSTO = fopen(tiedostonNimi, "w")) == NULL) {
+        perror("Tiedoston avaaminen epäonnistui");
+        exit(0);
+    }
+    NIMILISTA *ptr = pAlku;
+    while (ptr != NULL) {
+        fprintf(TIEDOSTO, "%s;%d\n", ptr->nimi, ptr->nimiLkm);
+        ptr = ptr->next;
+    }
+    printf("Tiedosto '%s' kirjoitettu .\n", tiedostonNimi);
+    fclose(TIEDOSTO);
+    free(tiedostonNimi);
+
+    return;
+}
+
 void tyhjennaMuisti1(VERKKOLISTA * lista)
 {
     VERKKOLISTA *ptr;
