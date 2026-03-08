@@ -1,7 +1,40 @@
 #include <stdio.h>
-#include "hello.h"
+#include "kirjasto.h"
 
-int main(void) {
-    printf("%s\n", hello_message());
-    return 0;
+int main()
+{
+
+    int valinta = 0;
+
+    do
+    {
+        valinta = valikko();
+        printf("\n");
+
+        switch (valinta)
+        {
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        case 0:
+            break;
+        default:
+            printf("Tuntematon valinta, yritä uudestaan.\n");
+            break;
+        }
+
+    } while (valinta != 0);
+
+    //tyhjennaMuisti(pAlku);
+    //pAlku = NULL;
+
+    printf("\n");
+    printf("Kiitos ohjelman käytöstä.");
+
+    return (0);
 }
