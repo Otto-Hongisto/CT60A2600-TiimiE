@@ -18,10 +18,10 @@ int main()
             pAlku = lueTiedot();
             break;
         case 2:
-            kirjoitaTiedot(pAlku);
+            kirjoitaTiedosto(pAlku);
             break;
         case 3:
-            kirjoitaTiedotTakaperin(pAlku);
+            kirjoitaTiedostoTakaperin(pAlku);
             break;
         case 4:
             tyhjennaMuisti(pAlku);

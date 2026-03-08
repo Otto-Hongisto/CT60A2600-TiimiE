@@ -22,7 +22,7 @@ int valikko();
 char *tiedostoNimi();
 NIMILISTA *varaaMuisti();
 NIMILISTA *lueTiedot();
-void kirjoitaTiedot();
+void kirjoitaTiedosto();
 void kirjoitaTiedostoTakaperin();
 void tyhjennaMuisti();
 
