@@ -14,3 +14,13 @@ int valikko()
     scanf("%d", &switchInput);
     return switchInput;
 }
+
+void tyhjennaMuisti(LISTA *lista) {
+    LISTA *ptr;
+    while (lista != NULL) {
+        ptr = lista;
+        lista =  lista->seuraava;
+        free(ptr);
+    }
+    printf("Muisti vapautettu.\n");
+}
