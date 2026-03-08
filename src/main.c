@@ -21,8 +21,10 @@ int main()
             kirjoitaTiedot(pAlku);
             break;
         case 3:
+            kirjoitaTiedotTakaperin(pAlku);
             break;
         case 4:
+            tyhjennaMuisti(pAlku);
             break;
         case 0:
             printf("Lopetetaan...");
