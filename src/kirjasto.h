@@ -7,7 +7,7 @@ typedef struct nimilista
     int nimiLkm;
     struct nimilista *next;
     struct nimilista *prev;
-} Nimilista;
+} NIMILISTA;
 
 typedef struct verkkolista
 {
@@ -16,7 +16,7 @@ typedef struct verkkolista
     int etaisyys;
     struct verkkolista *next;
     struct verkkolista *prev;
-} Verkkolista;
+} VERKKOLISTA;
 
 int valikko();
 
