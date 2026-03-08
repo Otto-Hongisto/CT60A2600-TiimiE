@@ -114,6 +114,7 @@ void kirjoitaTiedosto(NIMILISTA *pAlku) {
         exit(0);
     }
     NIMILISTA *ptr = pAlku;
+    // kirjoitetaan rivit
     while (ptr != NULL) {
         fprintf(TIEDOSTO, "%s,%d\n", ptr->nimi, ptr->nimiLkm);
         ptr = ptr->next;
@@ -135,13 +136,14 @@ void kirjoitaTiedostoTakaperin(NIMILISTA *pAlku) {
         exit(0);
     }
 
+    //siirrytän listan loppuun
     if (ptr != NULL) {
         while (ptr->next != NULL) {
             ptr = ptr->next;
         }
     }
     
-
+    // kirjoitetaan rivit
     while (ptr != NULL) {
         fprintf(TIEDOSTO, "%s,%d\n", ptr->nimi, ptr->nimiLkm);
         ptr = ptr->prev;
@@ -153,19 +155,9 @@ void kirjoitaTiedostoTakaperin(NIMILISTA *pAlku) {
     return;
 }
 
-void tyhjennaMuisti1(VERKKOLISTA * lista)
-{
-    VERKKOLISTA *ptr;
-    while (lista != NULL)
-    {
-        ptr = lista;
-        lista = lista->next;
-        free(ptr);
-    }
-    printf("Muisti vapautettu.\n");
-}
 
 NIMILISTA *tyhjennaMuisti(NIMILISTA *pA) {
+    // tyhjennetään linkitetyn listan muisti
     NIMILISTA *ptr = pA;
     while (ptr != NULL) {
         pA = ptr->next;
