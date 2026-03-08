@@ -115,7 +115,7 @@ void tyhjennaMuisti1(VERKKOLISTA * lista)
     printf("Muisti vapautettu.\n");
 }
 
-void tyhjennaMuisti2(NIMILISTA * lista)
+void tyhjennaMuisti(NIMILISTA * lista)
 {
     NIMILISTA *ptr;
     while (lista != NULL)
