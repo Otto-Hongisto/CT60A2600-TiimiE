@@ -18,12 +18,14 @@ int main()
             pAlku = lueTiedot();
             break;
         case 2:
+            kirjoitaTiedot(pAlku);
             break;
         case 3:
             break;
         case 4:
             break;
         case 0:
+            printf("Lopetetaan...");
             break;
         default:
             printf("Tuntematon valinta, yritä uudestaan.\n");
