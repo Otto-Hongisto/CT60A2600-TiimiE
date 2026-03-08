@@ -24,6 +24,6 @@ NIMILISTA *varaaMuisti();
 NIMILISTA *lueTiedot();
 void kirjoitaTiedosto();
 void kirjoitaTiedostoTakaperin();
-void tyhjennaMuisti();
+NIMILISTA *tyhjennaMuisti();
 
 #endif // KIRJASTO_H

@@ -169,6 +169,7 @@ NIMILISTA *tyhjennaMuisti(NIMILISTA *pA) {
     NIMILISTA *ptr = pA;
     while (ptr != NULL) {
         pA = ptr->next;
+        free(ptr->nimi);
         free(ptr);
         ptr = pA;
     }
