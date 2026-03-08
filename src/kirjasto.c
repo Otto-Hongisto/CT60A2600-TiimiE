@@ -103,7 +103,7 @@ NIMILISTA *lueTiedot()
     return pAlku;
 }
 
-void tyhjennaMuisti(VERKKOLISTA * lista)
+void tyhjennaMuisti1(VERKKOLISTA * lista)
 {
     VERKKOLISTA *ptr;
     while (lista != NULL)
@@ -115,7 +115,7 @@ void tyhjennaMuisti(VERKKOLISTA * lista)
     printf("Muisti vapautettu.\n");
 }
 
-void tyhjennaMuisti(NIMILISTA * lista)
+void tyhjennaMuisti2(NIMILISTA * lista)
 {
     NIMILISTA *ptr;
     while (lista != NULL)
