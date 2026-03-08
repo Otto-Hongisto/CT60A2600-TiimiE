@@ -86,9 +86,11 @@ NIMILISTA *lueTiedot()
         {
             pAlku = pUusi;
             pLoppu = pUusi;
+            pUusi->prev = NULL;
         }
         else
         {
+            pUuusi->prev = pLoppu
             pLoppu->next = pUusi;
             pLoppu = pUusi;
         }
@@ -113,7 +115,7 @@ void kirjoitaTiedosto(NIMILISTA *pAlku) {
     }
     NIMILISTA *ptr = pAlku;
     while (ptr != NULL) {
-        fprintf(TIEDOSTO, "%s;%d\n", ptr->nimi, ptr->nimiLkm);
+        fprintf(TIEDOSTO, "%s,%d\n", ptr->nimi, ptr->nimiLkm);
         ptr = ptr->next;
     }
     printf("Tiedosto '%s' kirjoitettu .\n", tiedostonNimi);
@@ -141,7 +143,7 @@ void kirjoitaTiedostoTakaperin(NIMILISTA *pAlku) {
     
 
     while (ptr != NULL) {
-        fprintf(TIEDOSTO, "%s;%d\n", ptr->nimi, ptr->nimiLkm);
+        fprintf(TIEDOSTO, "%s,%d\n", ptr->nimi, ptr->nimiLkm);
         ptr = ptr->prev;
     }
     printf("Tiedosto '%s' kirjoitettu .\n", tiedostonNimi);
