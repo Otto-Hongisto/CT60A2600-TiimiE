@@ -4,7 +4,7 @@
 int main()
 {
 
-    NIMILISTA *pAlku;
+    NIMILISTA *pAlku = NULL;
     int valinta = 0;
 
     do
@@ -32,8 +32,8 @@ int main()
 
     } while (valinta != 0);
 
-    //tyhjennaMuisti(pAlku);
-    //pAlku = NULL;
+    tyhjennaMuisti(pAlku);
+    pAlku = NULL;
 
     printf("\n");
     printf("Kiitos ohjelman käytöstä.");
