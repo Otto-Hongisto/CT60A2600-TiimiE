@@ -15,11 +15,21 @@ int valikko()
     return switchInput;
 }
 
-void tyhjennaMuisti(LISTA *lista) {
-    LISTA *ptr;
+void tyhjennaMuisti(VERKKOLISTA *lista) {
+    VERKKOLISTA *ptr;
     while (lista != NULL) {
         ptr = lista;
-        lista =  lista->seuraava;
+        lista =  lista->next;
+        free(ptr);
+    }
+    printf("Muisti vapautettu.\n");
+}
+
+void tyhjennaMuisti(NIMILISTA *lista) {
+    NIMILISTA *ptr;
+    while (lista != NULL) {
+        ptr = lista;
+        lista =  lista->next;
         free(ptr);
     }
     printf("Muisti vapautettu.\n");
