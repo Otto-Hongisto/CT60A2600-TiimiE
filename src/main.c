@@ -4,6 +4,7 @@
 int main()
 {
 
+    NIMILISTA *pAlku;
     int valinta = 0;
 
     do
@@ -14,6 +15,7 @@ int main()
         switch (valinta)
         {
         case 1:
+            pAlku = lueTiedot();
             break;
         case 2:
             break;
