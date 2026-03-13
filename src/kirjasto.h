@@ -18,7 +18,8 @@ typedef struct verkkolista
     struct verkkolista *prev;
 } VERKKOLISTA;
 
-int valikko();
+int toimintoValikko();
+int struktuuriValikko();
 char *tiedostoNimi();
 NIMILISTA *varaaMuisti();
 NIMILISTA *lueTiedot();

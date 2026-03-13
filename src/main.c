@@ -5,36 +5,75 @@ int main()
 {
 
     NIMILISTA *pAlku = NULL;
-    int valinta = 0;
+    int toimintoValinta = 0;
+    int struktuurivalinta = 0; // 1 = linkitetty lista, 2 = binääripuu
 
     do
     {
-        valinta = valikko();
-        printf("\n");
+        struktuurivalinta = struktuuriValikko();
+        if (struktuurivalinta == 1) { //Linkitetty lista
+            do
+            {
+                toimintoValinta = toimintoValikko();
+                printf("\n");
 
-        switch (valinta)
-        {
-        case 1:
-            pAlku = lueTiedot();
+                switch (toimintoValinta)
+                {
+                case 1:
+                    pAlku = lueTiedot();
+                    break;
+                case 2:
+                    kirjoitaTiedosto(pAlku);
+                    break;
+                case 3:
+                    kirjoitaTiedostoTakaperin(pAlku);
+                    break;
+                case 4:
+                    pAlku = tyhjennaMuisti(pAlku);
+                    break;
+                case 0:
+                    break;
+                default:
+                    printf("Tuntematon toimintoValinta, yritä uudestaan.\n");
+                    break;
+                }
+            } while (toimintoValinta != 0);
+
+        } else if (struktuurivalinta == 2) { //binääripuu
+            do
+            {    
+                toimintoValinta = toimintoValikko();
+                printf("\n");
+
+                switch (toimintoValinta)
+                {
+                case 1:
+                    pAlku = lueTiedot();
+                    break;
+                case 2:
+                    kirjoitaTiedosto(pAlku);
+                    break;
+                case 3:
+                    kirjoitaTiedostoTakaperin(pAlku);
+                    break;
+                case 4:
+                    pAlku = tyhjennaMuisti(pAlku);
+                    break;
+                case 0:
+                    break;
+                default:
+                    printf("Tuntematon toimintoValinta, yritä uudestaan.\n");
+                    break;
+                }
+            } while (toimintoValinta != 0);
+
+        } else if (struktuurivalinta == 0) {
             break;
-        case 2:
-            kirjoitaTiedosto(pAlku);
-            break;
-        case 3:
-            kirjoitaTiedostoTakaperin(pAlku);
-            break;
-        case 4:
-            pAlku = tyhjennaMuisti(pAlku);
-            break;
-        case 0:
-            printf("Lopetetaan...");
-            break;
-        default:
-            printf("Tuntematon valinta, yritä uudestaan.\n");
-            break;
+        } else {
+            printf("Tuntematon toimintoValinta, yritä uudestaan.\n");
         }
-
-    } while (valinta != 0);
+    }
+    while (struktuurivalinta);
 
     pAlku = tyhjennaMuisti(pAlku);
     pAlku = NULL;
