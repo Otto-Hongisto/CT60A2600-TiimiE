@@ -1,39 +1,10 @@
-#include "kirjasto.h"
+#include "listakirjasto.h"
+#include "yleinenkirjasto.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-int valikko()
-{
-    int switchInput = 0;
-    printf("Valitse haluamasi toiminto:\n");
-    printf("1) Luo lista tiedostosta\n");
-    printf("2) Kirjoita tiedot tiedostoon\n");
-    printf("3) Kirjoita tiedot käänteisessä järjestyksessä\n");
-    printf("4) Tyhjennä lista\n");
-    printf("0) Lopeta ohjelma\n");
-    printf("Anna valintasi: ");
-    scanf("%d", &switchInput);
-    return switchInput;
-}
-
-char *tiedostoNimi()
-{
-    char fileName[30];
-    char *pMuistilohko = NULL;
-    printf("Anna tiedoston nimi: ");
-    scanf("%s", fileName);
-
-    if ((pMuistilohko = (char *)malloc((strlen(fileName) + 1)* sizeof(char))) == NULL)
-    {
-        perror("Muistinvaraus epäonnistui, lopetetaan ");
-        exit(0);
-    }
-    strcpy(pMuistilohko, fileName);
-    return pMuistilohko;
-}
-
-NIMILISTA *varaaMuisti()
+NIMILISTA *varaaMuistiLista()
 {
     NIMILISTA *pUusi = NULL;
     if ((pUusi = (NIMILISTA *)malloc(sizeof(NIMILISTA))) == NULL)
@@ -44,7 +15,7 @@ NIMILISTA *varaaMuisti()
     return pUusi;
 }
 
-NIMILISTA *lueTiedot()
+NIMILISTA *lueTiedotLista()
 {
     NIMILISTA *pAlku = NULL, *pLoppu = NULL;
     NIMILISTA *pUusi = NULL;
@@ -62,7 +33,7 @@ NIMILISTA *lueTiedot()
 
     while (fgets(aRivi, 50, tiedosto) != NULL)
     {
-        pUusi = varaaMuisti();
+        pUusi = varaaMuistiLista();
         char *tokeni;
         if ((tokeni = strtok(aRivi, ";")) == NULL)
         {
@@ -78,25 +49,26 @@ NIMILISTA *lueTiedot()
         }
         pUusi->nimiLkm = atoi(tokeni);
 
-        // checks if the list is empty. if not empty, adds to that list
-        // if not empty, adds to that list to prevent memory leak errors
-        // this is a bit incomplete
-        pUusi->next = NULL;
+        // checks if the list is empty
+        // if not empty, adds to the earlier list to prevent memory leak errors
+        // Not properly tested yet
+        pUusi->pNext = NULL;
         if (pAlku == NULL)
         {
             pAlku = pUusi;
             pLoppu = pUusi;
-            pUusi->prev = NULL;
+            pUusi->pPrev = NULL;
         }
         else
-        {   
-            pUusi->prev = pLoppu;
-            pLoppu->next = pUusi;
+        {
+            pUusi->pPrev = pLoppu;
+            pLoppu->pNext = pUusi;
             pLoppu = pUusi;
         }
     }
 
     printf("Tiedosto '%s' luettu.\n\n", tiedostonNimi);
+    printf("\n");
 
     fclose(tiedosto);
     free(tiedostonNimi);
@@ -117,7 +89,7 @@ void kirjoitaTiedosto(NIMILISTA *pAlku) {
     // kirjoitetaan rivit
     while (ptr != NULL) {
         fprintf(TIEDOSTO, "%s,%d\n", ptr->nimi, ptr->nimiLkm);
-        ptr = ptr->next;
+        ptr = ptr->pNext;
     }
     printf("Tiedosto '%s' kirjoitettu .\n", tiedostonNimi);
     fclose(TIEDOSTO);
@@ -138,15 +110,15 @@ void kirjoitaTiedostoTakaperin(NIMILISTA *pAlku) {
 
     //siirrytän listan loppuun
     if (ptr != NULL) {
-        while (ptr->next != NULL) {
-            ptr = ptr->next;
+        while (ptr->pNext != NULL) {
+            ptr = ptr->pNext;
         }
     }
     
     // kirjoitetaan rivit
     while (ptr != NULL) {
         fprintf(TIEDOSTO, "%s,%d\n", ptr->nimi, ptr->nimiLkm);
-        ptr = ptr->prev;
+        ptr = ptr->pPrev;
     }
     printf("Tiedosto '%s' kirjoitettu .\n", tiedostonNimi);
     fclose(TIEDOSTO);
@@ -160,7 +132,7 @@ NIMILISTA *tyhjennaMuisti(NIMILISTA *pA) {
     // tyhjennetään linkitetyn listan muisti
     NIMILISTA *ptr = pA;
     while (ptr != NULL) {
-        pA = ptr->next;
+        pA = ptr->pNext;
         free(ptr->nimi);
         free(ptr);
         ptr = pA;

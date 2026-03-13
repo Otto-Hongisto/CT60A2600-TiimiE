@@ -1,12 +1,12 @@
-#ifndef KIRJASTO_H
-#define KIRJASTO_H
+#ifndef LISTAKIRJASTO_H
+#define LISTAKIRJASTO_H
 
 typedef struct nimilista
 {
     char* nimi;
     int nimiLkm;
-    struct nimilista *next;
-    struct nimilista *prev;
+    struct nimilista *pNext;
+    struct nimilista *pPrev;
 } NIMILISTA;
 
 typedef struct verkkolista
@@ -18,12 +18,12 @@ typedef struct verkkolista
     struct verkkolista *prev;
 } VERKKOLISTA;
 
-int valikko();
-char *tiedostoNimi();
-NIMILISTA *varaaMuisti();
-NIMILISTA *lueTiedot();
+int toimintoValikko();
+int struktuuriValikko();
+NIMILISTA *varaaMuistiLista();
+NIMILISTA *lueTiedotLista();
 void kirjoitaTiedosto();
 void kirjoitaTiedostoTakaperin();
 NIMILISTA *tyhjennaMuisti();
 
-#endif // KIRJASTO_H
+#endif // LISTAKIRJASTO_H
