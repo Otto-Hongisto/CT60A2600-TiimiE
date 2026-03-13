@@ -18,10 +18,9 @@ typedef struct verkkolista
     struct verkkolista *prev;
 } VERKKOLISTA;
 
-int toimintoValikko();
 int struktuuriValikko();
 NIMILISTA *varaaMuistiLista();
-NIMILISTA *lueTiedotLista();
+NIMILISTA *lueTiedotLista(char *tiedostonNimi);
 void kirjoitaTiedosto();
 void kirjoitaTiedostoTakaperin();
 NIMILISTA *tyhjennaMuisti();

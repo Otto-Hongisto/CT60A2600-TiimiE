@@ -6,10 +6,12 @@ all:
 
 test:
 	gcc -std=c99 -pedantic -Wall -Isrc -Iunity \
-		test/puutesti.c unity/unity.c \
+		test/testRunner.c test/puutesti.c test/listatesti.c \
+		unity/unity.c \
 		src/yleinenkirjasto.c src/puukirjasto.c src/listakirjasto.c \
 		-o bin/tests
 		./bin/tests
+
 
 clean:
 	rm -f bin/app bin/test
