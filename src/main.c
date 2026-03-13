@@ -20,7 +20,7 @@ int main()
                 switch (toimintoValinta)
                 {
                 case 1:
-                    pAlku = lueTiedot();
+                    pAlku = lueTiedotLista();
                     break;
                 case 2:
                     kirjoitaTiedosto(pAlku);
@@ -48,16 +48,12 @@ int main()
                 switch (toimintoValinta)
                 {
                 case 1:
-                    pAlku = lueTiedot();
                     break;
                 case 2:
-                    kirjoitaTiedosto(pAlku);
                     break;
                 case 3:
-                    kirjoitaTiedostoTakaperin(pAlku);
                     break;
                 case 4:
-                    pAlku = tyhjennaMuisti(pAlku);
                     break;
                 case 0:
                     break;

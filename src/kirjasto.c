@@ -58,7 +58,7 @@ NIMILISTA *varaaMuisti()
     return pUusi;
 }
 
-NIMILISTA *lueTiedot()
+NIMILISTA *lueTiedotLista()
 {
     NIMILISTA *pAlku = NULL, *pLoppu = NULL;
     NIMILISTA *pUusi = NULL;

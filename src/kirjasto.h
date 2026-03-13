@@ -18,11 +18,19 @@ typedef struct verkkolista
     struct verkkolista *prev;
 } VERKKOLISTA;
 
+typedef struct nimipuu
+{
+    char *nimi;
+    int nimiLkm;
+    struct nimipuu *pVasen;
+    struct nimipuu *pOikea;
+} NIMIPUU;
+
 int toimintoValikko();
 int struktuuriValikko();
 char *tiedostoNimi();
 NIMILISTA *varaaMuisti();
-NIMILISTA *lueTiedot();
+NIMILISTA *lueTiedotLista();
 void kirjoitaTiedosto();
 void kirjoitaTiedostoTakaperin();
 NIMILISTA *tyhjennaMuisti();
