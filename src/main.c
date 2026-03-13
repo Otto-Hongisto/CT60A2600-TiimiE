@@ -60,7 +60,7 @@ int main()
                 case 0:
                     break;
                 default:
-                    printf("Tuntematon toimintoValinta, yritä uudestaan.\n");
+                    printf("Tuntematon toiminto, yritä uudestaan.\n");
                     break;
                 }
             } while (toimintoValinta != 0);
@@ -68,10 +68,9 @@ int main()
         } else if (struktuurivalinta == 0) {
             break;
         } else {
-            printf("Tuntematon toimintoValinta, yritä uudestaan.\n");
+            printf("Tuntematon Valinta, yritä uudestaan.\n");
         }
-    }
-    while (struktuurivalinta);
+    } while (struktuurivalinta != 0);
 
     pAlku = tyhjennaMuisti(pAlku);
     pAlku = NULL;
