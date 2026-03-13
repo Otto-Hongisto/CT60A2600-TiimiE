@@ -1,23 +1,9 @@
 #include "puukirjasto.h"
+#include "yleinenkirjasto.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-char *tiedostoNimiPuu()
-{
-    char tiedostoNimi[30];
-    char *pMuistilohko = NULL;
-    printf("Anna tiedoston nimi: ");
-    scanf("%s", tiedostoNimi);
-
-    if ((pMuistilohko = (char *)malloc((strlen(tiedostoNimi) + 1) * sizeof(char))) == NULL)
-    {
-        perror("Muistinvaraus epäonnistui, lopetetaan ");
-        exit(0);
-    }
-    strcpy(pMuistilohko, tiedostoNimi);
-    return pMuistilohko;
-}
 
 NIMIPUU *lisaaNodePuuhun(NIMIPUU *pJuuri, NIMIPUU *uusi)
 {
@@ -56,7 +42,7 @@ NIMIPUU *lueTiedotPuu()
     NIMIPUU *pUusi = NULL;
     FILE *tiedosto;
     char aRivi[50];
-    char *tiedostonNimi = tiedostoNimiPuu();
+    char *tiedostonNimi = tiedostoNimi();
 
     if ((tiedosto = fopen(tiedostonNimi, "r")) == NULL)
     {

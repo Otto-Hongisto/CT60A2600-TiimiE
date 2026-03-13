@@ -1,25 +1,10 @@
 #include "listakirjasto.h"
+#include "yleinenkirjasto.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-char *tiedostoNimi()
-{
-    char tiedostoNimi[30];
-    char *pMuistilohko = NULL;
-    printf("Anna tiedoston nimi: ");
-    scanf("%s", tiedostoNimi);
-
-    if ((pMuistilohko = (char *)malloc((strlen(tiedostoNimi) + 1)* sizeof(char))) == NULL)
-    {
-        perror("Muistinvaraus epäonnistui, lopetetaan ");
-        exit(0);
-    }
-    strcpy(pMuistilohko, tiedostoNimi);
-    return pMuistilohko;
-}
-
-NIMILISTA *varaaMuisti()
+NIMILISTA *varaaMuistiLista()
 {
     NIMILISTA *pUusi = NULL;
     if ((pUusi = (NIMILISTA *)malloc(sizeof(NIMILISTA))) == NULL)
@@ -48,7 +33,7 @@ NIMILISTA *lueTiedotLista()
 
     while (fgets(aRivi, 50, tiedosto) != NULL)
     {
-        pUusi = varaaMuisti();
+        pUusi = varaaMuistiLista();
         char *tokeni;
         if ((tokeni = strtok(aRivi, ";")) == NULL)
         {

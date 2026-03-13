@@ -6,9 +6,10 @@
 int main()
 {
 
-    NIMILISTA *pAlku = NULL;
-    int toimintoValinta = 0;
+    NIMILISTA *pAlku = NULL; // for linked list
+    NIMIPUU *pJuuri = NULL; // for binary tree
     int struktuurivalinta = 0; // 1 = linkitetty lista, 2 = binääripuu
+    int toimintoValinta = 0;
 
     do
     {
@@ -16,8 +17,7 @@ int main()
         if (struktuurivalinta == 1) { //Linkitetty lista
             do
             {
-                toimintoValinta = toimintoValikko();
-                printf("\n");
+                toimintoValinta = toimintoValikkoLista();
 
                 switch (toimintoValinta)
                 {
@@ -44,12 +44,12 @@ int main()
         } else if (struktuurivalinta == 2) { //binääripuu
             do
             {    
-                toimintoValinta = toimintoValikko();
-                printf("\n");
+                toimintoValinta = toimintoValikkoPuu();
 
                 switch (toimintoValinta)
                 {
                 case 1:
+                    pJuuri = lueTiedotPuu();
                     break;
                 case 2:
                     break;

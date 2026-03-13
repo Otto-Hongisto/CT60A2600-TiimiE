@@ -9,7 +9,6 @@ typedef struct nimipuu
     struct nimipuu *pOikea;
 } NIMIPUU;
 
-char *tiedostoNimiPuu();
 NIMIPUU *lueTiedotPuu();
 NIMIPUU *varaaMuistiPuu();
 NIMIPUU *lisaaNodePuuhun(NIMIPUU *pJuuri, NIMIPUU *uusi);

@@ -20,8 +20,7 @@ typedef struct verkkolista
 
 int toimintoValikko();
 int struktuuriValikko();
-char *tiedostoNimi();
-NIMILISTA *varaaMuisti();
+NIMILISTA *varaaMuistiLista();
 NIMILISTA *lueTiedotLista();
 void kirjoitaTiedosto();
 void kirjoitaTiedostoTakaperin();
