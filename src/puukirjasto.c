@@ -33,7 +33,7 @@ NIMIPUU *varaaMuistiPuu()
     pUusi->pVasen = NULL;
     pUusi->pOikea = NULL;
 
-    return pUusi;
+    return pUusi; 
 }
 
 NIMIPUU *lueTiedotPuu()
