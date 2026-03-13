@@ -5,8 +5,8 @@ typedef struct nimilista
 {
     char* nimi;
     int nimiLkm;
-    struct nimilista *next;
-    struct nimilista *prev;
+    struct nimilista *pNext;
+    struct nimilista *pPrev;
 } NIMILISTA;
 
 typedef struct verkkolista
