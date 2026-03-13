@@ -12,16 +12,16 @@ NIMILISTA *varaaMuistiLista()
         perror("Muistin varaus epäonnistui, lopetetaan");
         exit(0);
     }
+    
     return pUusi;
 }
 
-NIMILISTA *lueTiedotLista()
+NIMILISTA *lueTiedotLista(char *tiedostonNimi)
 {
     NIMILISTA *pAlku = NULL, *pLoppu = NULL;
     NIMILISTA *pUusi = NULL;
     FILE *tiedosto;
     char aRivi[50];
-    char *tiedostonNimi = tiedostoNimi();
 
     if ((tiedosto = fopen(tiedostonNimi, "r")) == NULL)
     {
@@ -48,7 +48,7 @@ NIMILISTA *lueTiedotLista()
             exit(0);
         }
         pUusi->nimiLkm = atoi(tokeni);
-
+        
         // checks if the list is empty
         // if not empty, adds to the earlier list to prevent memory leak errors
         // Not properly tested yet

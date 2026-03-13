@@ -22,7 +22,10 @@ int main()
                 switch (toimintoValinta)
                 {
                 case 1:
-                    pAlku = lueTiedotLista();
+                    {
+                        char *tiedostonNimi = tiedostoNimi();
+                        pAlku = lueTiedotLista(tiedostonNimi);
+                    }
                     break;
                 case 2:
                     kirjoitaTiedosto(pAlku);

@@ -1,12 +1,7 @@
-#include "../unity/unity.h"
+#include "unity.h"
 #include "puukirjasto.h"
 #include <stdlib.h>
 #include <string.h>
-
-// necessary for unity framwork
-// Not really sure what they do
-void setUp(void) {}
-void tearDown(void) {}
 
 // Test 1
 void varaaMuistifieldit(void)
@@ -80,16 +75,4 @@ void luoKokoPuu(void)
     TEST_ASSERT_EQUAL_PTR(numero5, root->pVasen->pOikea);
     TEST_ASSERT_EQUAL_PTR(numero6, root->pOikea->pVasen);
     TEST_ASSERT_EQUAL_PTR(numero7, root->pOikea->pOikea);
-}
-
-
-int main(void)
-{
-    UNITY_BEGIN();
-
-    RUN_TEST(varaaMuistifieldit);
-    RUN_TEST(lisaaNodePuuhunTesti);
-    RUN_TEST(luoKokoPuu);
-
-    return UNITY_END();
 }
