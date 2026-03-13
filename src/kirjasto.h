@@ -35,4 +35,8 @@ void kirjoitaTiedosto();
 void kirjoitaTiedostoTakaperin();
 NIMILISTA *tyhjennaMuisti();
 
+NIMIPUU *lueTiedotPuu();
+NIMIPUU *varaaMuistiPuu();
+NIMIPUU *lisaaNodePuuhun(NIMIPUU *pJuuri, NIMIPUU *uusi);
+
 #endif // KIRJASTO_H
