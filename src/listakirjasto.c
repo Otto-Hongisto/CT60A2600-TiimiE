@@ -1,35 +1,7 @@
-#include "kirjasto.h"
+#include "listakirjasto.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-int toimintoValikko()
-{
-    int valinta = 0;
-    printf("Valitse haluamasi toiminto:\n");
-    printf("1) Luo lista tiedostosta\n");
-    printf("2) Kirjoita tiedot tiedostoon\n");
-    printf("3) Kirjoita tiedot käänteisessä järjestyksessä\n");
-    printf("4) Tyhjennä lista\n");
-    printf("0) Valitse datastruktuuri\n");
-    printf("Anna valintasi: ");
-    scanf("%d", &valinta);
-    printf("\n");
-    return valinta;
-}
-
-int struktuuriValikko()
-{
-    int valinta = 0;
-    printf("Valitse haluamasi datastruktuuri:\n");
-    printf("1) Linkitetty lista\n");
-    printf("2) Binääripuu\n");
-    printf("0) Lopeta ohjelma\n");
-    printf("Anna valintasi: ");
-    scanf("%d", &valinta);
-    printf("\n");
-    return valinta;
-}
 
 char *tiedostoNimi()
 {
@@ -118,88 +90,6 @@ NIMILISTA *lueTiedotLista()
     tiedostonNimi = NULL;
 
     return pAlku;
-}
-
-NIMIPUU *lisaaNodePuuhun(NIMIPUU *pJuuri, NIMIPUU *uusi)
-{
-    if (pJuuri == NULL)
-        return uusi;
-
-    if (uusi->nimiLkm < pJuuri->nimiLkm)
-        pJuuri->pVasen = lisaaNodePuuhun(pJuuri->pVasen, uusi);
-    else
-        pJuuri->pOikea = lisaaNodePuuhun(pJuuri->pOikea, uusi);
-
-    return pJuuri;
-}
-
-NIMIPUU *varaaMuistiPuu()
-{
-    NIMIPUU *pUusi = NULL;
-
-    if ((pUusi = (NIMIPUU *)malloc(sizeof(NIMIPUU))) == NULL)
-    {
-        perror("Muistin varaus epäonnistui, lopetetaan");
-        exit(0);
-    }
-
-    pUusi->nimi = NULL;
-    pUusi->nimiLkm = 0;
-    pUusi->pVasen = NULL;
-    pUusi->pOikea = NULL;
-
-    return pUusi;
-}
-
-NIMIPUU *lueTiedotPuu()
-{
-    NIMIPUU *pJuuri = NULL;
-    NIMIPUU *pUusi = NULL;
-    FILE *tiedosto;
-    char aRivi[50];
-    char *tiedostonNimi = tiedostoNimi();
-
-    if ((tiedosto = fopen(tiedostonNimi, "r")) == NULL)
-    {
-        perror("Tiedoston avaaminen epäonnistui, lopetetaan");
-        exit(0);
-    }
-
-    fgets(aRivi, 50, tiedosto); // otsikkorivi pois
-
-    while (fgets(aRivi, 50, tiedosto) != NULL)
-    {
-        pUusi = varaaMuistiPuu();
-
-        char *tokeni = strtok(aRivi, ";");
-        if (tokeni == NULL)
-        {
-            printf("Merkkijonon '%s' pilkkominen epäonnistui.\n", aRivi);
-            exit(0);
-        }
-
-        pUusi->nimi = malloc(strlen(tokeni) + 1);
-        strcpy(pUusi->nimi, tokeni);
-
-        tokeni = strtok(NULL, ";");
-        if (tokeni == NULL)
-        {
-            printf("Merkkijonon '%s' pilkkominen epäonnistui.\n", aRivi);
-            exit(0);
-        }
-
-        pUusi->nimiLkm = atoi(tokeni);
-
-        // Lisää node puuhun
-        pJuuri = lisaaNodePuuhun(pJuuri, pUusi);
-    }
-
-    printf("Tiedosto '%s' luettu.\n\n", tiedostonNimi);
-
-    fclose(tiedosto);
-    free(tiedostonNimi);
-
-    return pJuuri;
 }
 
 void kirjoitaTiedosto(NIMILISTA *pAlku) {

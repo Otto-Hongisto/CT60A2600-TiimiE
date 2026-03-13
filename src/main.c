@@ -1,5 +1,7 @@
 #include <stdio.h>
-#include "kirjasto.h"
+#include "yleinenkirjasto.h"
+#include "listakirjasto.h"
+#include "puukirjasto.h"
 
 int main()
 {
