@@ -66,6 +66,8 @@ int main()
                     break;
                 case 5:
                     tyhjennaPuu(pJuuri);
+                    pJuuri = NULL;
+                    printf("Muisti vapautettu.");
                     break;
                 case 0:
                     break;
