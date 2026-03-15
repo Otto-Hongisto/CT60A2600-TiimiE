@@ -76,3 +76,37 @@ void luoKokoPuu(void)
     TEST_ASSERT_EQUAL_PTR(numero6, root->pOikea->pVasen);
     TEST_ASSERT_EQUAL_PTR(numero7, root->pOikea->pOikea);
 }
+
+void tyhjennaPuuTesti() {
+    NIMIPUU *root = NULL;
+
+    // Luo seittemän solmua
+    NIMIPUU *numero1 = varaaMuistiPuu();
+    numero1->nimiLkm = 4;
+    NIMIPUU *numero2 = varaaMuistiPuu();
+    numero2->nimiLkm = 2;
+    NIMIPUU *numero3 = varaaMuistiPuu();
+    numero3->nimiLkm = 1;
+    NIMIPUU *numero4 = varaaMuistiPuu();
+    numero4->nimiLkm = 9;
+    NIMIPUU *numero5 = varaaMuistiPuu();
+    numero5->nimiLkm = 3;
+    NIMIPUU *numero6 = varaaMuistiPuu();
+    numero6->nimiLkm = 2;
+    NIMIPUU *numero7 = varaaMuistiPuu();
+    numero7->nimiLkm = 12;
+
+    //luo puu
+    root = lisaaNodePuuhun(root, numero1);
+    lisaaNodePuuhun(root, numero2);
+    lisaaNodePuuhun(root, numero3);
+    lisaaNodePuuhun(root, numero4);
+    lisaaNodePuuhun(root, numero5);
+    lisaaNodePuuhun(root, numero6);
+    lisaaNodePuuhun(root, numero7);
+
+    tyhjennaPuu(root);
+    root = NULL;
+    TEST_ASSERT_NULL(root);
+}
+
