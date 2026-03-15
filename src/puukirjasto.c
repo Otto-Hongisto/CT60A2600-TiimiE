@@ -117,7 +117,6 @@ void tyhjennaPuu(NIMIPUU *puu) {
     tyhjennaPuu(puu->pVasen);
     tyhjennaPuu(puu->pOikea);
     free(puu->nimi);
-    free(puu->nimiLkm);
     free(puu);
     return;
 }

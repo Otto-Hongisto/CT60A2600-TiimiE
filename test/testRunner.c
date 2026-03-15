@@ -20,6 +20,7 @@ int main(void)
     RUN_TEST(varaaMuistifieldit);
     RUN_TEST(lisaaNodePuuhunTesti);
     RUN_TEST(luoKokoPuu);
+    RUN_TEST(tyhjennaPuuTesti);
 
     // listatesti.c tests
     RUN_TEST(test_varaaMuistiLista);

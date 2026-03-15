@@ -55,15 +55,16 @@ int main()
                     pJuuri = lueTiedotPuu();
                     break;
                 case 2:
-                    tulostaPuu();
+                    tulostaPuu(pJuuri);
                     break;
                 case 3:
                     numero = kysyNumero();
-                    syvyysHakuPuu(numero);
+                    syvyysHakuPuu(numero, pJuuri);
                     break;
                 case 4:
                     break;
                 case 5:
+                    tulostaPuu(pJuuri);
                     break;
                 case 0:
                     break;
