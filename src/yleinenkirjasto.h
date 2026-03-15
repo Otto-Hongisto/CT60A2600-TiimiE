@@ -6,6 +6,6 @@ int toimintoValikkoLista();
 int toimintoValikkoPuu();
 int struktuuriValikko();
 int kysyNumero();
-void kysyNimi(char *haettavaNimi);
+void kysyNimi(char *nimi);
 
 #endif // LISTAKIRJASTO_H

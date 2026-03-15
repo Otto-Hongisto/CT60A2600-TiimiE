@@ -1,5 +1,6 @@
 #ifndef PUUKIRJASTO_H
 #define PUUKIRJASTO_H
+#include <stdio.h>
 
 typedef struct nimipuu
 {
