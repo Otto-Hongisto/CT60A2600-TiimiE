@@ -62,12 +62,15 @@ int main()
                     syvyysHakuPuu(numero, pJuuri);
                     break;
                 case 4:
-                    
+                    {
+                        char haettavaNimi[30];
+                        kysyNimi(haettavaNimi);
+                        char *nimi = tiedostoNimi();
+                        leveysHaku(pJuuri, nimi, haettavaNimi);
+                    }
                     break;
                 case 5:
                     tyhjennaPuu(pJuuri);
-                    pJuuri = NULL;
-                    printf("Muisti vapautettu.");
                     break;
                 case 0:
                     break;
