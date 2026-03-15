@@ -62,6 +62,7 @@ int main()
                     syvyysHakuPuu(numero, pJuuri);
                     break;
                 case 4:
+                    
                     break;
                 case 5:
                     tyhjennaPuu(pJuuri);
