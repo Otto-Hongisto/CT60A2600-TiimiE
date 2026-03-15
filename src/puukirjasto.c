@@ -196,5 +196,6 @@ void tyhjennaPuu(NIMIPUU *puu) {
     tyhjennaPuu(puu->pOikea);
     free(puu->nimi);
     free(puu);
+    printf("Muisti vapautettu.");
     return;
 }
