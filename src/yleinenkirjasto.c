@@ -70,10 +70,8 @@ int kysyNumero()
     return numero;
 }
 
-char kysyNimi()
+void kysyNimi(char *koko)
 {
-    char nimi[30];
     printf("Anna etsittävä nimi: ");
-    scanf("%s", nimi);
-    return nimi;
+    scanf("%s", koko);
 }

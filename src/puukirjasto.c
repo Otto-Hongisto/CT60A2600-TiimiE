@@ -123,7 +123,6 @@ void leveysHaku(NIMIPUU *puu, char *tiedostonNimi, char *haettavaNimi) {
     NIMIPUU *iJono[1000];
     int alku = 0;
     int loppu = 0;
-    int loyty = 0;
 
     iJono[loppu++] = puu; // Lisätään root jonoon
 
@@ -140,7 +139,7 @@ void leveysHaku(NIMIPUU *puu, char *tiedostonNimi, char *haettavaNimi) {
 
         if (nykyinen->pVasen != NULL) {
             iJono[loppu++] = nykyinen->pVasen;
-        
+        }
         if (nykyinen->pOikea != NULL) {
             iJono[loppu++] = nykyinen->pOikea;
         }
