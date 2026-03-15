@@ -157,7 +157,7 @@ void leveysHaku(NIMIPUU *puu, char *tiedostonNimi, char *haettavaNimi) {
     while (alku < loppu) {
         NIMIPUU *nykyinen = iJono[alku++];
 
-            fprintf(TIEDOSTO, "%s;%d\n", nykyinen->nimi, nykyinen->nimiLkm);
+            fprintf(TIEDOSTO, "%s,%d\n", nykyinen->nimi, nykyinen->nimiLkm);
 
         if (strcmp(nykyinen->nimi, haettavaNimi) == 0) {
             printf("Nimi löytyi!\n");
