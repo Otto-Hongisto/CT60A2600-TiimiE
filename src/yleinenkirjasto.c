@@ -22,9 +22,10 @@ int toimintoValikkoPuu()
     int valinta = 0;
     printf("Valitse haluamasi toiminto:\n");
     printf("1) Luo puu tiedostosta\n");
-    printf("2) \n");
-    printf("3) \n");
-    printf("4) Tyhjennä puu\n");
+    printf("2) Ttulosta puu\n");
+    printf("3) Tee syvyyshaku\n");
+    printf("4) Tee syvyyshaku\n");
+    printf("5) Tyhjennä puu\n");
     printf("0) Valitse datastruktuuri\n");
     printf("Anna valintasi: ");
     scanf("%d", &valinta);
@@ -59,4 +60,12 @@ char *tiedostoNimi()
     }
     strcpy(pMuistilohko, tiedostoNimi);
     return pMuistilohko;
+}
+
+int kysyNumero()
+{
+    int numero;
+    printf("Anna etsittävä numero: ");
+    scanf("%d", numero);
+    return numero;
 }

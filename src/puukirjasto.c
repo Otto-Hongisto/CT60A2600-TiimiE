@@ -86,3 +86,38 @@ NIMIPUU *lueTiedotPuu()
 
     return pJuuri;
 }
+
+void tulostaPuu(NIMIPUU *puu) {
+    if (puu == NULL) {
+        return;
+    }
+    printf("%s, %d", puu->nimi, puu->nimiLkm);
+    tulostaPuu(puu->pVasen);
+    tulostaPuu(puu->pOikea);
+    return;
+}
+
+void syvyysHakuPuu(int numero, NIMIPUU *puu) {
+    if (puu == NULL) {
+        return;
+    }
+    if (puu->nimiLkm == numero) {
+        return;
+    }
+    printf("%s, %d", puu->nimi, puu->nimiLkm);
+    syvyysHakuPuu(numero, puu->pVasen);
+    syvyysHakuPuu(numero, puu->pOikea);
+    return;
+}
+
+void tyhjennaPuu(NIMIPUU *puu) {
+    if (puu == NULL) {
+        return;
+    }
+    tyhjennaPuu(puu->pVasen);
+    tyhjennaPuu(puu->pOikea);
+    free(puu->nimi);
+    free(puu->nimiLkm);
+    free(puu);
+    return;
+}
