@@ -16,7 +16,7 @@ NIMIPUU *lisaaNodePuuhun(NIMIPUU *pJuuri, NIMIPUU *uusi);
 void tulostaPuu(NIMIPUU *puu, char *tiedostoNimi);
 void tulostaPuuRekursio(NIMIPUU *puu, FILE *tiedosto);
 void syvyysHakuPuu(int numero, NIMIPUU *puu, char *tiedostoNimi);
-void syvyysHakuRekursio(int numero, NIMIPUU *puu, FILE *tiedosto);
+int syvyysHakuRekursio(int numero, NIMIPUU *puu, FILE *tiedosto);
 void leveysHaku(NIMIPUU *puu, char *tiedostonNimi, char *haettavaNimi);
 void tyhjennaPuu(NIMIPUU *puu);
 #endif // PUUKIRJASTO_H
