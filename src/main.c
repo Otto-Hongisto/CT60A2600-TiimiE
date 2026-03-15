@@ -55,8 +55,8 @@ int main()
                     pJuuri = lueTiedotPuu();
                     break;
                 case 2:
-                    char *syvyysTiedosto = tiedostoNimi();
-                    tulostaPuu(pJuuri, syvyysTiedosto);
+                    char *tulostaTiedosto = tiedostoNimi();
+                    tulostaPuu(pJuuri, tulostaTiedosto);
                     break;
                 case 3:
                     numero = kysyNumero();
