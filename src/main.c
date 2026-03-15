@@ -55,20 +55,27 @@ int main()
                     pJuuri = lueTiedotPuu();
                     break;
                 case 2:
-                    char *syvyysTiedosto = tiedostoNimi();
-                    tulostaPuu(pJuuri, syvyysTiedosto);
+                {
+                    char *tulostaTiedosto = tiedostoNimi();
+                    tulostaPuu(pJuuri, tulostaTiedosto);
+                    free(tulostaTiedosto);
                     break;
+                }
                 case 3:
+                {
                     numero = kysyNumero();
                     char *syvyysTiedosto = tiedostoNimi();
                     syvyysHakuPuu(numero, pJuuri, syvyysTiedosto);
+                    free(syvyysTiedosto);
                     break;
+                }
                 case 4:
                     {
                         char haettavaNimi[30];
                         kysyNimi(haettavaNimi);
                         char *nimi = tiedostoNimi();
                         leveysHaku(pJuuri, nimi, haettavaNimi);
+                        free(nimi);
                     }
                     break;
                 case 5:
