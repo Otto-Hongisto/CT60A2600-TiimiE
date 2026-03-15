@@ -69,3 +69,11 @@ int kysyNumero()
     scanf("%d", &numero);
     return numero;
 }
+
+char kysyNimi()
+{
+    char nimi[30];
+    printf("Anna etsittävä nimi: ");
+    scanf("%s", nimi);
+    return nimi;
+}

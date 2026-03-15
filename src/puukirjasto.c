@@ -110,7 +110,7 @@ void syvyysHakuPuu(int numero, NIMIPUU *puu) {
     return;
 }
 
-void leveysHaku(NIMIPUU *puu, char *tiedostonNimi) {
+void leveysHaku(NIMIPUU *puu, char *tiedostonNimi, char *haettavaNimi) {
     if (puu == NULL) {
         return;
     }
@@ -120,10 +120,34 @@ void leveysHaku(NIMIPUU *puu, char *tiedostonNimi) {
         exit(0);
     }
 
+    NIMIPUU *iJono[1000];
     int alku = 0;
     int loppu = 0;
+    int loyty = 0;
 
+    iJono[loppu++] = puu; // Lisätään root jonoon
 
+    while (alku < loppu) {
+        NIMIPUU *nykyinen = iJono[alku++];
+
+            fprintf(TIEDOSTO, "%s;%d\n", nykyinen->nimi, nykyinen->nimiLkm);
+
+        if (strcmp(nykyinen->nimi, haettavaNimi) == 0) {
+            printf("Nimi löytyi!\n");
+            fclose(TIEDOSTO);
+            return;
+        }
+
+        if (nykyinen->pVasen != NULL) {
+            iJono[loppu++] = nykyinen->pVasen;
+        
+        if (nykyinen->pOikea != NULL) {
+            iJono[loppu++] = nykyinen->pOikea;
+        }
+
+    }
+    printf("Nimeä ei löytynyt.\n");
+    fclose(TIEDOSTO);
     return;
 
 }
