@@ -105,7 +105,7 @@ void tulostaPuuRekursio(NIMIPUU *puu, FILE *tiedosto) {
     if (puu == NULL) {
         return;
     }
-    fprintf(tiedosto, "%s, %d\n", puu->nimi, puu->nimiLkm);
+    fprintf(tiedosto, "%s,%d\n", puu->nimi, puu->nimiLkm);
 
     tulostaPuuRekursio(puu->pVasen, tiedosto);
     tulostaPuuRekursio(puu->pOikea, tiedosto);
@@ -125,17 +125,27 @@ void syvyysHakuPuu(int numero, NIMIPUU *puu, char *tiedostoNimi) {
     return;
 }
 
-void syvyysHakuRekursio(int numero, NIMIPUU *puu, FILE *tiedosto) {
+int syvyysHakuRekursio(int numero, NIMIPUU *puu, FILE *tiedosto)
+{
     if (puu == NULL) {
-        return;
+        return 0;
     }
-    fprintf(tiedosto, "%s, %d\n", puu->nimi, puu->nimiLkm);
-    
+
+    fprintf(tiedosto, "%s,%d\n", puu->nimi, puu->nimiLkm);
+
     if (puu->nimiLkm == numero) {
-        return;
+        return 1;
     }
-    syvyysHakuRekursio(numero, puu->pVasen, tiedosto);
-    syvyysHakuRekursio(numero, puu->pOikea, tiedosto);
+
+    if (syvyysHakuRekursio(numero, puu->pVasen, tiedosto)) {
+        return 1;
+    }
+
+    if (syvyysHakuRekursio(numero, puu->pOikea, tiedosto)) {
+        return 1;
+    }
+
+    return 0;
 }
 
 void leveysHaku(NIMIPUU *puu, char *tiedostonNimi, char *haettavaNimi) {
