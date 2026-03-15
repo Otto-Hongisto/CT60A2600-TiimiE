@@ -79,11 +79,9 @@ int main()
                         free(nimi);
                     }
                     break;
-                case 5:
+                case 0:
                     tyhjennaPuu(pJuuri);
                     pJuuri = NULL;
-                    break;
-                case 0:
                     break;
                 default:
                     printf("Tuntematon toiminto, yritä uudestaan.\n");
