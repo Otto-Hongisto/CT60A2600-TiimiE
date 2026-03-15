@@ -64,8 +64,8 @@ char *tiedostoNimi()
 
 int kysyNumero()
 {
-    int numero;
+    int numero = 0;
     printf("Anna etsittävä numero: ");
-    scanf("%d", numero);
+    scanf("%d", &numero);
     return numero;
 }
