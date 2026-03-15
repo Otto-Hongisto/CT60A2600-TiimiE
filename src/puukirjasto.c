@@ -91,7 +91,7 @@ void tulostaPuu(NIMIPUU *puu) {
     if (puu == NULL) {
         return;
     }
-    printf("%s, %d", puu->nimi, puu->nimiLkm);
+    printf("%s, %d\n", puu->nimi, puu->nimiLkm);
     tulostaPuu(puu->pVasen);
     tulostaPuu(puu->pOikea);
     return;

@@ -4,6 +4,7 @@
 void varaaMuistifieldit(void);
 void lisaaNodePuuhunTesti(void);
 void luoKokoPuu(void);
+void tyhjennaPuuTesti(void);
 
 void test_varaaMuistiLista(void);
 void test_lueTiedotLista(void);
