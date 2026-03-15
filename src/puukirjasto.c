@@ -110,12 +110,17 @@ void syvyysHakuPuu(int numero, NIMIPUU *puu) {
     return;
 }
 
-void leveysHaku(NIMIPUU *puu) {
+void leveysHaku(NIMIPUU *puu, char *tiedostonNimi) {
     if (puu == NULL) {
         return;
     }
+    FILE *TIEDOSTO = fopen(tiedostonNimi, "w");
+
     int alku = 0;
     int loppu = 0;
+
+
+    return;
 
 }
 

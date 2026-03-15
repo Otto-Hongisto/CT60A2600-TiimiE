@@ -22,9 +22,9 @@ int toimintoValikkoPuu()
     int valinta = 0;
     printf("Valitse haluamasi toiminto:\n");
     printf("1) Luo puu tiedostosta\n");
-    printf("2) Ttulosta puu\n");
+    printf("2) Tulosta puu\n");
     printf("3) Tee syvyyshaku\n");
-    printf("4) Tee syvyyshaku\n");
+    printf("4) Tee leveyshaku\n");
     printf("5) Tyhjennä puu\n");
     printf("0) Valitse datastruktuuri\n");
     printf("Anna valintasi: ");
