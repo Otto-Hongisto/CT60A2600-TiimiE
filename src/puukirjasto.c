@@ -110,6 +110,15 @@ void syvyysHakuPuu(int numero, NIMIPUU *puu) {
     return;
 }
 
+void leveysHaku(NIMIPUU *puu) {
+    if (puu == NULL) {
+        return;
+    }
+    int alku = 0;
+    int loppu = 0;
+
+}
+
 void tyhjennaPuu(NIMIPUU *puu) {
     if (puu == NULL) {
         return;
