@@ -114,7 +114,11 @@ void leveysHaku(NIMIPUU *puu, char *tiedostonNimi) {
     if (puu == NULL) {
         return;
     }
-    FILE *TIEDOSTO = fopen(tiedostonNimi, "w");
+    FILE *TIEDOSTO = NULL;
+    if ((TIEDOSTO = fopen(tiedostonNimi, "w")) == NULL) {
+        perror("Tiedoston avaaminen epäonnistui, lopetetaan");
+        exit(0);
+    }
 
     int alku = 0;
     int loppu = 0;
