@@ -74,4 +74,5 @@ void kysyNimi(char *koko)
 {
     printf("Anna etsittävä nimi: ");
     scanf("%s", koko);
+    return;
 }
