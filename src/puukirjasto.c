@@ -138,7 +138,7 @@ void syvyysHakuRekursio(int numero, NIMIPUU *puu, FILE *tiedosto) {
     syvyysHakuRekursio(numero, puu->pOikea, tiedosto);
 }
 
-void leveysHaku(NIMIPUU *puu, char *tiedostonNimi, char *haettavaNimi) {
+    void leveysHaku(NIMIPUU *puu, char *tiedostonNimi, char *haettavaNimi) {
     if (puu == NULL) {
         return;
     }
@@ -148,32 +148,31 @@ void leveysHaku(NIMIPUU *puu, char *tiedostonNimi, char *haettavaNimi) {
         exit(0);
     }
 
-    NIMIPUU *iJono[1000];
+    NIMIPUU *iJono[1000]; // Enintään 1000 solmua puussa (oletuksena)
     int alku = 0;
     int loppu = 0;
-
     iJono[loppu++] = puu; // Lisätään root jonoon
 
-    while (alku < loppu) {
-        NIMIPUU *nykyinen = iJono[alku++];
+    while (alku < loppu) { // Jatkaa looppia kunnes jono tyhjä
+        NIMIPUU *nykyinen = iJono[alku++]; // Otetaan ensimmäinen solmu jonosta
 
-            fprintf(TIEDOSTO, "%s,%d\n", nykyinen->nimi, nykyinen->nimiLkm);
+            fprintf(TIEDOSTO, "%s,%d\n", nykyinen->nimi, nykyinen->nimiLkm); // TUlostetaan nykyinen solmu tiedostoon
 
-        if (strcmp(nykyinen->nimi, haettavaNimi) == 0) {
+        if (strcmp(nykyinen->nimi, haettavaNimi) == 0) { // Jos nimi löytyy lopetetaan haku
             printf("Nimi löytyi!\n");
             fclose(TIEDOSTO);
             return;
         }
 
-        if (nykyinen->pVasen != NULL) {
+        if (nykyinen->pVasen != NULL) { // Lisää vasemmanpuoleisen lapsen jonoon
             iJono[loppu++] = nykyinen->pVasen;
         }
-        if (nykyinen->pOikea != NULL) {
+        if (nykyinen->pOikea != NULL) { // Lisää oikeanpuoleisen lapsen jonoon
             iJono[loppu++] = nykyinen->pOikea;
         }
 
     }
-    printf("Nimeä ei löytynyt.\n");
+    printf("Nimeä ei löytynyt.\n"); //
     fclose(TIEDOSTO);
     return;
 
