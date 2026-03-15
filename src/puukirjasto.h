@@ -12,8 +12,10 @@ typedef struct nimipuu
 NIMIPUU *lueTiedotPuu();
 NIMIPUU *varaaMuistiPuu();
 NIMIPUU *lisaaNodePuuhun(NIMIPUU *pJuuri, NIMIPUU *uusi);
-void tulostaPuu(NIMIPUU *puu);
-void syvyysHakuPuu(int numero, NIMIPUU *puu);
+void tulostaPuu(NIMIPUU *puu, char *tiedostoNimi);
+void tulostaPuuRekursio(NIMIPUU *puu, FILE *tiedosto);
+void syvyysHakuPuu(int numero, NIMIPUU *puu, char *tiedostoNimi);
+void syvyysHakuRekursio(int numero, NIMIPUU *puu, FILE *tiedosto);
 void leveysHaku(NIMIPUU *puu, char *tiedostonNimi);
 void tyhjennaPuu(NIMIPUU *puu);
 #endif // PUUKIRJASTO_H

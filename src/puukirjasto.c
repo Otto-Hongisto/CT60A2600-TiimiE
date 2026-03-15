@@ -87,27 +87,55 @@ NIMIPUU *lueTiedotPuu()
     return pJuuri;
 }
 
-void tulostaPuu(NIMIPUU *puu) {
-    if (puu == NULL) {
-        return;
+void tulostaPuu(NIMIPUU *puu, char *tiedostoNimi) {
+    FILE *TIEDOSTO = NULL;
+
+    if ((TIEDOSTO = fopen(tiedostoNimi, "w")) == NULL) {
+        perror("Tiedoston avaaminen epäonnistui, lopetetaan");
+        exit(0);
     }
-    printf("%s, %d\n", puu->nimi, puu->nimiLkm);
-    tulostaPuu(puu->pVasen);
-    tulostaPuu(puu->pOikea);
+
+    tulostaPuuRekursio(puu, TIEDOSTO);
+    fclose(TIEDOSTO);
+
     return;
 }
 
-void syvyysHakuPuu(int numero, NIMIPUU *puu) {
+void tulostaPuuRekursio(NIMIPUU *puu, FILE *tiedosto) {
     if (puu == NULL) {
         return;
     }
+    fprintf(tiedosto, "%s, %d\n", puu->nimi, puu->nimiLkm);
+
+    tulostaPuuRekursio(puu->pVasen, tiedosto);
+    tulostaPuuRekursio(puu->pOikea, tiedosto);
+}
+
+void syvyysHakuPuu(int numero, NIMIPUU *puu, char *tiedostoNimi) {
+    FILE *TIEDOSTO = NULL;
+
+    if ((TIEDOSTO = fopen(tiedostoNimi, "w")) == NULL) {
+        perror("Tiedoston avaaminen epäonnistui, lopetetaan");
+        exit(0);
+    }
+
+    syvyysHakuRekursio(numero, puu, TIEDOSTO);
+    fclose(TIEDOSTO);
+
+    return;
+}
+
+void syvyysHakuRekursio(int numero, NIMIPUU *puu, FILE *tiedosto) {
+    if (puu == NULL) {
+        return;
+    }
+    fprintf(tiedosto, "%s, %d\n", puu->nimi, puu->nimiLkm);
+    
     if (puu->nimiLkm == numero) {
         return;
     }
-    printf("%s, %d", puu->nimi, puu->nimiLkm);
-    syvyysHakuPuu(numero, puu->pVasen);
-    syvyysHakuPuu(numero, puu->pOikea);
-    return;
+    syvyysHakuRekursio(numero, puu->pVasen, tiedosto);
+    syvyysHakuRekursio(numero, puu->pOikea, tiedosto);
 }
 
 void leveysHaku(NIMIPUU *puu, char *tiedostonNimi) {
@@ -122,7 +150,6 @@ void leveysHaku(NIMIPUU *puu, char *tiedostonNimi) {
 
     int alku = 0;
     int loppu = 0;
-
 
     return;
 
