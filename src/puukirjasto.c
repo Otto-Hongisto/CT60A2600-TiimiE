@@ -20,15 +20,96 @@ int toimintoValikkoPuu()
     return valinta;
 }
 
-NIMIPUU *lisaaNodePuuhun(NIMIPUU *pJuuri, NIMIPUU *uusi)
+int korkeusPuu(NIMIPUU *pNode)
+{
+    if (pNode == NULL)
+        return 0;
+
+    int vasenKorkeus = korkeusPuu(pNode->pVasen);
+    int oikeaKorkeus = korkeusPuu(pNode->pOikea);
+
+    int suurempi;
+    if (vasenKorkeus > oikeaKorkeus)
+        suurempi = vasenKorkeus;
+    else
+        suurempi = oikeaKorkeus;
+
+    return 1 + suurempi;
+}
+
+int tasapainoPuu(NIMIPUU *pNode)
+{
+    if (pNode == NULL)
+        return 0;
+    return korkeusPuu(pNode->pVasen) - korkeusPuu(pNode->pOikea);
+}
+
+NIMIPUU *rotaatioOikeaPuu(NIMIPUU *pVanhaJuuri)
+{
+
+    // Vasen lapsi nousee uudeksi juureksi
+    NIMIPUU *pUusiJuuri = pVanhaJuuri->pVasen;
+
+    // Uuden juuren oikea alilapsi siirtyy vanhan juuren vasemmaksi lapseksi
+    NIMIPUU *siirtyvaAlipuu = pUusiJuuri->pOikea;
+
+    // Suoritetaan rotaatio
+    pUusiJuuri->pOikea = pVanhaJuuri;
+    pVanhaJuuri->pVasen = siirtyvaAlipuu;
+
+    return pUusiJuuri;
+}
+
+NIMIPUU *rotaatioVasenPuu(NIMIPUU *pVanhaJuuri)
+{
+    // Oikea lapsi nousee uuden alipuun juureksi
+    NIMIPUU *pUusiJuuri = pVanhaJuuri->pOikea;
+
+    // Uuden juuren vasen alilapsi siirtyy vanhan juuren oikeaksi lapseksi
+    NIMIPUU *siirtyvaAlipuu = pUusiJuuri->pVasen;
+
+    // Suoritetaan rotaatio
+    pUusiJuuri->pVasen = pVanhaJuuri;
+    pVanhaJuuri->pOikea = siirtyvaAlipuu;
+
+    return pUusiJuuri;
+}
+
+NIMIPUU *lisaaNodePuuhun(NIMIPUU *pJuuri, NIMIPUU *pUusi)
 {
     if (pJuuri == NULL)
-        return uusi;
+        return pUusi;
 
-    if (uusi->nimiLkm < pJuuri->nimiLkm)
-        pJuuri->pVasen = lisaaNodePuuhun(pJuuri->pVasen, uusi);
+    if (pUusi->nimiLkm < pJuuri->nimiLkm)
+        pJuuri->pVasen = lisaaNodePuuhun(pJuuri->pVasen, pUusi);
     else
-        pJuuri->pOikea = lisaaNodePuuhun(pJuuri->pOikea, uusi);
+        pJuuri->pOikea = lisaaNodePuuhun(pJuuri->pOikea, pUusi);
+
+    int puunTasapaino = tasapainoPuu(pJuuri);
+
+    // Vasemman puolen ylikuorma
+    if (puunTasapaino > 1)
+    {
+        if (pUusi->nimiLkm < pJuuri->pVasen->nimiLkm)
+            return rotaatioOikeaPuu(pJuuri); // LL-tilanne
+        else
+        {
+            pJuuri->pVasen = rotaatioVasenPuu(pJuuri->pVasen); // LR-tilanne
+            return rotaatioOikeaPuu(pJuuri);
+        }
+    }
+
+    // Oikean puolen ylikuorma
+    if (puunTasapaino < -1)
+    {
+        if (pUusi->nimiLkm > pJuuri->pOikea->nimiLkm)
+            return rotaatioVasenPuu(pJuuri); // RR-tilanne
+        else
+        {
+            pJuuri->pOikea = rotaatioOikeaPuu(pJuuri->pOikea); // RL-tilanne
+            return rotaatioVasenPuu(pJuuri);
+        }
+    }
 
     return pJuuri;
 }
