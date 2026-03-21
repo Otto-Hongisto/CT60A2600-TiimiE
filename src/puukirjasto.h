@@ -10,9 +10,16 @@ typedef struct nimipuu
     struct nimipuu *pOikea;
 } NIMIPUU;
 
+int toimintoValikkoPuu();
+
 NIMIPUU *lueTiedotPuu();
 NIMIPUU *varaaMuistiPuu();
+int korkeusPuu(NIMIPUU *pNode);
+int tasapainoPuu(NIMIPUU *pNode);
+NIMIPUU *rotaatioOikeaPuu(NIMIPUU *pVanhaJuuri);
+NIMIPUU *rotaatioVasenPuu(NIMIPUU *pVanhaJuuri);
 NIMIPUU *lisaaNodePuuhun(NIMIPUU *pJuuri, NIMIPUU *uusi);
+
 void tulostaPuu(NIMIPUU *puu, char *tiedostoNimi);
 void tulostaPuuRekursio(NIMIPUU *puu, FILE *tiedosto);
 void syvyysHakuPuu(int numero, NIMIPUU *puu, char *tiedostoNimi);
