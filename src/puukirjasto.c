@@ -80,10 +80,23 @@ NIMIPUU *lisaaNodePuuhun(NIMIPUU *pJuuri, NIMIPUU *pUusi)
     if (pJuuri == NULL)
         return pUusi;
 
+    // Vertaillaan ensin nimien lukumäärää
     if (pUusi->nimiLkm < pJuuri->nimiLkm)
+    {
         pJuuri->pVasen = lisaaNodePuuhun(pJuuri->pVasen, pUusi);
-    else
+    }
+    else if (pUusi->nimiLkm > pJuuri->nimiLkm)
+    {
         pJuuri->pOikea = lisaaNodePuuhun(pJuuri->pOikea, pUusi);
+    }
+    else
+    {
+        // Jos lukumäärä sama, vertaillaan nimiä aakkosjärjestyksessä
+        if (strcmp(pUusi->nimi, pJuuri->nimi) < 0)
+            pJuuri->pVasen = lisaaNodePuuhun(pJuuri->pVasen, pUusi);
+        else
+            pJuuri->pOikea = lisaaNodePuuhun(pJuuri->pOikea, pUusi);
+    }
 
     int puunTasapaino = tasapainoPuu(pJuuri);
 
