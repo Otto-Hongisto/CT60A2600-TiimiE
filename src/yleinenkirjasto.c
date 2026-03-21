@@ -2,37 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-int toimintoValikkoLista()
-{
-    int valinta = 0;
-    printf("Valitse haluamasi toiminto:\n");
-    printf("1) Luo lista tiedostosta\n");
-    printf("2) Kirjoita tiedot tiedostoon\n");
-    printf("3) Kirjoita tiedot käänteisessä järjestyksessä\n");
-    printf("4) Tyhjennä lista\n");
-    printf("0) Valitse datastruktuuri\n");
-    printf("Anna valintasi: ");
-    scanf("%d", &valinta);
-    printf("\n");
-    return valinta;
-}
-
-int toimintoValikkoPuu()
-{
-    int valinta = 0;
-    printf("Valitse haluamasi toiminto:\n");
-    printf("1) Luo puu tiedostosta\n");
-    printf("2) Tulosta puu\n");
-    printf("3) Tee syvyyshaku\n");
-    printf("4) Tee leveyshaku\n");
-    printf("5) Tyhjennä puu\n");
-    printf("0) Valitse datastruktuuri\n");
-    printf("Anna valintasi: ");
-    scanf("%d", &valinta);
-    printf("\n");
-    return valinta;
-}
-
 int struktuuriValikko()
 {
     int valinta = 0;

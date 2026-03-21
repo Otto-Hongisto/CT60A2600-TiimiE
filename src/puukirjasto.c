@@ -4,6 +4,21 @@
 #include <stdlib.h>
 #include <string.h>
 
+int toimintoValikkoPuu()
+{
+    int valinta = 0;
+    printf("Valitse haluamasi toiminto:\n");
+    printf("1) Luo puu tiedostosta\n");
+    printf("2) Tulosta puu\n");
+    printf("3) Tee syvyyshaku\n");
+    printf("4) Tee leveyshaku\n");
+    printf("5) Tyhjennä puu\n");
+    printf("0) Valitse datastruktuuri\n");
+    printf("Anna valintasi: ");
+    scanf("%d", &valinta);
+    printf("\n");
+    return valinta;
+}
 
 NIMIPUU *lisaaNodePuuhun(NIMIPUU *pJuuri, NIMIPUU *uusi)
 {
@@ -79,7 +94,8 @@ NIMIPUU *lueTiedotPuu()
         pJuuri = lisaaNodePuuhun(pJuuri, pUusi);
     }
 
-    printf("Tiedosto '%s' luettu.\n\n", tiedostonNimi);
+    printf("Tiedosto '%s' luettu.\n", tiedostonNimi);
+    printf("\n");
 
     fclose(tiedosto);
     free(tiedostonNimi);
