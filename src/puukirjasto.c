@@ -86,3 +86,116 @@ NIMIPUU *lueTiedotPuu()
 
     return pJuuri;
 }
+
+void tulostaPuu(NIMIPUU *puu, char *tiedostoNimi) {
+    FILE *TIEDOSTO = NULL;
+
+    if ((TIEDOSTO = fopen(tiedostoNimi, "w")) == NULL) {
+        perror("Tiedoston avaaminen epäonnistui, lopetetaan");
+        exit(0);
+    }
+
+    tulostaPuuRekursio(puu, TIEDOSTO);
+    fclose(TIEDOSTO);
+
+    return;
+}
+
+void tulostaPuuRekursio(NIMIPUU *puu, FILE *tiedosto) {
+    if (puu == NULL) {
+        return;
+    }
+    fprintf(tiedosto, "%s,%d\n", puu->nimi, puu->nimiLkm);
+
+    tulostaPuuRekursio(puu->pVasen, tiedosto);
+    tulostaPuuRekursio(puu->pOikea, tiedosto);
+}
+
+void syvyysHakuPuu(int numero, NIMIPUU *puu, char *tiedostoNimi) {
+    FILE *TIEDOSTO = NULL;
+
+    if ((TIEDOSTO = fopen(tiedostoNimi, "w")) == NULL) {
+        perror("Tiedoston avaaminen epäonnistui, lopetetaan");
+        exit(0);
+    }
+
+    syvyysHakuRekursio(numero, puu, TIEDOSTO);
+    fclose(TIEDOSTO);
+
+    return;
+}
+
+int syvyysHakuRekursio(int numero, NIMIPUU *puu, FILE *tiedosto)
+{
+    if (puu == NULL) {
+        return 0;
+    }
+
+    fprintf(tiedosto, "%s,%d\n", puu->nimi, puu->nimiLkm);
+
+    if (puu->nimiLkm == numero) {
+        return 1;
+    }
+
+    if (syvyysHakuRekursio(numero, puu->pVasen, tiedosto)) {
+        return 1;
+    }
+
+    if (syvyysHakuRekursio(numero, puu->pOikea, tiedosto)) {
+        return 1;
+    }
+
+    return 0;
+}
+
+    void leveysHaku(NIMIPUU *puu, char *tiedostonNimi, char *haettavaNimi) {
+    if (puu == NULL) {
+        return;
+    }
+    FILE *TIEDOSTO = NULL;
+    if ((TIEDOSTO = fopen(tiedostonNimi, "w")) == NULL) {
+        perror("Tiedoston avaaminen epäonnistui, lopetetaan");
+        exit(0);
+    }
+
+    NIMIPUU *iJono[1000]; // Enintään 1000 solmua puussa (oletuksena)
+    int alku = 0;
+    int loppu = 0;
+    iJono[loppu++] = puu; // Lisätään root jonoon
+
+    while (alku < loppu) { // Jatkaa looppia kunnes jono tyhjä
+        NIMIPUU *nykyinen = iJono[alku++]; // Otetaan ensimmäinen solmu jonosta
+
+            fprintf(TIEDOSTO, "%s,%d\n", nykyinen->nimi, nykyinen->nimiLkm); // TUlostetaan nykyinen solmu tiedostoon
+
+        if (strcmp(nykyinen->nimi, haettavaNimi) == 0) { // Jos nimi löytyy lopetetaan haku
+            printf("Nimi löytyi!\n");
+            fclose(TIEDOSTO);
+            return;
+        }
+
+        if (nykyinen->pVasen != NULL) { // Lisää vasemmanpuoleisen lapsen jonoon
+            iJono[loppu++] = nykyinen->pVasen;
+        }
+        if (nykyinen->pOikea != NULL) { // Lisää oikeanpuoleisen lapsen jonoon
+            iJono[loppu++] = nykyinen->pOikea;
+        }
+
+    }
+    printf("Nimeä ei löytynyt.\n"); //
+    fclose(TIEDOSTO);
+    return;
+
+}
+
+void tyhjennaPuu(NIMIPUU *puu) {
+    if (puu == NULL) {
+        return;
+    }
+    tyhjennaPuu(puu->pVasen);
+    tyhjennaPuu(puu->pOikea);
+    free(puu->nimi);
+    free(puu);
+    printf("Muisti vapautettu.");
+    return;
+}

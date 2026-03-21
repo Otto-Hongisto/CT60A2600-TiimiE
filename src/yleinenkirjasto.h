@@ -5,5 +5,7 @@ char *tiedostoNimi();
 int toimintoValikkoLista();
 int toimintoValikkoPuu();
 int struktuuriValikko();
+int kysyNumero();
+void kysyNimi(char *nimi);
 
 #endif // LISTAKIRJASTO_H

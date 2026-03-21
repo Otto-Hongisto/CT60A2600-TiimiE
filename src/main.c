@@ -1,11 +1,12 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "yleinenkirjasto.h"
 #include "listakirjasto.h"
 #include "puukirjasto.h"
 
 int main()
 {
-
+    int numero = 0; //for binary tree searches
     NIMILISTA *pAlku = NULL; // for linked list
     NIMIPUU *pJuuri = NULL; // for binary tree
     int struktuurivalinta = 0; // 1 = linkitetty lista, 2 = binääripuu
@@ -55,12 +56,32 @@ int main()
                     pJuuri = lueTiedotPuu();
                     break;
                 case 2:
+                {
+                    char *tulostaTiedosto = tiedostoNimi();
+                    tulostaPuu(pJuuri, tulostaTiedosto);
+                    free(tulostaTiedosto);
                     break;
+                }
                 case 3:
+                {
+                    numero = kysyNumero();
+                    char *syvyysTiedosto = tiedostoNimi();
+                    syvyysHakuPuu(numero, pJuuri, syvyysTiedosto);
+                    free(syvyysTiedosto);
                     break;
+                }
                 case 4:
+                    {
+                        char haettavaNimi[30];
+                        kysyNimi(haettavaNimi);
+                        char *nimi = tiedostoNimi();
+                        leveysHaku(pJuuri, nimi, haettavaNimi);
+                        free(nimi);
+                    }
                     break;
                 case 0:
+                    tyhjennaPuu(pJuuri);
+                    pJuuri = NULL;
                     break;
                 default:
                     printf("Tuntematon toiminto, yritä uudestaan.\n");
