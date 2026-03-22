@@ -4,6 +4,8 @@
 void varaaMuistifieldit(void);
 void lisaaNodePuuhunTesti(void);
 void luoKokoPuu(void);
+void binaariHakuEiLoydaTest(void);
+void binaariHakuTest(void);
 
 void test_varaaMuistiLista(void);
 void test_lueTiedotLista(void);
@@ -20,6 +22,8 @@ int main(void)
     RUN_TEST(varaaMuistifieldit);
     RUN_TEST(lisaaNodePuuhunTesti);
     RUN_TEST(luoKokoPuu);
+    RUN_TEST(binaariHakuEiLoydaTest);
+    RUN_TEST(binaariHakuTest);
 
     // listatesti.c tests
     RUN_TEST(test_varaaMuistiLista);

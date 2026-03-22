@@ -76,3 +76,53 @@ void luoKokoPuu(void)
     TEST_ASSERT_EQUAL_PTR(numero6, root->pOikea->pVasen);
     TEST_ASSERT_EQUAL_PTR(numero7, root->pOikea->pOikea);
 }
+
+//Test 4
+void binaariHakuEiLoydaTest(void)
+{
+    NIMIPUU *root = NULL;
+
+    NIMIPUU *node = varaaMuistiPuu();
+    node->nimiLkm = 10;
+
+    root = lisaaNodePuuhun(root, node);
+
+    NIMIPUU *found = binaariHaku(root, 20, "/dev/null");
+    TEST_ASSERT_NULL(found);
+    tyhjennaPuu(root);
+}
+
+//Test 5
+void binaariHakuTest(void)
+{
+    NIMIPUU *root = NULL;
+
+    // luodaan pieni puu
+    NIMIPUU *node1 = varaaMuistiPuu();
+    node1->nimiLkm = 10;
+    node1->nimi = malloc(6); 
+    strcpy(node1->nimi, "A");
+
+    NIMIPUU *node2 = varaaMuistiPuu();
+    node2->nimiLkm = 5;
+    node2->nimi = malloc(5); 
+    strcpy(node2->nimi, "B");
+
+    NIMIPUU *node3 = varaaMuistiPuu();
+    node3->nimiLkm = 15;
+    node3->nimi = malloc(6); 
+    strcpy(node3->nimi, "G");
+
+    // lisätään solmut
+    root = lisaaNodePuuhun(root, node1);
+    lisaaNodePuuhun(root, node2);
+    lisaaNodePuuhun(root, node3);
+
+    char *tiedosto = "test.txt"; 
+    NIMIPUU *found = binaariHaku(root, 15, tiedosto);
+
+    // tarkistetaan tulokset
+    TEST_ASSERT_NOT_NULL(found);
+    TEST_ASSERT_EQUAL(15, found->nimiLkm);
+    TEST_ASSERT_EQUAL_STRING("G", found->nimi);
+}
