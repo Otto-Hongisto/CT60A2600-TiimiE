@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+// Binääripuun valikko
 int toimintoValikkoPuu()
 {
     int valinta = 0;
@@ -21,23 +22,30 @@ int toimintoValikkoPuu()
     return valinta;
 }
 
+// Palauttaa puun korkeuden rekursiivisesti
+// Tyhjän puun korkeus on 0
 int korkeusPuu(NIMIPUU *pNode)
 {
     if (pNode == NULL)
         return 0;
 
+    // Lasketaan vasemman ja oikean alipuun korkeudet
     int vasenKorkeus = korkeusPuu(pNode->pVasen);
     int oikeaKorkeus = korkeusPuu(pNode->pOikea);
 
+    // Valitaan suurempi korkeus
     int suurempi;
     if (vasenKorkeus > oikeaKorkeus)
         suurempi = vasenKorkeus;
     else
         suurempi = oikeaKorkeus;
 
+    // Palautetaan tämän noden korkeus (1 + suurenpi alipuu)
     return 1 + suurempi;
 }
 
+// Palauttaa solmun tasapainoarvon (vasen korkeus – oikea korkeus).
+// Käytetään AVL-puun tasapainon tarkistamiseen.
 int tasapainoPuu(NIMIPUU *pNode)
 {
     if (pNode == NULL)
@@ -45,6 +53,8 @@ int tasapainoPuu(NIMIPUU *pNode)
     return korkeusPuu(pNode->pVasen) - korkeusPuu(pNode->pOikea);
 }
 
+// Suorittaa oikean rotaation annetulle juurinodelle
+// ja palauttaa sitten uuden juuren
 NIMIPUU *rotaatioOikeaPuu(NIMIPUU *pVanhaJuuri)
 {
 
@@ -128,6 +138,7 @@ NIMIPUU *lisaaNodePuuhun(NIMIPUU *pJuuri, NIMIPUU *pUusi)
     return pJuuri;
 }
 
+// varaa muisti uudelle binääripuu nodelle ja palauttaa sen
 NIMIPUU *varaaMuistiPuu()
 {
     NIMIPUU *pUusi = NULL;
@@ -146,6 +157,7 @@ NIMIPUU *varaaMuistiPuu()
     return pUusi; 
 }
 
+// lukee tiedoston ja tallentaa tiedot binääripuuhun
 NIMIPUU *lueTiedotPuu()
 {
     NIMIPUU *pJuuri = NULL;
@@ -164,6 +176,8 @@ NIMIPUU *lueTiedotPuu()
 
     while (fgets(aRivi, 50, tiedosto) != NULL)
     {
+        // varaa uudelle nodelle muistia
+        // Yksi rivi vastaa yhtä nodea
         pUusi = varaaMuistiPuu();
 
         char *tokeni = strtok(aRivi, ";");

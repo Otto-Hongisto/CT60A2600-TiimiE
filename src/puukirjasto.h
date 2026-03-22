@@ -2,6 +2,7 @@
 #define PUUKIRJASTO_H
 #include <stdio.h>
 
+// nimidata prosessoimiseen
 typedef struct nimipuu
 {
     char *nimi;
@@ -12,6 +13,7 @@ typedef struct nimipuu
 
 int toimintoValikkoPuu();
 
+// Tiedoston lukeminen puuhun
 NIMIPUU *lueTiedotPuu();
 NIMIPUU *varaaMuistiPuu();
 int korkeusPuu(NIMIPUU *pNode);
@@ -20,6 +22,7 @@ NIMIPUU *rotaatioOikeaPuu(NIMIPUU *pVanhaJuuri);
 NIMIPUU *rotaatioVasenPuu(NIMIPUU *pVanhaJuuri);
 NIMIPUU *lisaaNodePuuhun(NIMIPUU *pJuuri, NIMIPUU *uusi);
 
+// 
 void tulostaPuu(NIMIPUU *puu, char *tiedostoNimi);
 void tulostaPuuRekursio(NIMIPUU *puu, FILE *tiedosto);
 void syvyysHakuPuu(int numero, NIMIPUU *puu, char *tiedostoNimi);
