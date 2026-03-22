@@ -361,10 +361,10 @@ NIMIPUU *poistaNodePuustaNimellä(NIMIPUU *puu, char *nimi) {
 
     // Jos node on leaf node ja nimi täsmää käyttäjän antamaan niin poistetaans se
     if (puu->pVasen == NULL && puu->pOikea == NULL && strcmp(puu->nimi, nimi) == 0) {
-        free(puu->nimi);
+        free(puu->nimi); // Vapautetaan muistit eli positaan node ja sen nimi
         free(puu);
         printf("Node '%s' on poistettu.\n", nimi);
-        return NULL;
+        return NULL; // tämä paluttaa nullin vanhemmalla nodelle
     }
 
     // Käydään läpi vasen puoli
@@ -377,3 +377,30 @@ NIMIPUU *poistaNodePuustaNimellä(NIMIPUU *puu, char *nimi) {
 
     return puu;
 }
+
+NIMIPUU *poistaNodePuustaNumerolla(NIMIPUU *puu, int numero) {
+    if (puu == NULL) {
+        return NULL;
+    }
+
+    // Jos haettava numero pienempi siirrytään vasemmalle
+    if (numero < puu->nimiLkm) {
+        puu->pVasen = poistaNodePuustaNumerolla(puu->pVasen, numero);
+    }
+    // Jos haettava numero suurempi siirrytään oikealle
+    else if (numero > puu->nimiLkm) {
+        puu->pOikea = poistaNodePuustaNumerolla(puu->pOikea, numero);
+    }
+
+    else {
+        // Node löytyi, leaf node tarkistus ja poisto
+        if (puu->pVasen == NULL && puu->pOikea == NULL) {
+            free(puu->nimi); // Vapautetaan nimen varaama muisti ja sitten itse node. Eli poistetaan node
+            free(puu);
+            printf("Node numerolla '%d' on poistettu.\n", numero);
+            return NULL; // tämä paluttaa nullin vanhemmalla nodelle
+        }
+    }
+    return puu;
+}
+
