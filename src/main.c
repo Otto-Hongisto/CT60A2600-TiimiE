@@ -64,7 +64,7 @@ int main()
                 }
                 case 3:
                 {
-                    numero = kysyNumero();
+                    int numero = kysyNumero();
                     char *syvyysTiedosto = tiedostoNimi();
                     syvyysHakuPuu(numero, pJuuri, syvyysTiedosto);
                     free(syvyysTiedosto);
@@ -79,6 +79,15 @@ int main()
                         free(nimi);
                     }
                     break;
+                case 5:
+                {
+                    NIMIPUU *hakuTulos = NULL;
+                    char *binaariHakuTiedosto = tiedostoNimi();
+                    int binaariHakuNumero = kysyNumero();
+                    hakuTulos = binaariHaku(pJuuri, binaariHakuNumero, binaariHakuTiedosto);
+                    free(binaariHakuTiedosto);
+                    break;
+                }
                 case 0:
                     tyhjennaPuu(pJuuri);
                     pJuuri = NULL;
