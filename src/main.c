@@ -97,11 +97,11 @@ int main()
                     int tulos = onkoNumero(syote);
                     if (tulos == 1) {
                         numero = atoi(syote);
-                        poistaNodePuustaNumerolla(pJuuri, numero);
+                        pJuuri = poistaNodePuustaNumerolla(pJuuri, numero);
                         break;
                     }
                     else {
-                        poistaNodePuustaNimellä(pJuuri, syote);
+                        pJuuri = poistaNodePuustaNimella(pJuuri, syote);
                     }
                     break;
                 }
