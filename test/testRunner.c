@@ -7,6 +7,7 @@ void luoKokoPuu(void);
 void binaariHakuEiLoydaTest(void);
 void binaariHakuTest(void);
 void poistaLeafNode(void);
+void rotaatiotesti(void);
 
 void test_varaaMuistiLista(void);
 void test_lueTiedotLista(void);
@@ -25,7 +26,8 @@ int main(void)
     RUN_TEST(luoKokoPuu);
     RUN_TEST(binaariHakuEiLoydaTest);
     RUN_TEST(binaariHakuTest);
-    RUN_TEST(poistaLeafNode);   
+    RUN_TEST(poistaLeafNode);
+    RUN_TEST(rotaatiotesti);
 
     // listatesti.c tests
     RUN_TEST(test_varaaMuistiLista);
