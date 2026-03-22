@@ -13,6 +13,7 @@ int toimintoValikkoPuu()
     printf("3) Tee syvyyshaku\n");
     printf("4) Tee leveyshaku\n");
     printf("5) Tee binäärihaku\n");
+    printf("6) Poista node puusta\n");
     printf("0) Valitse datastruktuuri\n");
     printf("Anna valintasi: ");
     scanf("%d", &valinta);
@@ -351,4 +352,28 @@ NIMIPUU *binaariHakuRekursio(NIMIPUU *puu, int haettavaNumero, FILE *tiedosto) {
     else {
         return binaariHakuRekursio(puu->pOikea, haettavaNumero, tiedosto);
     }
+}
+
+NIMIPUU *poistaNodePuusta(NIMIPUU *puu, char *nimi) {
+    if (puu == NULL) {
+        return NULL;
+    }
+
+    // Jos node on leaf node ja nimi täsmää käyttäjän antamaan niin poistetaans se
+    if (puu->pVasen == NULL && puu->pOikea == NULL && strcmp(puu->nimi, nimi) == 0) {
+        free(puu->nimi);
+        free(puu);
+        printf("Node '%s' on poistettu.\n", nimi);
+        return NULL;
+    }
+
+    // Käydään läpi vasen puoli
+    puu->pVasen = poistaNodePuusta(puu->pVasen, nimi);
+
+    // Käydään läpi oikea puoli
+    puu->pOikea = poistaNodePuusta(puu->pOikea, nimi);
+    // Puuta ei tarvitse tasapainottaa leaf noden poistossa uudestaan
+    
+
+    return puu;
 }
