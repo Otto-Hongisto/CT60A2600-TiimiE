@@ -12,7 +12,7 @@ int toimintoValikkoPuu()
     printf("2) Tulosta puu\n");
     printf("3) Tee syvyyshaku\n");
     printf("4) Tee leveyshaku\n");
-    printf("5) Tyhjennä puu\n");
+    printf("5) Tee binäärihaku\n");
     printf("0) Valitse datastruktuuri\n");
     printf("Anna valintasi: ");
     scanf("%d", &valinta);
@@ -311,4 +311,44 @@ void tyhjennaPuu(NIMIPUU *puu) {
     }
     free(puu);
     return;
+}
+
+NIMIPUU *binaariHaku(NIMIPUU *puu, int haettavaNumero, char *tiedostoNimi) {
+    NIMIPUU *alkio = NULL;
+    if (puu == NULL) {
+        return NULL;
+    }
+
+    FILE *TIEDOSTO = NULL;
+    //tiedoston avaus
+    if ((TIEDOSTO = fopen(tiedostoNimi, "w")) == NULL) {
+        perror("Tiedoston avaaminen epäonnistui, lopetetaan");
+        exit(0);
+    }
+    //rekursiivisen binaarihaun kutsuminen
+    alkio = binaariHakuRekursio(puu, haettavaNumero, TIEDOSTO);
+    fclose(TIEDOSTO);
+
+    return alkio;
+
+}
+
+NIMIPUU *binaariHakuRekursio(NIMIPUU *puu, int haettavaNumero, FILE *tiedosto) {
+    if (puu == NULL) {
+        return NULL;
+    }
+
+    fprintf(tiedosto, "%s,%d\n", puu->nimi, puu->nimiLkm);
+    //numeron tarkistus
+    if (puu->nimiLkm == haettavaNumero) {
+        return puu;
+    }
+    //käydään läpi vasen puoli
+    else if (haettavaNumero < puu->nimiLkm) {
+        return binaariHakuRekursio(puu->pVasen, haettavaNumero, tiedosto);
+    }
+    //käydään läpi oikea puoli
+    else {
+        return binaariHakuRekursio(puu->pOikea, haettavaNumero, tiedosto);
+    }
 }

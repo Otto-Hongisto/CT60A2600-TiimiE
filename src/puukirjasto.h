@@ -26,4 +26,6 @@ void syvyysHakuPuu(int numero, NIMIPUU *puu, char *tiedostoNimi);
 int syvyysHakuRekursio(int numero, NIMIPUU *puu, FILE *tiedosto);
 void leveysHaku(NIMIPUU *puu, char *tiedostonNimi, char *haettavaNimi);
 void tyhjennaPuu(NIMIPUU *puu);
+NIMIPUU *binaariHaku(NIMIPUU *puu, int haettavaNumero, char *tiedostoNimi);
+NIMIPUU *binaariHakuRekursio(NIMIPUU *puu, int haettavaNumero, FILE *tiedosto);
 #endif // PUUKIRJASTO_H
