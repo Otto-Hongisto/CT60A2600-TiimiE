@@ -1,5 +1,7 @@
 # CT60A2600-TiimiE (C)
 
+Note: This project resides in https://github.com/LUT-Courses/CT60A2600-TiimiE and https://github.com/Otto-Hongisto/CT60A2600-TiimiE.
+
 This project is made and maintained to process Population information system data (see data) using different data structures.
 
 ---
