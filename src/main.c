@@ -89,12 +89,12 @@ int main()
                     break;
                 }
                 case 6:
-                    {
-                        char haettavaNimi[30];
-                        kysyNimi(haettavaNimi);
-                        pJuuri = poistaNodePuusta(pJuuri, haettavaNimi);
-                    }
+                {
+                    char haettavaNimi[30];
+                    kysyNimi(haettavaNimi);
+                    pJuuri = poistaNodePuusta(pJuuri, haettavaNimi);
                     break;
+                }
 
                 case 0:
                     tyhjennaPuu(pJuuri);
