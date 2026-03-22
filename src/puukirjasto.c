@@ -320,12 +320,12 @@ NIMIPUU *binaariHaku(NIMIPUU *puu, int haettavaNumero, char *tiedostoNimi) {
     }
 
     FILE *TIEDOSTO = NULL;
-
+    //tiedoston avaus
     if ((TIEDOSTO = fopen(tiedostoNimi, "w")) == NULL) {
         perror("Tiedoston avaaminen epäonnistui, lopetetaan");
         exit(0);
     }
-
+    //rekursiivisen binaarihaun kutsuminen
     alkio = binaariHakuRekursio(puu, haettavaNumero, TIEDOSTO);
     fclose(TIEDOSTO);
 
@@ -339,13 +339,15 @@ NIMIPUU *binaariHakuRekursio(NIMIPUU *puu, int haettavaNumero, FILE *tiedosto) {
     }
 
     fprintf(tiedosto, "%s,%d\n", puu->nimi, puu->nimiLkm);
-
+    //numeron tarkistus
     if (puu->nimiLkm == haettavaNumero) {
         return puu;
     }
+    //käydään läpi vasen puoli
     else if (haettavaNumero < puu->nimiLkm) {
         return binaariHakuRekursio(puu->pVasen, haettavaNumero, tiedosto);
     }
+    //käydään läpi oikea puoli
     else {
         return binaariHakuRekursio(puu->pOikea, haettavaNumero, tiedosto);
     }
