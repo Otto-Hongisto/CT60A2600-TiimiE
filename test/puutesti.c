@@ -126,3 +126,36 @@ void binaariHakuTest(void)
     TEST_ASSERT_EQUAL(15, found->nimiLkm);
     TEST_ASSERT_EQUAL_STRING("G", found->nimi);
 }
+
+// Test 6
+void poistaLeafNode(void)
+{
+    NIMIPUU *root = NULL;
+
+    // Luo kolme nodea, joilla nimi ja luku
+    NIMIPUU *n1 = varaaMuistiPuu();
+    n1->nimi = strdup("A"); // strdup varaa muistia ja kopioi merkkijonon, kuten malloc + strcpy
+    n1->nimiLkm = 12;
+    NIMIPUU *n2 = varaaMuistiPuu();
+    n2->nimi = strdup("B");
+    n2->nimiLkm = 10;
+    NIMIPUU *n3 = varaaMuistiPuu();
+    n3->nimi = strdup("C");
+    n3->nimiLkm = 15;
+
+    // Lisää nodet puuhun
+    root = lisaaNodePuuhun(root, n1);
+    root = lisaaNodePuuhun(root, n2);
+    root = lisaaNodePuuhun(root, n3);
+
+    // Poistaa leaf noden n2
+    root = poistaNodePuustaNumerolla(root, 10);
+
+    // varmistaa rakenteen
+    TEST_ASSERT_NULL(root->pVasen);
+    TEST_ASSERT_EQUAL_PTR(n3, root->pOikea);
+
+    // Vapauttaa muistia
+    free(n1->nimi); free(n1);
+    free(n3->nimi); free(n3);
+}
