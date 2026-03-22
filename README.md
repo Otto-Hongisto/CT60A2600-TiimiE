@@ -1,7 +1,6 @@
-# Project Title (C)
+# CT60A2600-TiimiE (C)
 
-> **Short description**: One sentence about what this project does and why it exists.  
-> *(Students: Replace this block with your own description.)*
+This project is made and maintained to process Population information system data (see data) using different data structures.
 
 ---
 
@@ -12,13 +11,18 @@
 ├── Makefile              # Build targets: build, run, test, clean, etc.
 ├── src/                  # C source files and headers
 │   ├── main.c
-│   ├── module.c
-│   └── module.h
+│   ├── puukirjasto.c
+│   ├── puukirjasto.h
+│   ├── listakirjasto.c
+│   ├── listakirjasto.h
+│   ├── yleinenkirjasto.c
+│   └── yleinenkirjasto.h
 ├── bin/                  # Compiled binaries (output of build)
 │   └── app               # Example executable name
 ├── test/                 # Test sources (e.g., Unity/CMocka) + fixtures
-│   ├── test_main.c
-│   └── fixtures/
+│   ├── testRunner.c
+│   ├── listatesti.c
+│   └── puutesti.c
 ├── data/                 # Input datasets / sample inputs (no secrets)
 │   ├── sample-input.txt
 │   └── README.md         # Describe data sources and formats
@@ -123,8 +127,8 @@ doxygen doc/Doxyfile
 
 ## 🧪 Testing
 
-- Place test sources in `test/`. Choose a C test framework (e.g., Unity, CMocka) or write simple assertion-based tests.
-- Document how to run tests here.
+- Uses Unity framework
+- Unity framwork works without any downloads and all the necessary file are in /unity folder
 
 ```bash
 make test
@@ -141,6 +145,7 @@ make test
 | 0.1.0   | 2026-03-01 | Your Name   | Initial scaffold: folders, Makefile, sample main      |
 
 Tag releases:
+- Not in use currently
 ```bash
 git tag -a v0.1.0 -m "Initial scaffold"
 git push origin v0.1.0
@@ -150,13 +155,13 @@ git push origin v0.1.0
 
 ## 👤 Author & Course
 
-- **Authors**: Your Name 
-- **Course**: Course Name
+- **Authors**: Otto Hongisto, Jere Verkkomäki ja Jaakko Laitinen
+- **Course**: CT60A2600 Ohjelmakehitys C-kielellä
 - **Institution**: LUT University
 
 ---
 
 ## 📄 License
 
-> *(Choose a license or keep the repository private if unsure.)*
+CC BY if this repository is made public
 
