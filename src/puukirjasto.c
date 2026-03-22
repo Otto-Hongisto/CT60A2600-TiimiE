@@ -364,7 +364,8 @@ NIMIPUU *binaariHakuRekursio(NIMIPUU *puu, int haettavaNumero, FILE *tiedosto) {
     }
     //käydään läpi oikea puoli
     else {
-        }
+        return binaariHakuRekursio(puu->pOikea, haettavaNumero, tiedosto);
+    }
 }
 
 NIMIPUU *poistaNodePuustaNimella(NIMIPUU *puu, char *nimi) {
