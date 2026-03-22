@@ -354,7 +354,7 @@ NIMIPUU *binaariHakuRekursio(NIMIPUU *puu, int haettavaNumero, FILE *tiedosto) {
     }
 }
 
-NIMIPUU *poistaNodePuusta(NIMIPUU *puu, char *nimi) {
+NIMIPUU *poistaNodePuustaNimellä(NIMIPUU *puu, char *nimi) {
     if (puu == NULL) {
         return NULL;
     }
@@ -368,10 +368,10 @@ NIMIPUU *poistaNodePuusta(NIMIPUU *puu, char *nimi) {
     }
 
     // Käydään läpi vasen puoli
-    puu->pVasen = poistaNodePuusta(puu->pVasen, nimi);
+    puu->pVasen = poistaNodePuustaNimellä(puu->pVasen, nimi);
 
     // Käydään läpi oikea puoli
-    puu->pOikea = poistaNodePuusta(puu->pOikea, nimi);
+    puu->pOikea = poistaNodePuustaNimellä(puu->pOikea, nimi);
     // Puuta ei tarvitse tasapainottaa leaf noden poistossa uudestaan
     
 

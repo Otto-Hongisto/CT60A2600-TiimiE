@@ -90,9 +90,19 @@ int main()
                 }
                 case 6:
                 {
-                    char haettavaNimi[30];
-                    kysyNimi(haettavaNimi);
-                    pJuuri = poistaNodePuusta(pJuuri, haettavaNimi);
+                    char syote[30];
+                    int numero;
+
+                    kysyNimi(syote);
+                    int tulos = onkoNumero(syote);
+                    if (tulos == 1) {
+                        numero = atoi(syote);
+                        poistaNodePuustaNumerolla(pJuuri, numero);
+                        break;
+                    }
+                    else {
+                        poistaNodePuustaNimellä(pJuuri, syote);
+                    }
                     break;
                 }
 

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 int struktuuriValikko()
 {
@@ -37,6 +38,18 @@ int kysyNumero()
     printf("Anna etsittävä numero: ");
     scanf("%d", &numero);
     return numero;
+}
+
+int onkoNumero(char *merkkijono) {
+    if (merkkijono == NULL || merkkijono[0] == '\0') {
+        return 0;
+    }
+    for (int i = 0; i < strlen(merkkijono); i++) {
+        if (!isdigit(merkkijono[i])) {
+            return 0;
+        }
+    }
+    return 1;
 }
 
 void kysyNimi(char *koko)
