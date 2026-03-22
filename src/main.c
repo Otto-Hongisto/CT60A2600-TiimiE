@@ -88,6 +88,14 @@ int main()
                     free(binaariHakuTiedosto);
                     break;
                 }
+                case 6:
+                    {
+                        char haettavaNimi[30];
+                        kysyNimi(haettavaNimi);
+                        pJuuri = poistaNodePuusta(pJuuri, haettavaNimi);
+                    }
+                    break;
+
                 case 0:
                     tyhjennaPuu(pJuuri);
                     pJuuri = NULL;
