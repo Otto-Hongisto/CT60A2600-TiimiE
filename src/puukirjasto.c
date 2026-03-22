@@ -393,13 +393,41 @@ NIMIPUU *poistaNodePuustaNumerolla(NIMIPUU *puu, int numero) {
     }
 
     else {
-        // Node löytyi, leaf node tarkistus ja poisto
-        if (puu->pVasen == NULL && puu->pOikea == NULL) {
-            free(puu->nimi); // Vapautetaan nimen varaama muisti ja sitten itse node. Eli poistetaan node
+        // Node löytyi, poistetaan se, 4 eri tapausta
+        if (puu->pVasen == NULL && puu->pOikea == NULL) { // Jos leaf node eli ei lapsia
+            free(puu->nimi); // Vapautetaan nimen varaama muisti ja sitten itse node.
             free(puu);
-            printf("Node numerolla '%d' on poistettu.\n", numero);
             return NULL; // tämä paluttaa nullin vanhemmalla nodelle
         }
+        else if (puu->pVasen == NULL) { // Jos nodella on vain oikea lapsi
+            NIMIPUU *temp = puu->pOikea;
+            free(puu->nimi);
+            free(puu);
+            return temp; // Palautetaan oikea lapsi vanhemmalle nodelle
+        }
+        else if (puu->pOikea == NULL) { // Jos nodella on vain vasen lapsi
+            NIMIPUU *temp = puu->pVasen;
+            free(puu->nimi);
+            free(puu);
+            return temp; // Palautetaan vasen lapsi vanhemmalle nodelle
+        }
+        else { // Jos nodella on kaksi lasta etsitään perivä node oikealta
+            NIMIPUU *temp = puu->pOikea;
+            while (temp->pVasen != NULL) {
+                temp = temp->pVasen;
+            }
+            // Kopioidaan perijän data nykyiseen nodeen
+            char *tempNimi = malloc(strlen(temp->nimi) + 1);
+            strcpy(tempNimi, temp->nimi);
+            int tempLkm = temp->nimiLkm;
+
+            free(puu->nimi);
+            puu->nimi = tempNimi;
+            puu->nimiLkm = tempLkm;
+            // Poistetaan perivä node rekusiolla
+            puu->pOikea = poistaNodePuustaNumerolla(puu->pOikea, tempLkm);
+        }
+        // Uutta tasapainaitusta ei tarvita.
     }
     return puu;
 }
