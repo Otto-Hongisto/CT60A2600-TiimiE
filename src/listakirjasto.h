@@ -1,6 +1,7 @@
 #ifndef LISTAKIRJASTO_H
 #define LISTAKIRJASTO_H
 
+// Nimidatan prosessointiin tiedostoista
 typedef struct nimilista
 {
     char* nimi;
@@ -9,6 +10,7 @@ typedef struct nimilista
     struct nimilista *pPrev;
 } NIMILISTA;
 
+// Verkkodata prosessoimiseen (ei käytössä vielä)
 typedef struct verkkolista
 {
     char *yliopisto1;
@@ -19,8 +21,11 @@ typedef struct verkkolista
 } VERKKOLISTA;
 
 int toimintoValikkoLista();
+
+// Tiedoston lukeminen linkitettyyn listaan
 NIMILISTA *varaaMuistiLista();
 NIMILISTA *lueTiedotLista(char *tiedostonNimi);
+
 void kirjoitaTiedosto();
 void kirjoitaTiedostoTakaperin();
 NIMILISTA *tyhjennaMuisti();
