@@ -199,12 +199,12 @@ NIMIPUU *lueTiedotPuu()
 
 void tulostaPuu(NIMIPUU *puu, char *tiedostoNimi) {
     FILE *TIEDOSTO = NULL;
-
+    // tiedoston avaus
     if ((TIEDOSTO = fopen(tiedostoNimi, "w")) == NULL) {
         perror("Tiedoston avaaminen epäonnistui, lopetetaan");
         exit(0);
     }
-
+    //rekursion kutsu
     tulostaPuuRekursio(puu, TIEDOSTO);
     fclose(TIEDOSTO);
 
@@ -215,8 +215,9 @@ void tulostaPuuRekursio(NIMIPUU *puu, FILE *tiedosto) {
     if (puu == NULL) {
         return;
     }
+    //puun tulostaminen rekursiivisesti
     fprintf(tiedosto, "%s,%d\n", puu->nimi, puu->nimiLkm);
-
+    //tietoalkioiden läpikäynti
     tulostaPuuRekursio(puu->pVasen, tiedosto);
     tulostaPuuRekursio(puu->pOikea, tiedosto);
 }
@@ -228,7 +229,7 @@ void syvyysHakuPuu(int numero, NIMIPUU *puu, char *tiedostoNimi) {
         perror("Tiedoston avaaminen epäonnistui, lopetetaan");
         exit(0);
     }
-
+    //rekursion kutsu
     syvyysHakuRekursio(numero, puu, TIEDOSTO);
     fclose(TIEDOSTO);
 
@@ -242,15 +243,15 @@ int syvyysHakuRekursio(int numero, NIMIPUU *puu, FILE *tiedosto)
     }
 
     fprintf(tiedosto, "%s,%d\n", puu->nimi, puu->nimiLkm);
-
+    //etsittävän numeron tarkistus
     if (puu->nimiLkm == numero) {
         return 1;
     }
-
+    //vasemman haaran haku
     if (syvyysHakuRekursio(numero, puu->pVasen, tiedosto)) {
         return 1;
     }
-
+    //oikean haaran haku
     if (syvyysHakuRekursio(numero, puu->pOikea, tiedosto)) {
         return 1;
     }
@@ -302,10 +303,12 @@ void tyhjennaPuu(NIMIPUU *puu) {
     if (puu == NULL) {
         return;
     }
+    //puun tyhjentäminen rekursiivisesti
     tyhjennaPuu(puu->pVasen);
     tyhjennaPuu(puu->pOikea);
-    free(puu->nimi);
+    if (puu->nimi != NULL) {
+        free(puu->nimi); //nimen varaaman muistin vapautus
+    }
     free(puu);
-    printf("Muisti vapautettu.");
     return;
 }

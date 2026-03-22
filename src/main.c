@@ -82,6 +82,7 @@ int main()
                 case 0:
                     tyhjennaPuu(pJuuri);
                     pJuuri = NULL;
+                    printf("Muisti vapautettu.");
                     break;
                 default:
                     printf("Tuntematon toiminto, yritä uudestaan.\n");
