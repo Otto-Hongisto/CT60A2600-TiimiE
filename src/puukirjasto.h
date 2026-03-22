@@ -28,4 +28,5 @@ void leveysHaku(NIMIPUU *puu, char *tiedostonNimi, char *haettavaNimi);
 void tyhjennaPuu(NIMIPUU *puu);
 NIMIPUU *binaariHaku(NIMIPUU *puu, int haettavaNumero, char *tiedostoNimi);
 NIMIPUU *binaariHakuRekursio(NIMIPUU *puu, int haettavaNumero, FILE *tiedosto);
+NIMIPUU *poistaNodePuusta(NIMIPUU *puu, char *haettavaNimi);
 #endif // PUUKIRJASTO_H
