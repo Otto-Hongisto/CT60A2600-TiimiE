@@ -108,8 +108,8 @@ git push -u origin feature/<short-name>
 
 ## 📚 Documentation
 
-- High-level design: `doc/design.md`
-- API docs: generate with Doxygen
+- High-level design/usages: `doc/design.md`
+- API docs: generate with Doxygen (currently not in use)
 
 ```bash
 # Generate docs
@@ -140,9 +140,11 @@ make test
 
 > *(Update this table as you progress. Use semantic versioning if possible.)*
 
-| Version | Date       | Author      | Changes                                               |
-|--------:|------------|-------------|-------------------------------------------------------|
-| 0.1.0   | 2026-03-01 | Your Name   | Initial scaffold: folders, Makefile, sample main      |
+| Version | Date       | Author         | Changes                                               |
+|--------:|------------|----------------|-------------------------------------------------------|
+| 1.0.0   | 2026-03-08 |                | Linked list struct, read file, write file             |
+| 2.0.0   | 2026-03-15 |                | Binary tree struct                                    |
+| 3.1.0   | 2026-03-21 | Otto Hongisto  | Balanced search tree struct, read file into BST       |
 
 Tag releases:
 - Not in use currently
