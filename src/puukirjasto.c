@@ -274,7 +274,11 @@ int syvyysHakuRekursio(int numero, NIMIPUU *puu, FILE *tiedosto)
     return 0;
 }
 
-    void leveysHaku(NIMIPUU *puu, char *tiedostonNimi, char *haettavaNimi) {
+/// @brief Suorittaa Leveyshaun (BFS) ja kirjoittaa tulokset tiedostoon
+/// @param puu Osoitin puun juureen
+/// @param tiedostonNimi Tiedosto, johon tulokset kirjoitetaan
+/// @param haettavaNimi Merkkijono jota etsitään
+void leveysHaku(NIMIPUU *puu, char *tiedostonNimi, char *haettavaNimi) {
     if (puu == NULL) {
         return;
     }
@@ -367,6 +371,10 @@ NIMIPUU *binaariHakuRekursio(NIMIPUU *puu, int haettavaNumero, FILE *tiedosto) {
         }
 }
 
+/// @brief Poistaa annetun nimen perusteella Noden puusta
+/// @param puu Osoitin puun juureen
+/// @param nimi Merkkijono jota etsitään
+/// @return Osoitin poistettuun nodeen tai NULL jos nodea ei löydy
 NIMIPUU *poistaNodePuustaNimella(NIMIPUU *puu, char *nimi) {
     if (puu == NULL) {
         return NULL;
@@ -391,6 +399,10 @@ NIMIPUU *poistaNodePuustaNimella(NIMIPUU *puu, char *nimi) {
     return puu;
 }
 
+/// @brief Poistaa annetun numeron perusteella Noden puusta
+/// @param puu Osoitin puun juureen
+/// @param numero Numero jota etsitään
+/// @return Osoitin poistettuun nodeen tai NULL jos nodea ei löydy
 NIMIPUU *poistaNodePuustaNumerolla(NIMIPUU *puu, int numero) {
     if (puu == NULL) {
         return NULL;
