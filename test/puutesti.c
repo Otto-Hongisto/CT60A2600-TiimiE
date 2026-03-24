@@ -159,3 +159,43 @@ void poistaLeafNode(void)
     free(n1->nimi); free(n1);
     free(n3->nimi); free(n3);
 }
+
+// test 7
+void rotaatiotesti(void)
+{
+    // LL-tilanne eli oikea rotaatio vasemman ylijuoksun takia
+    NIMIPUU *root = NULL;
+
+    NIMIPUU *n3 = varaaMuistiPuu();
+    n3->nimiLkm = 30;
+    NIMIPUU *n2 = varaaMuistiPuu();
+    n2->nimiLkm = 20;
+    NIMIPUU *n1 = varaaMuistiPuu();
+    n1->nimiLkm = 10;
+
+    root = lisaaNodePuuhun(root, n3);
+    root = lisaaNodePuuhun(root, n2);
+    root = lisaaNodePuuhun(root, n1);
+
+    TEST_ASSERT_EQUAL_PTR(n2, root);
+    TEST_ASSERT_EQUAL_PTR(n1, root->pVasen);
+    TEST_ASSERT_EQUAL_PTR(n3, root->pOikea);
+
+    // RR-tilanne eli vasen rotaatio oikean overflown takia
+    root = NULL;
+
+    NIMIPUU *n1b = varaaMuistiPuu();
+    n1b->nimiLkm = 10;
+    NIMIPUU *n2b = varaaMuistiPuu();
+    n2b->nimiLkm = 20;
+    NIMIPUU *n3b = varaaMuistiPuu();
+    n3b->nimiLkm = 30;
+
+    root = lisaaNodePuuhun(root, n1b);
+    root = lisaaNodePuuhun(root, n2b);
+    root = lisaaNodePuuhun(root, n3b); 
+
+    TEST_ASSERT_EQUAL_PTR(n2b, root);
+    TEST_ASSERT_EQUAL_PTR(n1b, root->pVasen);
+    TEST_ASSERT_EQUAL_PTR(n3b, root->pOikea);
+}

@@ -368,7 +368,8 @@ NIMIPUU *binaariHakuRekursio(NIMIPUU *puu, int haettavaNumero, FILE *tiedosto) {
     }
     //käydään läpi oikea puoli
     else {
-        }
+        return binaariHakuRekursio(puu->pOikea, haettavaNumero, tiedosto);
+    }
 }
 
 /// @brief Poistaa annetun nimen perusteella Noden puusta
