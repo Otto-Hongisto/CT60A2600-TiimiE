@@ -128,6 +128,7 @@ void binaariHakuTest(void)
 }
 
 // Test 6
+/// @brief Poistaa leaf node puusta ja varmistaa että rakenne säilyy
 void poistaLeafNode(void)
 {
     NIMIPUU *root = NULL;

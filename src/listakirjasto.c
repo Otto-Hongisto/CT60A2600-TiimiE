@@ -127,7 +127,7 @@ void kirjoitaTiedostoTakaperin(NIMILISTA *pAlku) {
         exit(0);
     }
 
-    //siirrytän listan loppuun
+    // siirrytän listan loppuun
     if (ptr != NULL) {
         while (ptr->pNext != NULL) {
             ptr = ptr->pNext;
