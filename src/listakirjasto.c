@@ -188,7 +188,9 @@ void lisaaAlkioListaan(NIMILISTA **pAlku) {
     if (indexUusi == 1) {
         uusiAlkio->pPrev = NULL;
         uusiAlkio->pNext = *pAlku;
-        (*pAlku)->pPrev = uusiAlkio;
+        if (*pAlku != NULL) {
+            (*pAlku)->pPrev = uusiAlkio;
+        }
         *pAlku = uusiAlkio;
         return;
     }
