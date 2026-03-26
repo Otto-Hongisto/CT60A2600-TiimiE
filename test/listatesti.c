@@ -6,6 +6,7 @@
 #define TEST_FILE "data/miehet_2025.txt"
 
 // free list memory
+// Test 1
 static void freeList(NIMILISTA *p)
 {
     while (p)
@@ -17,7 +18,7 @@ static void freeList(NIMILISTA *p)
     }
 }
 
-
+// Test 2
 void test_varaaMuistiLista(void)
 {
     NIMILISTA *p = varaaMuistiLista();
@@ -25,6 +26,8 @@ void test_varaaMuistiLista(void)
     free(p);
 }
 
+
+// Test 3
 void test_lueTiedotLista(void)
 {
     NIMILISTA *lista = lueTiedotLista(strdup(TEST_FILE));
@@ -50,6 +53,7 @@ void test_lueTiedotLista(void)
     freeList(lista);
 }
 
+// Test 4
 void test_lueTiedotLista_links_nodes_correctly(void)
 {
     NIMILISTA *lista = lueTiedotLista(strdup(TEST_FILE));
@@ -68,6 +72,23 @@ void test_lueTiedotLista_links_nodes_correctly(void)
 
     TEST_ASSERT_NULL(pointer->pNext);
     TEST_ASSERT_NOT_NULL(pointer->pPrev);
+
+    freeList(lista);
+}
+
+
+// Test 6
+/// @brief Poistaa listasta solmun ja varmistaa että rakenne pysyy oikeena
+void test_poistaLinkitetystaListasta(void)
+{
+    NIMILISTA *lista = lueTiedotLista(strdup(TEST_FILE));
+    TEST_ASSERT_NOT_NULL(lista);
+
+    // Poistaa listan ensimmäisen alkion
+    lista = poistaLinkitetystaListasta(lista);
+    TEST_ASSERT_NOT_NULL(lista);
+    TEST_ASSERT_EQUAL_STRING("Olavi", lista->nimi);
+    TEST_ASSERT_NULL(lista->pPrev);
 
     freeList(lista);
 }
