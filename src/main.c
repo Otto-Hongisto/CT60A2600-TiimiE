@@ -53,12 +53,13 @@ int main()
                     scanf("%d", &nimiLkmUusi);
                     lisaaAlkioListaan(&pAlku, indexUusi, uusiNimi, nimiLkmUusi);
                     break;
-                case 8:
+                case 8: {
                     char syote[50];
                     printf("Anna poistettava nimi tai numero: "); // Kysytään käyttäjältä nimi tai numero
                     scanf("%s", syote);
-                    poistaLinkitetystaListasta(pAlku, syote);
+                    pAlku = poistaLinkitetystaListasta(pAlku, syote);
                     break;
+                }
                 case 0:
                     break;
                 default:

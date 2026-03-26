@@ -30,6 +30,6 @@ void lisaaAlkioListaan(NIMILISTA **pAlku, int indexUusi, char *uusiNimi, int nim
 void kirjoitaTiedosto();
 void kirjoitaTiedostoTakaperin();
 NIMILISTA *tyhjennaMuisti();
-NIMILISTA *poistaLinkitetystaListasta(NIMILISTA *pAlku, const char *syote);
+NIMILISTA *poistaLinkitetystaListasta(NIMILISTA *pAlku, char *syote);
 
 #endif // LISTAKIRJASTO_H
