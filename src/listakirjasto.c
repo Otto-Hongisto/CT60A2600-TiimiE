@@ -153,6 +153,11 @@ void kirjoitaTiedostoTakaperin(NIMILISTA *pAlku) {
     return;
 }
 
+/// @brief lisätään uusi alkio linkitettyyn listaan
+/// @param pAlku osoitin funktion alun osoittimees
+/// @param indexUusi mihin kohtaan listaa uusi alkio lisätään
+/// @param uusiNimi uusden alkion nimi
+/// @param nimiLkmUusi uuden alkion lukumäärä
 void lisaaAlkioListaan(NIMILISTA **pAlku, int indexUusi, char *uusiNimi, int nimiLkmUusi) {
     char *nimiMuistilohko = NULL;
     NIMILISTA *uusiAlkio = NULL;
