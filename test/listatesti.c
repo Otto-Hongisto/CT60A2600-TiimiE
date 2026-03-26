@@ -84,7 +84,7 @@ void test_poistaLinkitetystaListasta(void)
     NIMILISTA *lista = lueTiedotLista(strdup(TEST_FILE));
     TEST_ASSERT_NOT_NULL(lista);
 
-    // Poistaa listan ensimmäisen alkion
+    // Poistaa listan ensimmäisen solmun
     lista = poistaLinkitetystaListasta(lista);
     TEST_ASSERT_NOT_NULL(lista);
     TEST_ASSERT_EQUAL_STRING("Olavi", lista->nimi);
