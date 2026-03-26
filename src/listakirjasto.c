@@ -153,48 +153,31 @@ void kirjoitaTiedostoTakaperin(NIMILISTA *pAlku) {
     return;
 }
 
-/// @brief alkion lisääminen listaan
-/// @param pAlku osoitin listan alun osoittimeen
-void lisaaAlkioListaan(NIMILISTA **pAlku) {
-
-    int nimiLkmUusi = 0;
-    int indexUusi = 0;
-    int index = 0;
-    char uusiNimi[30];
+void lisaaAlkioListaan(NIMILISTA **pAlku, int indexUusi, char *uusiNimi, int nimiLkmUusi) {
     char *nimiMuistilohko = NULL;
     NIMILISTA *uusiAlkio = NULL;
-    NIMILISTA *ptr= *pAlku;
+    NIMILISTA *ptr = *pAlku;
     NIMILISTA *ptrSeuraava = NULL;
+    int index = 0;
 
-    //tietojen kysyminen
-    printf("Mihin kohtaan listaa haluat lisätä alkion: ");
-    scanf("%d", &indexUusi);
-
-    printf("Anna lisättävä nimi: ");
-    scanf("%s", uusiNimi);
-
-    printf("Anna lisättävä lukumäärä: ");
-    scanf("%d", &nimiLkmUusi);
-
-    //muistin varaaminen nimelle
-    nimiMuistilohko = malloc(strlen(uusiNimi) + 1);
-    if (nimiMuistilohko == NULL) {
-        printf("Muistinvaraus ei onnistunut.");
-        exit(1);    
-    }
-    strcpy(nimiMuistilohko, uusiNimi);
-
-    //tarkistetaan indexin sopivuus
+    // tarkistetaan indexin sopivuus
     if (indexUusi < 1) {
-        free(nimiMuistilohko);
         printf("Annettu indexi on liian pieni.\n");
         return;
     }
-    //luodaan uusi alkio
+    // muistin varaaminen nimelle
+    nimiMuistilohko = malloc(strlen(uusiNimi) + 1);
+    if (nimiMuistilohko == NULL) {
+        printf("Muistinvaraus ei onnistunut.\n");
+        exit(1);
+    }
+    strcpy(nimiMuistilohko, uusiNimi);
+    // luodaan uusi alkio
     uusiAlkio = varaaMuistiLista();
     uusiAlkio->nimi = nimiMuistilohko;
     uusiAlkio->nimiLkm = nimiLkmUusi;
-    //tarkistetaan index = 1 tilanne
+
+    // tarkistetaan index = 1 tilanne
     if (indexUusi == 1) {
         uusiAlkio->pPrev = NULL;
         uusiAlkio->pNext = *pAlku;
@@ -204,17 +187,17 @@ void lisaaAlkioListaan(NIMILISTA **pAlku) {
         *pAlku = uusiAlkio;
         return;
     }
-    //edetään indexiä edeltävään alkioon
+    // edetään indexiä edeltävään alkioon
     for (index = 1; index < indexUusi - 1 && ptr != NULL; index++) {
         ptr = ptr->pNext;
     }
-    //tarkistetaan, että lista jatkuu
+    // tarkistetaan, että lista jatkuu
     if (ptr == NULL) {
         free(nimiMuistilohko);
         free(uusiAlkio);
         return;
     }
-    //muokataan uuden ja ympäröivien alkioiden tiedot
+    // muokataan uuden ja ympäröivien alkioiden tiedot
     ptrSeuraava = ptr->pNext;
     uusiAlkio->pNext = ptrSeuraava;
     uusiAlkio->pPrev = ptr;
@@ -223,10 +206,7 @@ void lisaaAlkioListaan(NIMILISTA **pAlku) {
     if (ptrSeuraava != NULL) {
         ptrSeuraava->pPrev = uusiAlkio;
     }
-
-    printf("Uusi alkio lisätty listaan kohtaan %d/n)", indexUusi);
-
-    return;
+    printf("Uusi alkio lisätty listaan kohtaan %d\n", indexUusi);
 }
 
 /// @brief  vapauttaa listan varaaman muistin

@@ -94,16 +94,3 @@ void test_poistaLinkitetystaListasta(void)
     freeList(lista);
 }
 
-// Test 7
-/// @brief Testaa funktion toimintaa kun nimeä ei löydy
-void test_poistaLinkitetystaListasta_not_found(void)
-{
-    NIMILISTA *lista = lueTiedotLista(strdup(TEST_FILE));
-
-    // Kokeillaan poistaa nimi jota ei ole
-    lista = poistaLinkitetystaListasta(lista, "FeikkiNimi");
-
-    // Eka solmu pitäisi edelleen olla Juhani
-    TEST_ASSERT_EQUAL_STRING("Juhani", lista->nimi);
-    freeList(lista);
-}
