@@ -92,3 +92,4 @@ void test_poistaLinkitetystaListasta(void)
 
     freeList(lista);
 }
+

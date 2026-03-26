@@ -98,6 +98,8 @@ NIMILISTA *lueTiedotLista(char *tiedostonNimi)
     return pAlku;
 }
 
+/// @brief Kirjoittaa listan alkiot tiedostoon
+/// @param pAlku osoitin listan alkuun
 void kirjoitaTiedosto(NIMILISTA *pAlku) {
     char *tiedostonNimi = tiedostoNimi();
     FILE *TIEDOSTO;
@@ -119,6 +121,9 @@ void kirjoitaTiedosto(NIMILISTA *pAlku) {
     return;
 }
 
+
+/// @brief kirjoittaa listan takaperin tiedostoon
+/// @param pAlku osoitin listan alkuun
 void kirjoitaTiedostoTakaperin(NIMILISTA *pAlku) {
     char *tiedostonNimi = tiedostoNimi();
     FILE *TIEDOSTO;
@@ -148,6 +153,8 @@ void kirjoitaTiedostoTakaperin(NIMILISTA *pAlku) {
     return;
 }
 
+/// @brief alkion lisääminen listaan
+/// @param pAlku osoitin listan alun osoittimeen
 void lisaaAlkioListaan(NIMILISTA **pAlku) {
 
     int nimiLkmUusi = 0;
@@ -159,6 +166,7 @@ void lisaaAlkioListaan(NIMILISTA **pAlku) {
     NIMILISTA *ptr= *pAlku;
     NIMILISTA *ptrSeuraava = NULL;
 
+    //tietojen kysyminen
     printf("Mihin kohtaan listaa haluat lisätä alkion: ");
     scanf("%d", &indexUusi);
 
@@ -168,6 +176,7 @@ void lisaaAlkioListaan(NIMILISTA **pAlku) {
     printf("Anna lisättävä lukumäärä: ");
     scanf("%d", &nimiLkmUusi);
 
+    //muistin varaaminen nimelle
     nimiMuistilohko = malloc(strlen(uusiNimi) + 1);
     if (nimiMuistilohko == NULL) {
         printf("Muistinvaraus ei onnistunut.");
@@ -175,16 +184,17 @@ void lisaaAlkioListaan(NIMILISTA **pAlku) {
     }
     strcpy(nimiMuistilohko, uusiNimi);
 
+    //tarkistetaan indexin sopivuus
     if (indexUusi < 1) {
         free(nimiMuistilohko);
         printf("Annettu indexi on liian pieni.\n");
         return;
     }
-
+    //luodaan uusi alkio
     uusiAlkio = varaaMuistiLista();
     uusiAlkio->nimi = nimiMuistilohko;
     uusiAlkio->nimiLkm = nimiLkmUusi;
-
+    //tarkistetaan index = 1 tilanne
     if (indexUusi == 1) {
         uusiAlkio->pPrev = NULL;
         uusiAlkio->pNext = *pAlku;
@@ -194,19 +204,18 @@ void lisaaAlkioListaan(NIMILISTA **pAlku) {
         *pAlku = uusiAlkio;
         return;
     }
-    
+    //edetään indexiä edeltävään alkioon
     for (index = 1; index < indexUusi - 1 && ptr != NULL; index++) {
         ptr = ptr->pNext;
     }
-
+    //tarkistetaan, että lista jatkuu
     if (ptr == NULL) {
         free(nimiMuistilohko);
         free(uusiAlkio);
         return;
     }
-
+    //muokataan uuden ja ympäröivien alkioiden tiedot
     ptrSeuraava = ptr->pNext;
-
     uusiAlkio->pNext = ptrSeuraava;
     uusiAlkio->pPrev = ptr;
 
@@ -220,6 +229,9 @@ void lisaaAlkioListaan(NIMILISTA **pAlku) {
     return;
 }
 
+/// @brief  vapauttaa listan varaaman muistin
+/// @param pA osoitin listan alkuun
+/// @return palauttaa tyhjennetyn osoittimen listan alkuun
 NIMILISTA *tyhjennaMuisti(NIMILISTA *pA) {
     // tyhjennetään linkitetyn listan muisti
     NIMILISTA *ptr = pA;
