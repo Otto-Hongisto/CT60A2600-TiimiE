@@ -13,6 +13,7 @@ int toimintoValikkoLista()
     printf("2) Kirjoita tiedot tiedostoon\n");
     printf("3) Kirjoita tiedot käänteisessä järjestyksessä\n");
     printf("4) Tyhjennä lista\n");
+    printf("8) Poista linkitetystä listasta\n");
     printf("0) Valitse datastruktuuri\n");
     printf("Anna valintasi: ");
     scanf("%d", &valinta);
@@ -208,7 +209,7 @@ NIMILISTA *poistaLinkitetystaListasta(NIMILISTA *pAlku) {
 
             free(ptr->nimi);
             free(ptr);
-            printf("Poistettu listasta.\n");
+            printf("Poistettu '%s' listasta.\n", syote);
             return pAlku;
         }
         ptr = seuraava;
