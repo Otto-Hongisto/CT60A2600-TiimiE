@@ -160,6 +160,10 @@ NIMILISTA *tyhjennaMuisti(NIMILISTA *pA) {
     return(pA);
 }
 
+
+/// @brief Poistaa käyttäjän valitseman solmun linkitetystä listasta
+/// @param pAlku Osoitin listan alkuun
+/// @return Palauttaa osoittimen listan alkuun
 NIMILISTA *poistaLinkitetystaListasta(NIMILISTA *pAlku) {
     char syote[50];
     printf("Anna poistettava nimi tai numero: "); // Kysytään käyttäjältä nimi tai numero
@@ -174,29 +178,41 @@ NIMILISTA *poistaLinkitetystaListasta(NIMILISTA *pAlku) {
     }
 
     NIMILISTA *ptr = pAlku;
+
     while (ptr != NULL) {
+        // Apumuuttujat jotka pitää seuraavan ja edellisen solmun muistissa ennen kuin nykyinen solmu vapautetaan, tekee koodista paljon selkeämmän
+        NIMILISTA *edellinen = ptr->pPrev;
+        NIMILISTA *seuraava = ptr->pNext;
         int loytyi = 0;
-        if (syoteOnNumero == 1 && ptr->nimiLkm == iLuku) {
+
+        // Tarkistetaan löytyikö käyttäjän syöttämä nimi tai numero listasta
+        if (syoteOnNumero == 1 && ptr->nimiLkm == iLuku) { // Tämän ja else if voisi yhdistää, mutta näin on ehkä selkeämpää lukea
             loytyi = 1;
         }
         else if (syoteOnNumero == 0 && strcmp(ptr->nimi, syote) == 0) {
             loytyi = 1;
         }
     
+        // Jos löytyi niin poistetaan se solmu listasta
+        if (loytyi == 1) {
 
-    if (loytyi == 1) {
-        ptr->pPrev->pNext = ptr->pNext;
-        if (ptr->pNext != NULL) {
-            ptr->pNext->pPrev = ptr->pPrev;
+            if (edellinen != NULL) { // Jos ei ole edellistä solmua, kyseessä on listan ensimmäinen solmu
+                edellinen->pNext = seuraava;
+            } else {
+                pAlku = seuraava;
             }
 
-        free(ptr->nimi);
-        free(ptr);
-        printf("Poistettu listasta.\n");
-        }
+            if (seuraava != NULL) {
+                seuraava->pPrev = edellinen; // Yhdistää edellisen ja seuraavan solmun toisiinsa
+            }
 
-        ptr = ptr->pNext;
+            free(ptr->nimi);
+            free(ptr);
+            printf("Poistettu listasta.\n");
+            return pAlku;
+        }
+        ptr = seuraava;
     }
+    printf("Nimeä tai numeroa ei löytynyt listasta.\n");
     return pAlku;
-    
 }
