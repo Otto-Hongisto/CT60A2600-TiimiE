@@ -41,7 +41,7 @@ int main()
                     break;
                 case 6:
                     break;
-                case 7:
+                case 7: {
                     int indexUusi = 0;
                     int nimiLkmUusi = 0;
                     char uusiNimi[30];
@@ -53,6 +53,7 @@ int main()
                     scanf("%d", &nimiLkmUusi);
                     lisaaAlkioListaan(&pAlku, indexUusi, uusiNimi, nimiLkmUusi);
                     break;
+                }
                 case 8: {
                     char syote[50];
                     printf("Anna poistettava nimi tai numero: "); // Kysytään käyttäjältä nimi tai numero
