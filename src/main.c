@@ -45,7 +45,7 @@ int main()
                     lisaaAlkioListaan(&pAlku);
                     break;
                 case 8:
-                    pAlku = poistaLinkitetystaListasta(pAlku);
+                    poistaLinkitetystaListasta(pAlku);
                     break;
                 case 0:
                     break;

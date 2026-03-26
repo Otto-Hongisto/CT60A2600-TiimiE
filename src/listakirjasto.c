@@ -13,7 +13,7 @@ int toimintoValikkoLista()
     printf("2) Kirjoita tiedot tiedostoon\n");
     printf("3) Kirjoita tiedot käänteisessä järjestyksessä\n");
     printf("4) Tyhjennä lista\n");
-    printf("7) Lisää alkio listaan\n")
+    printf("7) Lisää alkio listaan\n");
     printf("8) Poista linkitetystä listasta\n");
     printf("0) Valitse datastruktuuri\n");
     printf("Anna valintasi: ");
@@ -234,7 +234,6 @@ NIMILISTA *tyhjennaMuisti(NIMILISTA *pA) {
 
 /// @brief Poistaa käyttäjän valitseman solmun linkitetystä listasta
 /// @param pAlku Osoitin listan alkuun
-/// @return Palauttaa osoittimen listan alkuun
 NIMILISTA *poistaLinkitetystaListasta(NIMILISTA *pAlku) {
     char syote[50];
     printf("Anna poistettava nimi tai numero: "); // Kysytään käyttäjältä nimi tai numero
@@ -280,10 +279,10 @@ NIMILISTA *poistaLinkitetystaListasta(NIMILISTA *pAlku) {
             free(ptr->nimi);
             free(ptr);
             printf("Poistettu '%s' listasta.\n", syote);
-            return pAlku;
+            return;
         }
         ptr = seuraava;
     }
     printf("Nimeä tai numeroa ei löytynyt listasta.\n");
-    return pAlku;
+    return;
 }
