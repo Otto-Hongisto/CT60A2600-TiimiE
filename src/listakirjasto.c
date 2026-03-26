@@ -159,3 +159,44 @@ NIMILISTA *tyhjennaMuisti(NIMILISTA *pA) {
     printf("Muisti vapautettu.\n");
     return(pA);
 }
+
+NIMILISTA *poistaLinkitetystaListasta(NIMILISTA *pAlku) {
+    char syote[50];
+    printf("Anna poistettava nimi tai numero: "); // Kysytään käyttäjältä nimi tai numero
+    scanf("%s", syote);
+
+    // Tarkistetaan onko syöte numero vai nimi, onkoNumero() palauttaa 1 jos syote numero, muuten 0
+    int syoteOnNumero = onkoNumero(syote);
+    int iLuku = 0;
+
+    if (syoteOnNumero == 1) {
+        iLuku = atoi(syote);
+    }
+
+    NIMILISTA *ptr = pAlku;
+    while (ptr != NULL) {
+        int loytyi = 0;
+        if (syoteOnNumero == 1 && ptr->nimiLkm == iLuku) {
+            loytyi = 1;
+        }
+        else if (syoteOnNumero == 0 && strcmp(ptr->nimi, syote) == 0) {
+            loytyi = 1;
+        }
+    
+
+    if (loytyi == 1) {
+        ptr->pPrev->pNext = ptr->pNext;
+        if (ptr->pNext != NULL) {
+            ptr->pNext->pPrev = ptr->pPrev;
+            }
+
+        free(ptr->nimi);
+        free(ptr);
+        printf("Poistettu listasta.\n");
+        }
+
+        ptr = ptr->pNext;
+    }
+    return pAlku;
+    
+}

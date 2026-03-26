@@ -37,6 +37,15 @@ int main()
                 case 4:
                     pAlku = tyhjennaMuisti(pAlku);
                     break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    break;
+                case 8:
+                    pAlku = poistaLinkitetystaListasta(pAlku);
+                    break;
                 case 0:
                     break;
                 default:

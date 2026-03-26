@@ -30,4 +30,6 @@ void kirjoitaTiedosto();
 void kirjoitaTiedostoTakaperin();
 NIMILISTA *tyhjennaMuisti();
 
+NIMILISTA *poistaLinkitetystaListasta(NIMILISTA *pAlku);
+
 #endif // LISTAKIRJASTO_H
