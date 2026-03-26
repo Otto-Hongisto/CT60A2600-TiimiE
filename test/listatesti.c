@@ -93,3 +93,44 @@ void test_poistaLinkitetystaListasta(void)
     freeList(lista);
 }
 
+// Test 7
+/// @brief testaa virheellisen indexin käsittelyn
+void test_VirheellinenIndex(void) {
+    NIMILISTA *lista = NULL;
+    lisaaAlkioListaan(&lista, -2, "Matti", 3); // Virheellinen index, ei lisätä
+    TEST_ASSERT_NULL(lista);
+
+    freeList(lista);
+}
+
+// Test 8
+/// @brief testaa listan alkuun lisäämisen
+void test_LisaaListanAlkuun(void) {
+    NIMILISTA *lista = NULL;
+    lisaaAlkioListaan(&lista, 1, "Matti", 3);
+    lisaaAlkioListaan(&lista, 1, "Teppo", 5);
+
+    TEST_ASSERT_EQUAL_STRING("Teppo", lista->nimi);
+    TEST_ASSERT_EQUAL(5, lista->nimiLkm);
+    TEST_ASSERT_NULL(lista->pPrev);
+    TEST_ASSERT_NOT_NULL(lista->pNext);
+    TEST_ASSERT_EQUAL_STRING("Matti", lista->pNext->nimi);
+    TEST_ASSERT_EQUAL(lista->pNext->pPrev, lista);
+
+    freeList(lista);
+}
+
+//Test 9
+/// @brief 
+void test_LisaaListanKeskelle(void) {
+    NIMILISTA *lista = NULL;
+    lisaaAlkioListaan(&lista, 1, "Matti", 3);
+    lisaaAlkioListaan(&lista, 2, "Teppo", 5);
+    lisaaAlkioListaan(&lista, 2, "Liisa", 7);
+
+    TEST_ASSERT_EQUAL_STRING("Matti", lista->nimi);
+    TEST_ASSERT_EQUAL_STRING("Liisa", lista->pNext->nimi);
+    TEST_ASSERT_EQUAL_STRING("Teppo", lista->pNext->pNext->nimi);
+
+    freeList(lista);
+}
