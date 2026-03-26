@@ -87,7 +87,7 @@ void binaariHakuEiLoydaTest(void)
 
     root = lisaaNodePuuhun(root, node);
 
-    NIMIPUU *found = binaariHaku(root, 20, "/dev/null");
+    NIMIPUU *found = binaariHaku(root, 20, "not_found");
     TEST_ASSERT_NULL(found);
     tyhjennaPuu(root);
 }
