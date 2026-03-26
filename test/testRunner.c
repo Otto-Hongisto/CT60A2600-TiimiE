@@ -12,6 +12,7 @@ void rotaatiotesti(void);
 void test_varaaMuistiLista(void);
 void test_lueTiedotLista(void);
 void test_lueTiedotLista_links_nodes_correctly(void);
+void test_poistaLinkitetystaListasta(void);
 
 void setUp(void) {}
 void tearDown(void) {}
@@ -33,6 +34,7 @@ int main(void)
     RUN_TEST(test_varaaMuistiLista);
     RUN_TEST(test_lueTiedotLista);
     RUN_TEST(test_lueTiedotLista_links_nodes_correctly);
+    RUN_TEST(test_poistaLinkitetystaListasta);
 
     return UNITY_END();
 }

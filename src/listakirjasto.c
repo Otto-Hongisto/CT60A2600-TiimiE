@@ -248,10 +248,8 @@ NIMILISTA *tyhjennaMuisti(NIMILISTA *pA) {
 
 /// @brief Poistaa käyttäjän valitseman solmun linkitetystä listasta
 /// @param pAlku Osoitin listan alkuun
-NIMILISTA *poistaLinkitetystaListasta(NIMILISTA *pAlku) {
-    char syote[50];
-    printf("Anna poistettava nimi tai numero: "); // Kysytään käyttäjältä nimi tai numero
-    scanf("%s", syote);
+/// @param syote Käyttäjän antama syöte eli nimi tai numero
+void poistaLinkitetystaListasta(NIMILISTA *pAlku, const char *syote) {
 
     // Tarkistetaan onko syöte numero vai nimi, onkoNumero() palauttaa 1 jos syote numero, muuten 0
     int syoteOnNumero = onkoNumero(syote);

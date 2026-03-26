@@ -78,18 +78,32 @@ void test_lueTiedotLista_links_nodes_correctly(void)
 
 
 // Test 6
-/// @brief Poistaa listasta solmun ja varmistaa että rakenne pysyy oikeena
+/// @brief Testaa että ensimmäinen solmu poistuu oikein
 void test_poistaLinkitetystaListasta(void)
 {
     NIMILISTA *lista = lueTiedotLista(strdup(TEST_FILE));
     TEST_ASSERT_NOT_NULL(lista);
 
-    // Poistaa listan ensimmäisen solmun
-    lista = poistaLinkitetystaListasta(lista);
+    // Poistetaan ensimmäinen listassa solmu eli Juhani
+    lista = poistaLinkitetystaListasta(lista, "Juhani");
     TEST_ASSERT_NOT_NULL(lista);
+
+    // Listan ensimmäinen solmu pitäisi olla nyt Olavi
     TEST_ASSERT_EQUAL_STRING("Olavi", lista->nimi);
     TEST_ASSERT_NULL(lista->pPrev);
-
     freeList(lista);
 }
 
+// Test 7
+/// @brief Testaa funktion toimintaa kun nimeä ei löydy
+void test_poistaLinkitetystaListasta_not_found(void)
+{
+    NIMILISTA *lista = lueTiedotLista(strdup(TEST_FILE));
+
+    // Kokeillaan poistaa nimi jota ei ole
+    lista = poistaLinkitetystaListasta(lista, "FeikkiNimi");
+
+    // Eka solmu pitäisi edelleen olla Juhani
+    TEST_ASSERT_EQUAL_STRING("Juhani", lista->nimi);
+    freeList(lista);
+}

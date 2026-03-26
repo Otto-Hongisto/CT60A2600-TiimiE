@@ -30,7 +30,6 @@ void lisaaAlkioListaan(NIMILISTA **pAlku);
 void kirjoitaTiedosto();
 void kirjoitaTiedostoTakaperin();
 NIMILISTA *tyhjennaMuisti();
-
-NIMILISTA *poistaLinkitetystaListasta(NIMILISTA *pAlku);
+void *poistaLinkitetystaListasta(NIMILISTA *pAlku, const char *syote);
 
 #endif // LISTAKIRJASTO_H

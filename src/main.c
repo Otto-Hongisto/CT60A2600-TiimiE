@@ -45,7 +45,10 @@ int main()
                     lisaaAlkioListaan(&pAlku);
                     break;
                 case 8:
-                    poistaLinkitetystaListasta(pAlku);
+                    char syote[50];
+                    printf("Anna poistettava nimi tai numero: "); // Kysytään käyttäjältä nimi tai numero
+                    scanf("%s", syote);
+                    poistaLinkitetystaListasta(pAlku, syote);
                     break;
                 case 0:
                     break;
