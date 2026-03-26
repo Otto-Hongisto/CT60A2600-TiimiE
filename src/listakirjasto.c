@@ -162,11 +162,11 @@ void lisaaAlkioListaan(NIMILISTA **pAlku) {
     printf("Mihin kohtaan listaa haluat lisätä alkion: ");
     scanf("%d", &indexUusi);
 
-    printf("Anna lisättävä lukumäärä: ");
-    scanf("%d", &nimiLkmUusi);
-
     printf("Anna lisättävä nimi: ");
     scanf("%s", uusiNimi);
+
+    printf("Anna lisättävä lukumäärä: ");
+    scanf("%d", &nimiLkmUusi);
 
     nimiMuistilohko = malloc(strlen(uusiNimi) + 1);
     if (nimiMuistilohko == NULL) {
