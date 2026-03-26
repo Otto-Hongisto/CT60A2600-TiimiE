@@ -37,6 +37,8 @@ int main()
                 case 4:
                     pAlku = tyhjennaMuisti(pAlku);
                     break;
+                case 7:
+                    lisaaAlkioListaan(&pAlku);
                 case 0:
                     break;
                 default:

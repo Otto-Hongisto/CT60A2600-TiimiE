@@ -26,6 +26,8 @@ int toimintoValikkoLista();
 NIMILISTA *varaaMuistiLista();
 NIMILISTA *lueTiedotLista(char *tiedostonNimi);
 
+
+void lisaaAlkioListaan(NIMILISTA **pAlku);
 void kirjoitaTiedosto();
 void kirjoitaTiedostoTakaperin();
 NIMILISTA *tyhjennaMuisti();
