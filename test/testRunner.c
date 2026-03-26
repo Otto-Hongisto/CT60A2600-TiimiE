@@ -13,6 +13,7 @@ void test_varaaMuistiLista(void);
 void test_lueTiedotLista(void);
 void test_lueTiedotLista_links_nodes_correctly(void);
 void test_poistaLinkitetystaListasta(void);
+void test_poistaLinkitetystaListasta_VaaraInput(void);
 void test_VirheellinenIndex(void);
 void test_LisaaListanAlkuun(void);
 void test_LisaaListanKeskelle(void);
@@ -38,6 +39,7 @@ int main(void)
     RUN_TEST(test_lueTiedotLista);
     RUN_TEST(test_lueTiedotLista_links_nodes_correctly);
     RUN_TEST(test_poistaLinkitetystaListasta);
+    RUN_TEST(test_poistaLinkitetystaListasta_VaaraInput);
     RUN_TEST(test_VirheellinenIndex);
     RUN_TEST(test_LisaaListanAlkuun);
     RUN_TEST(test_LisaaListanKeskelle);

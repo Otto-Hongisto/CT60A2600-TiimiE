@@ -77,7 +77,7 @@ void test_lueTiedotLista_links_nodes_correctly(void)
 }
 
 
-// Test 6
+// Test 5
 /// @brief Testaa että ensimmäinen solmu poistuu oikein
 void test_poistaLinkitetystaListasta(void)
 {
@@ -94,13 +94,25 @@ void test_poistaLinkitetystaListasta(void)
     freeList(lista);
 }
 
+// Test 6
+/// @brief Testaa että funktio toimii vaikka käyttäjä antaa nimen jota ei ole listassa
+void test_poistaLinkitetystaListasta_VaaraInput(void)
+{
+    NIMILISTA *lista = lueTiedotLista(strdup(TEST_FILE));
+    TEST_ASSERT_NOT_NULL(lista);
+    lista = poistaLinkitetystaListasta(lista, "TätäNimeäEiOleOlemassa");
+    TEST_ASSERT_NOT_NULL(lista);
+    // Listan eka solmu pitäisi siis olla edelleen Juhani
+    TEST_ASSERT_EQUAL_STRING("Juhani", lista->nimi);
+    freeList(lista);
+}
+
 // Test 7
 /// @brief testaa virheellisen indexin käsittelyn
 void test_VirheellinenIndex(void) {
     NIMILISTA *lista = NULL;
     lisaaAlkioListaan(&lista, -2, "Matti", 3); // Virheellinen index, ei lisätä
     TEST_ASSERT_NULL(lista);
-
     freeList(lista);
 }
 
