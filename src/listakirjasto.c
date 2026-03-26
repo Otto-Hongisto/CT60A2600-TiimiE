@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-// Listan toimintavalikko
+/// Listan toimintavalikko
 int toimintoValikkoLista()
 {
     int valinta = 0;
@@ -20,7 +20,7 @@ int toimintoValikkoLista()
     return valinta;
 }
 
-// Varaa yhdelle uudelle listanodelle muistin ja palauttaa sen
+/// Varaa yhdelle uudelle listanodelle muistin ja palauttaa sen
 NIMILISTA *varaaMuistiLista()
 {
     NIMILISTA *pUusi = NULL;
@@ -33,7 +33,7 @@ NIMILISTA *varaaMuistiLista()
     return pUusi;
 }
 
-// Lukee tiedot tiedostosta listaan
+/// Lukee tiedot tiedostosta listaan
 NIMILISTA *lueTiedotLista(char *tiedostonNimi)
 {
     NIMILISTA *pAlku = NULL, *pLoppu = NULL;
@@ -47,11 +47,11 @@ NIMILISTA *lueTiedotLista(char *tiedostonNimi)
         exit(0);
     }
 
-    fgets(aRivi, 50, tiedosto); // otsikot pois
+    fgets(aRivi, 50, tiedosto); /// otsikot pois
 
     while (fgets(aRivi, 50, tiedosto) != NULL)
     {
-        // varaa jokaiselle tiedoston riville uudelle nodelle muistia
+        /// varaa jokaiselle tiedoston riville uudelle nodelle muistia
         pUusi = varaaMuistiLista();
         char *tokeni;
         if ((tokeni = strtok(aRivi, ";")) == NULL)
