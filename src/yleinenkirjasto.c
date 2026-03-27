@@ -40,6 +40,9 @@ int kysyNumero()
     return numero;
 }
 
+/// @brief Tarkistaa onko merkkijono numero
+/// @param merkkijono 
+/// @return Palauttaa 1 jos merkkijono on numero muuten 0
 int onkoNumero(char *merkkijono) {
     if (merkkijono == NULL || merkkijono[0] == '\0') {
         return 0;
@@ -52,6 +55,8 @@ int onkoNumero(char *merkkijono) {
     return 1;
 }
 
+/// @brief Kysyy käyttäjältä nimen
+/// @param koko 
 void kysyNimi(char *koko)
 {
     printf("Anna etsittävä nimi: ");

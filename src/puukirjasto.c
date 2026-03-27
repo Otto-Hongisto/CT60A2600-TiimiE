@@ -215,6 +215,9 @@ NIMIPUU *lueTiedotPuu()
     return pJuuri;
 }
 
+/// @brief kutsuu puun rekursiivista tulostusta
+/// @param puu osoitin puun juureen
+/// @param tiedostoNimi tiedosto johon polku kirjoitetaan
 void tulostaPuu(NIMIPUU *puu, char *tiedostoNimi) {
     FILE *TIEDOSTO = NULL;
     // tiedoston avaus
@@ -229,6 +232,10 @@ void tulostaPuu(NIMIPUU *puu, char *tiedostoNimi) {
     return;
 }
 
+
+/// @brief suorittaa puun tulostuksen
+/// @param puu osoitin puun juureen
+/// @param tiedosto tiedosto johon polku kirjoitetaan
 void tulostaPuuRekursio(NIMIPUU *puu, FILE *tiedosto) {
     if (puu == NULL) {
         return;
@@ -240,6 +247,10 @@ void tulostaPuuRekursio(NIMIPUU *puu, FILE *tiedosto) {
     tulostaPuuRekursio(puu->pOikea, tiedosto);
 }
 
+/// @brief Kutsuu rekursiivista syvyyshakua
+/// @param numero numero jota etsitään syvyyshaulla
+/// @param puu osoitin puun juureen
+/// @param tiedostoNimi tiedosto johon polku kirjoitetaan
 void syvyysHakuPuu(int numero, NIMIPUU *puu, char *tiedostoNimi) {
     FILE *TIEDOSTO = NULL;
 
@@ -254,6 +265,11 @@ void syvyysHakuPuu(int numero, NIMIPUU *puu, char *tiedostoNimi) {
     return;
 }
 
+/// @brief suorittaa syvyyshaun puuhun
+/// @param numero numero jota etsitään syvyyshaulla
+/// @param puu osoitin puun juureen
+/// @param tiedosto tiedosto johon polku kirjoitetaan
+/// @return Osoitin löydettyyn alkioon
 int syvyysHakuRekursio(int numero, NIMIPUU *puu, FILE *tiedosto)
 {
     if (puu == NULL) {
@@ -321,6 +337,8 @@ void leveysHaku(NIMIPUU *puu, char *tiedostonNimi, char *haettavaNimi) {
 
 }
 
+/// @brief Vapauttaa puun varaaman muistin
+/// @param puu Osoitin puun juureen
 void tyhjennaPuu(NIMIPUU *puu) {
     if (puu == NULL) {
         return;
@@ -335,6 +353,11 @@ void tyhjennaPuu(NIMIPUU *puu) {
     return;
 }
 
+/// @brief Kutsuu binäärihaun rekursiota
+/// @param puu Osoitin puun juureen
+/// @param haettavaNumero Numero jota etsitään binäärihaulla
+/// @param tiedostonNimi Tiedosto, johon tulokset kirjoitetaan
+/// @return Osoitin löydettyyn nodeen
 NIMIPUU *binaariHaku(NIMIPUU *puu, int haettavaNumero, char *tiedostoNimi) {
     NIMIPUU *alkio = NULL;
     if (puu == NULL) {
@@ -355,6 +378,11 @@ NIMIPUU *binaariHaku(NIMIPUU *puu, int haettavaNumero, char *tiedostoNimi) {
 
 }
 
+/// @brief Suorittaa binäärihaun puuhun rekursiivisesti
+/// @param puu Osoitin puun juureen
+/// @param haettavaNumero Numero jota etsitään binäärihaulla
+/// @param tiedosto Tiedosto, johon kuljettu tie kirjoitetaan
+/// @return Osoitin löydettyyn nodeen
 NIMIPUU *binaariHakuRekursio(NIMIPUU *puu, int haettavaNumero, FILE *tiedosto) {
     if (puu == NULL) {
         return NULL;

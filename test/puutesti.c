@@ -87,7 +87,7 @@ void binaariHakuEiLoydaTest(void)
 
     root = lisaaNodePuuhun(root, node);
 
-    NIMIPUU *found = binaariHaku(root, 20, "/dev/null");
+    NIMIPUU *found = binaariHaku(root, 20, "not_found");
     TEST_ASSERT_NULL(found);
     tyhjennaPuu(root);
 }
@@ -128,6 +128,7 @@ void binaariHakuTest(void)
 }
 
 // Test 6
+/// @brief Poistaa leaf node puusta ja varmistaa että rakenne säilyy
 void poistaLeafNode(void)
 {
     NIMIPUU *root = NULL;

@@ -27,8 +27,10 @@ NIMILISTA *varaaMuistiLista();
 NIMILISTA *lueTiedotLista(char *tiedostonNimi);
 void bubbleSortNouseva(NIMILISTA *pAlku);
 
+void lisaaAlkioListaan(NIMILISTA **pAlku, int indexUusi, char *uusiNimi, int nimiLkmUusi);
 void kirjoitaTiedosto();
 void kirjoitaTiedostoTakaperin();
 NIMILISTA *tyhjennaMuisti();
+NIMILISTA *poistaLinkitetystaListasta(NIMILISTA *pAlku, char *syote);
 
 #endif // LISTAKIRJASTO_H

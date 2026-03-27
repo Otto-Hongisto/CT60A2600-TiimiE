@@ -40,6 +40,28 @@ int main()
                 case 5:
                     bubbleSortNouseva(pAlku);
                     break;
+                case 6:
+                    break;
+                case 7: {
+                    int indexUusi = 0;
+                    int nimiLkmUusi = 0;
+                    char uusiNimi[30];
+                    printf("Mihin indexiin lisätään: ");
+                    scanf("%d", &indexUusi);
+                    printf("Anna lisättävä nimi: ");
+                    scanf("%s", uusiNimi);
+                    printf("Anna lisättävä lukumäärä: ");
+                    scanf("%d", &nimiLkmUusi);
+                    lisaaAlkioListaan(&pAlku, indexUusi, uusiNimi, nimiLkmUusi);
+                    break;
+                }
+                case 8: {
+                    char syote[50];
+                    printf("Anna poistettava nimi tai numero: "); // Kysytään käyttäjältä nimi tai numero
+                    scanf("%s", syote);
+                    pAlku = poistaLinkitetystaListasta(pAlku, syote);
+                    break;
+                }
                 case 0:
                     break;
                 default:
