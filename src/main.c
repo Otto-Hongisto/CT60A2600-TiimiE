@@ -41,6 +41,7 @@ int main()
                     bubbleSortNouseva(pAlku);
                     break;
                 case 6:
+                    pAlku = insertionSortLaskeva(pAlku);
                     break;
                 case 7: {
                     int indexUusi = 0;

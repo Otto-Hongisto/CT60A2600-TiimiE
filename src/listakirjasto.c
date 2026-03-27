@@ -151,6 +151,63 @@ void bubbleSortNouseva(NIMILISTA *pAlku)
     } while (nodetVaihdettu);
 }
 
+/// @brief lasekva insertionSort
+/// @param pAlku 
+/// @return 
+NIMILISTA *insertionSortLaskeva(NIMILISTA *pAlku)
+{
+    if (!pAlku)
+        return NULL;
+
+    NIMILISTA *pLajiteltuLista = NULL;
+
+    // käy läpi alkuperäisen listan ja 
+    while (pAlku)
+    {
+        // ottaa ensimmäinen noden alkuperäisestä listasta
+        NIMILISTA *pNykyinen = pAlku;
+        pAlku = pAlku->pNext;
+
+        pNykyinen->pNext = NULL;
+        pNykyinen->pPrev = NULL;
+
+        if (!pLajiteltuLista ||                              // Jos lajiteltu lista on tyhjä
+            pNykyinen->nimiLkm > pLajiteltuLista->nimiLkm || // tarkistaa nimiLkm:n perusteella
+            (pNykyinen->nimiLkm == pLajiteltuLista->nimiLkm && // tarkistaa nimen perusteella
+             strcmp(pNykyinen->nimi, pLajiteltuLista->nimi) > 0))
+        {
+            // Lisää listaan
+            pNykyinen->pNext = pLajiteltuLista;
+            if (pLajiteltuLista)
+                pLajiteltuLista->pPrev = pNykyinen;
+
+            pLajiteltuLista = pNykyinen;
+        } else
+        {
+            // Etsii oikean paikan lajitetusta linkitetystä listasta (pLajiteltuLista)
+            NIMILISTA *ptr = pLajiteltuLista;
+
+            while (ptr->pNext &&
+                   (ptr->pNext->nimiLkm > pNykyinen->nimiLkm ||   // nimiLkm:n perusteell
+                    (ptr->pNext->nimiLkm == pNykyinen->nimiLkm && // nimi:n perusteella
+                     strcmp(ptr->pNext->nimi, pNykyinen->nimi) > 0)))
+            {
+                ptr = ptr->pNext;
+            }
+
+            // Lisää ptr:n jälkeen
+            pNykyinen->pNext = ptr->pNext;
+            if (ptr->pNext)
+                ptr->pNext->pPrev = pNykyinen;
+
+            ptr->pNext = pNykyinen;
+            pNykyinen->pPrev = ptr;
+        }
+    }
+
+    return pLajiteltuLista;
+}
+
 /// @brief Kirjoittaa listan alkiot tiedostoon
 /// @param pAlku osoitin listan alkuun
 void kirjoitaTiedosto(NIMILISTA *pAlku) {
