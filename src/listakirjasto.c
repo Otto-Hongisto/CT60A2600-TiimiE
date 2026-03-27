@@ -92,8 +92,6 @@ NIMILISTA *lueTiedotLista(char *tiedostonNimi)
     printf("\n");
 
     fclose(tiedosto);
-    free(tiedostonNimi);
-    tiedostonNimi = NULL;
 
     return pAlku;
 }

@@ -18,6 +18,8 @@ void listaValikko()
         {
             char *tiedostonNimi = tiedostoNimi();
             pAlku = lueTiedotLista(tiedostonNimi);
+            free(tiedostonNimi);
+            tiedostonNimi = NULL;
         }
         break;
         case 2:
