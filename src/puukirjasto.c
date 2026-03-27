@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-// Binääripuun valikko
+/// Binääripuun valikko
 int toimintoValikkoPuu()
 {
     int valinta = 0;
@@ -22,8 +22,8 @@ int toimintoValikkoPuu()
     return valinta;
 }
 
-// Palauttaa puun korkeuden rekursiivisesti
-// Tyhjän puun korkeus on 0
+/// Palauttaa puun korkeuden rekursiivisesti
+/// Tyhjän puun korkeus on 0
 int korkeusPuu(NIMIPUU *pNode)
 {
     if (pNode == NULL)
@@ -44,8 +44,8 @@ int korkeusPuu(NIMIPUU *pNode)
     return 1 + suurempi;
 }
 
-// Palauttaa solmun tasapainoarvon (vasen korkeus – oikea korkeus).
-// Käytetään AVL-puun tasapainon tarkistamiseen.
+/// Palauttaa solmun tasapainoarvon (vasen korkeus – oikea korkeus).
+/// Käytetään AVL-puun tasapainon tarkistamiseen.
 int tasapainoPuu(NIMIPUU *pNode)
 {
     if (pNode == NULL)
@@ -53,8 +53,8 @@ int tasapainoPuu(NIMIPUU *pNode)
     return korkeusPuu(pNode->pVasen) - korkeusPuu(pNode->pOikea);
 }
 
-// Suorittaa oikean rotaation annetulle juurinodelle
-// ja palauttaa sitten uuden juuren
+/// Suorittaa oikean rotaation annetulle juurinodelle
+/// ja palauttaa sitten uuden juuren
 NIMIPUU *rotaatioOikeaPuu(NIMIPUU *pVanhaJuuri)
 {
 
@@ -71,6 +71,8 @@ NIMIPUU *rotaatioOikeaPuu(NIMIPUU *pVanhaJuuri)
     return pUusiJuuri;
 }
 
+/// Suorittaa vasemman rotaation annetulle juurinodelle
+/// ja palauttaa sitten uuden juuren
 NIMIPUU *rotaatioVasenPuu(NIMIPUU *pVanhaJuuri)
 {
     // Oikea lapsi nousee uuden alipuun juureksi
@@ -86,6 +88,7 @@ NIMIPUU *rotaatioVasenPuu(NIMIPUU *pVanhaJuuri)
     return pUusiJuuri;
 }
 
+/// Lisää noden puuhun
 NIMIPUU *lisaaNodePuuhun(NIMIPUU *pJuuri, NIMIPUU *pUusi)
 {
     if (pJuuri == NULL)
@@ -138,7 +141,7 @@ NIMIPUU *lisaaNodePuuhun(NIMIPUU *pJuuri, NIMIPUU *pUusi)
     return pJuuri;
 }
 
-// varaa muisti uudelle binääripuu nodelle ja palauttaa sen
+/// varaa muistia uudelle binääripuu nodelle ja palauttaa sen
 NIMIPUU *varaaMuistiPuu()
 {
     NIMIPUU *pUusi = NULL;
@@ -157,7 +160,7 @@ NIMIPUU *varaaMuistiPuu()
     return pUusi; 
 }
 
-// lukee tiedoston ja tallentaa tiedot binääripuuhun
+/// lukee tiedoston ja tallentaa tiedot binääripuuhun node kerrallaan
 NIMIPUU *lueTiedotPuu()
 {
     NIMIPUU *pJuuri = NULL;

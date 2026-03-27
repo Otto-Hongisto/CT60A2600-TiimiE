@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-// Listan toimintavalikko
+/// Listan toimintavalikko
 int toimintoValikkoLista()
 {
     int valinta = 0;
@@ -22,7 +22,7 @@ int toimintoValikkoLista()
     return valinta;
 }
 
-// Varaa yhdelle uudelle listanodelle muistin ja palauttaa sen
+/// Varaa yhdelle uudelle listanodelle muistin ja palauttaa sen
 NIMILISTA *varaaMuistiLista()
 {
     NIMILISTA *pUusi = NULL;
@@ -35,7 +35,7 @@ NIMILISTA *varaaMuistiLista()
     return pUusi;
 }
 
-// Lukee tiedot tiedostosta listaan
+/// Lukee tiedot tiedostosta listaan
 NIMILISTA *lueTiedotLista(char *tiedostonNimi)
 {
     NIMILISTA *pAlku = NULL, *pLoppu = NULL;
@@ -49,11 +49,11 @@ NIMILISTA *lueTiedotLista(char *tiedostonNimi)
         exit(0);
     }
 
-    fgets(aRivi, 50, tiedosto); // otsikot pois
+    fgets(aRivi, 50, tiedosto); /// otsikot pois
 
     while (fgets(aRivi, 50, tiedosto) != NULL)
     {
-        // varaa jokaiselle tiedoston riville uudelle nodelle muistia
+        /// varaa jokaiselle tiedoston riville uudelle nodelle muistia
         pUusi = varaaMuistiLista();
         char *tokeni;
         if ((tokeni = strtok(aRivi, ";")) == NULL)
@@ -96,6 +96,59 @@ NIMILISTA *lueTiedotLista(char *tiedostonNimi)
     tiedostonNimi = NULL;
 
     return pAlku;
+}
+
+/// @brief  Nouseva bubblesort
+/// @param pAlku 
+void bubbleSortNouseva(NIMILISTA *pAlku)
+{
+    if (!pAlku)
+        return;
+
+    int nodetVaihdettu;
+    NIMILISTA *ptr;
+    NIMILISTA *pLoppu = NULL;
+
+    do
+    {
+        nodetVaihdettu = 0; // false
+        ptr = pAlku;
+
+        while (ptr->pNext != pLoppu)
+        {
+
+            // Apumuuttuja testaamaan pitääkö peräkkäisten nodejen paikkoja pakko vaihtaa
+            int nodeVaihdettava = 0;
+
+            // testaa pitääkö nimiLkm:n perusteella vaihtaa nodejen paikkoja
+            if (ptr->nimiLkm > ptr->pNext->nimiLkm)
+            {
+                nodeVaihdettava = 1;
+            }
+            // testaa pitääkö nimi:n perusteella vaihtaa nodejen paikkoja
+            else if (ptr->nimiLkm == ptr->pNext->nimiLkm && strcmp(ptr->nimi, ptr->pNext->nimi) > 0)
+            {
+                nodeVaihdettava = 1;
+            }
+
+            if (nodeVaihdettava)
+            {
+                // vaihda nimiLkm nodejen välillä
+                int tmpLkm = ptr->nimiLkm;
+                ptr->nimiLkm = ptr->pNext->nimiLkm;
+                ptr->pNext->nimiLkm = tmpLkm;
+
+                // vaihda nimi nodejen välillä
+                char *temp = ptr->nimi;
+                ptr->nimi = ptr->pNext->nimi;
+                ptr->pNext->nimi = temp;
+
+                nodetVaihdettu = 1;
+            }
+            ptr = ptr->pNext;
+        }
+        pLoppu = ptr;
+    } while (nodetVaihdettu);
 }
 
 /// @brief Kirjoittaa listan alkiot tiedostoon

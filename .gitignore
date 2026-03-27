@@ -53,3 +53,7 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+# doxygen files
+doc/html
+doc/latex
