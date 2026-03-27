@@ -96,6 +96,59 @@ NIMILISTA *lueTiedotLista(char *tiedostonNimi)
     return pAlku;
 }
 
+/// @brief  Nouseva bubblesort
+/// @param pAlku 
+void bubbleSortNouseva(NIMILISTA *pAlku)
+{
+    if (!pAlku)
+        return;
+
+    int nodetVaihdettu;
+    NIMILISTA *ptr;
+    NIMILISTA *pLoppu = NULL;
+
+    do
+    {
+        nodetVaihdettu = 0; // false
+        ptr = pAlku;
+
+        while (ptr->pNext != pLoppu)
+        {
+
+            // Apumuuttuja testaamaan pitääkö peräkkäisten nodejen paikkoja pakko vaihtaa
+            int nodeVaihdettava = 0;
+
+            // testaa pitääkö nimiLkm:n perusteella vaihtaa nodejen paikkoja
+            if (ptr->nimiLkm > ptr->pNext->nimiLkm)
+            {
+                nodeVaihdettava = 1;
+            }
+            // testaa pitääkö nimi:n perusteella vaihtaa nodejen paikkoja
+            else if (ptr->nimiLkm == ptr->pNext->nimiLkm && strcmp(ptr->nimi, ptr->pNext->nimi) > 0)
+            {
+                nodeVaihdettava = 1;
+            }
+
+            if (nodeVaihdettava)
+            {
+                // vaihda nimiLkm nodejen välillä
+                int tmpLkm = ptr->nimiLkm;
+                ptr->nimiLkm = ptr->pNext->nimiLkm;
+                ptr->pNext->nimiLkm = tmpLkm;
+
+                // vaihda nimi nodejen välillä
+                char *temp = ptr->nimi;
+                ptr->nimi = ptr->pNext->nimi;
+                ptr->pNext->nimi = temp;
+
+                nodetVaihdettu = 1;
+            }
+            ptr = ptr->pNext;
+        }
+        pLoppu = ptr;
+    } while (nodetVaihdettu);
+}
+
 void kirjoitaTiedosto(NIMILISTA *pAlku) {
     char *tiedostonNimi = tiedostoNimi();
     FILE *TIEDOSTO;

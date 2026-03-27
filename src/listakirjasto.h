@@ -25,6 +25,7 @@ int toimintoValikkoLista();
 // Tiedoston lukeminen linkitettyyn listaan
 NIMILISTA *varaaMuistiLista();
 NIMILISTA *lueTiedotLista(char *tiedostonNimi);
+void bubbleSortNouseva(NIMILISTA *pAlku);
 
 void kirjoitaTiedosto();
 void kirjoitaTiedostoTakaperin();

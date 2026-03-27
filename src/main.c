@@ -37,6 +37,9 @@ int main()
                 case 4:
                     pAlku = tyhjennaMuisti(pAlku);
                     break;
+                case 5:
+                    bubbleSortNouseva(pAlku);
+                    break;
                 case 0:
                     break;
                 default:
