@@ -46,6 +46,7 @@ NIMILISTA *lueTiedotLista(char *tiedostonNimi)
     if ((tiedosto = fopen(tiedostonNimi, "r")) == NULL)
     {
         perror("Tiedoston avaaminen epäonnistui, lopetetaan");
+        free(tiedostonNimi);
         exit(0);
     }
 
