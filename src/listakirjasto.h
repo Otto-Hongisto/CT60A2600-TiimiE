@@ -26,6 +26,7 @@ int toimintoValikkoLista();
 NIMILISTA *varaaMuistiLista();
 NIMILISTA *lueTiedotLista(char *tiedostonNimi);
 void bubbleSortNouseva(NIMILISTA *pAlku);
+NIMILISTA *insertionSortLaskeva(NIMILISTA *pAlku);
 
 void lisaaAlkioListaan(NIMILISTA **pAlku, int indexUusi, char *uusiNimi, int nimiLkmUusi);
 void kirjoitaTiedosto();
