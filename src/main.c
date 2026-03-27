@@ -33,7 +33,7 @@ void listaValikko()
             bubbleSortNouseva(pAlku);
             break;
         case 6:
-            insertionSortLaskeva(pAlku);
+            pAlku = insertionSortLaskeva(pAlku);
             break;
         case 7:
         {
