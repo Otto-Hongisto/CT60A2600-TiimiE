@@ -145,6 +145,7 @@ make test
 | 1.0.0   | 2026-03-08 |                | Linked list struct, read file, write file             |
 | 2.0.0   | 2026-03-15 |                | Binary tree struct                                    |
 | 3.1.0   | 2026-03-21 | Otto Hongisto  | Balanced search tree struct, read file into BST       |
+| 4.0.0   | 2026-03-29 | Jaakko Laitinen |Linked list sorting, adding a new node, removing a node|
 
 Tag releases:
 - Not in use currently
