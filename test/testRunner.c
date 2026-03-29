@@ -17,6 +17,8 @@ void test_poistaLinkitetystaListasta_VaaraInput(void);
 void test_VirheellinenIndex(void);
 void test_LisaaListanAlkuun(void);
 void test_LisaaListanKeskelle(void);
+void test_bubbleSortNouseva(void);
+void test_insertionSortLaskeva(void);
 
 void setUp(void) {}
 void tearDown(void) {}
@@ -43,7 +45,8 @@ int main(void)
     RUN_TEST(test_VirheellinenIndex);
     RUN_TEST(test_LisaaListanAlkuun);
     RUN_TEST(test_LisaaListanKeskelle);
-
+    RUN_TEST(test_bubbleSortNouseva);
+    RUN_TEST(test_insertionSortLaskeva);
 
     return UNITY_END();
 }

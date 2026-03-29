@@ -148,3 +148,62 @@ void test_LisaaListanKeskelle(void) {
     freeList(lista);
 }
 
+void test_bubbleSortNouseva()
+{
+    // Luodaan testilista
+    NIMILISTA *lista = NULL;
+    // (Pekka, 7) -> (Aada, 3) -> (Liisa, 3)
+    lisaaAlkioListaan(&lista, 1, "Pekka", 7);
+    lisaaAlkioListaan(&lista, 2, "Aada", 3);
+    lisaaAlkioListaan(&lista, 3, "Liisa", 3);
+
+    bubbleSortNouseva(lista);
+
+    const char *odotetutNimet[] = {"Aada", "Liisa", "Pekka"};
+    const int odotetutLkm[] = {3, 3, 7};
+
+    NIMILISTA *ptr = lista;
+    int i = 0;
+
+    while (ptr && i < 3)
+    {
+        TEST_ASSERT_EQUAL_STRING(odotetutNimet[i], ptr->nimi);
+        TEST_ASSERT_EQUAL(odotetutLkm[i], ptr->nimiLkm);
+        ptr = ptr->pNext;
+        i++;
+    }
+
+    TEST_ASSERT_EQUAL(3, i);
+
+    freeList(lista);
+}
+
+void test_insertionSortLaskeva()
+{
+    // Luodaan testilista
+    NIMILISTA *lista = NULL;
+    // (Pekka, 7) -> (Aada, 3) -> (Liisa, 3)
+    lisaaAlkioListaan(&lista, 1, "Pekka", 7);
+    lisaaAlkioListaan(&lista, 2, "Aada", 3);
+    lisaaAlkioListaan(&lista, 3, "Liisa", 3);
+
+    NIMILISTA *sorted = insertionSortLaskeva(lista);
+
+    const char *odotetutNimet[] = {"Pekka", "Liisa", "Aada"};
+    const int odotetutLkm[] = {7, 3, 3};
+
+    NIMILISTA *ptr = sorted;
+    int i = 0;
+
+    while (ptr && i < 3)
+    {
+        TEST_ASSERT_EQUAL_STRING(odotetutNimet[i], ptr->nimi);
+        TEST_ASSERT_EQUAL(odotetutLkm[i], ptr->nimiLkm);
+        ptr = ptr->pNext;
+        i++;
+    }
+
+    TEST_ASSERT_EQUAL(3, i);
+
+    freeList(lista);
+}
