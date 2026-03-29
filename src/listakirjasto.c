@@ -4,7 +4,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-/// Listan toimintavalikko
+/// @brief Listan toimintavalikko
+/// @return käyttäjän valinta (int)
 int toimintoValikkoLista()
 {
     int valinta = 0;
@@ -22,7 +23,8 @@ int toimintoValikkoLista()
     return valinta;
 }
 
-/// Varaa yhdelle uudelle listanodelle muistin ja palauttaa sen
+/// @brief Varaa yhdelle uudelle listanodelle muistin ja palauttaa sen
+/// @return uusi listan node
 NIMILISTA *varaaMuistiLista()
 {
     NIMILISTA *pUusi = NULL;
@@ -35,7 +37,9 @@ NIMILISTA *varaaMuistiLista()
     return pUusi;
 }
 
-/// Lukee tiedot tiedostosta listaan
+/// @brief Lukee tiedot tiedostosta listaan
+/// @param tiedostonNimi osoitin tiedoston nimeen, jonka käyttäjä on antanut
+/// @return palauttaa linkitetyn listan alkunoden
 NIMILISTA *lueTiedotLista(char *tiedostonNimi)
 {
     NIMILISTA *pAlku = NULL, *pLoppu = NULL;
@@ -148,11 +152,12 @@ void bubbleSortNouseva(NIMILISTA *pAlku)
         }
         pLoppu = ptr;
     } while (nodetVaihdettu);
+    return;
 }
 
 /// @brief lasekva insertionSort
 /// @param pAlku 
-/// @return 
+/// @return Palauttaa lajiteltun listan
 NIMILISTA *insertionSortLaskeva(NIMILISTA *pAlku)
 {
     if (!pAlku)

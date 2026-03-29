@@ -4,6 +4,7 @@
 #include "listakirjasto.h"
 #include "puukirjasto.h"
 
+/// @brief linkitetyn listan toimintavalikko
 void listaValikko()
 {
     NIMILISTA *pAlku = NULL; // for linked list
@@ -74,6 +75,7 @@ void listaValikko()
     return;
 }
 
+/// @brief Binääripuun toimintavalikko
 void puuValikko()
 {
     int toimintoValinta = 0;
@@ -153,6 +155,8 @@ void puuValikko()
     return;
 }
 
+/// @brief päävalikkorakenne
+/// @return 
 int main()
 {
     int struktuurivalinta = 0; // 1 = linkitetty lista, 2 = binääripuu

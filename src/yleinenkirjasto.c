@@ -3,6 +3,8 @@
 #include <string.h>
 #include <ctype.h>
 
+/// @brief Valitsee käyttäjän haluaman datastruktuurin
+/// @return käyttän valinta (int)
 int struktuuriValikko()
 {
     int valinta = 0;
@@ -16,6 +18,8 @@ int struktuuriValikko()
     return valinta;
 }
 
+/// @brief Kysyy käyttäjältä tiedoston nimeä
+/// @return osoitin tiedoson nimen muistilohkoon
 char *tiedostoNimi()
 {
     char tiedostoNimi[30];

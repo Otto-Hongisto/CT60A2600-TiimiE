@@ -4,7 +4,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-/// Binääripuun valikko
+/// @brief Binääripuun valikko
+/// @return käyttäjän valinta
 int toimintoValikkoPuu()
 {
     int valinta = 0;
@@ -22,8 +23,9 @@ int toimintoValikkoPuu()
     return valinta;
 }
 
-/// Palauttaa puun korkeuden rekursiivisesti
-/// Tyhjän puun korkeus on 0
+/// @brief Palauttaa puun korkeuden rekursiivisesti
+/// @brief Tyhjän puun korkeus on 0
+/// @return Plauttaa tämän noden korkeuden (1 + suurenpi alipuu)
 int korkeusPuu(NIMIPUU *pNode)
 {
     if (pNode == NULL)
@@ -44,8 +46,8 @@ int korkeusPuu(NIMIPUU *pNode)
     return 1 + suurempi;
 }
 
-/// Palauttaa solmun tasapainoarvon (vasen korkeus – oikea korkeus).
-/// Käytetään AVL-puun tasapainon tarkistamiseen.
+/// @brief Käytetään AVL-puun tasapainon tarkistamiseen.
+/// @return Palauttaa solmun tasapainoarvon (vasen korkeus – oikea korkeus)
 int tasapainoPuu(NIMIPUU *pNode)
 {
     if (pNode == NULL)
@@ -53,8 +55,9 @@ int tasapainoPuu(NIMIPUU *pNode)
     return korkeusPuu(pNode->pVasen) - korkeusPuu(pNode->pOikea);
 }
 
-/// Suorittaa oikean rotaation annetulle juurinodelle
-/// ja palauttaa sitten uuden juuren
+/// @brief Suorittaa oikean rotaation annetulle juurinodelle
+/// @brief ja palauttaa sitten uuden juuren
+/// @return osapuun uusi juuri (node)
 NIMIPUU *rotaatioOikeaPuu(NIMIPUU *pVanhaJuuri)
 {
 
@@ -71,8 +74,9 @@ NIMIPUU *rotaatioOikeaPuu(NIMIPUU *pVanhaJuuri)
     return pUusiJuuri;
 }
 
-/// Suorittaa vasemman rotaation annetulle juurinodelle
-/// ja palauttaa sitten uuden juuren
+/// @brief Suorittaa vasemman rotaation annetulle juurinodelle
+/// @brief ja palauttaa sitten uuden juuren
+/// @return osapuun uusi juuri (node)
 NIMIPUU *rotaatioVasenPuu(NIMIPUU *pVanhaJuuri)
 {
     // Oikea lapsi nousee uuden alipuun juureksi
@@ -88,7 +92,10 @@ NIMIPUU *rotaatioVasenPuu(NIMIPUU *pVanhaJuuri)
     return pUusiJuuri;
 }
 
-/// Lisää noden puuhun
+/// @brief Lisää noden puuhun
+/// @param pJuuri binääripuun juuri
+/// @param pUusi node joka lisätään puuhun
+/// @return Binääripuun juuri (voi olla sama)
 NIMIPUU *lisaaNodePuuhun(NIMIPUU *pJuuri, NIMIPUU *pUusi)
 {
     if (pJuuri == NULL)
@@ -141,7 +148,8 @@ NIMIPUU *lisaaNodePuuhun(NIMIPUU *pJuuri, NIMIPUU *pUusi)
     return pJuuri;
 }
 
-/// varaa muistia uudelle binääripuu nodelle ja palauttaa sen
+/// @brief varaa muistia uudelle binääripuu nodelle ja palauttaa sen
+/// @return palauttaa binääripuun noden
 NIMIPUU *varaaMuistiPuu()
 {
     NIMIPUU *pUusi = NULL;
@@ -160,7 +168,8 @@ NIMIPUU *varaaMuistiPuu()
     return pUusi; 
 }
 
-/// lukee tiedoston ja tallentaa tiedot binääripuuhun node kerrallaan
+/// @brief lukee tiedoston ja tallentaa tiedot binääripuuhun node kerrallaan
+/// @return binääripuun juuren (joka on node) pointerin
 NIMIPUU *lueTiedotPuu()
 {
     NIMIPUU *pJuuri = NULL;
