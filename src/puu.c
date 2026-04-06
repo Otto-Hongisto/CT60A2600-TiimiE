@@ -383,7 +383,6 @@ void tyhjennaPuu(NIMIPUU *puu) {
 NIMIPUU *binaariHaku(NIMIPUU *puu, int haettavaNumero, char *tiedostoNimi) {
     NIMIPUU *alkio = NULL;
     if (puu == NULL) {
-        printf("Puu on tyhjä.\n");
         return NULL;
     }
 
