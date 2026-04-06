@@ -361,7 +361,6 @@ void leveysHaku(NIMIPUU *puu, char *tiedostonNimi, char *haettavaNimi) {
 /// @param puu Osoitin puun juureen
 void tyhjennaPuu(NIMIPUU *puu) {
     if (puu == NULL) {
-        printf("Puu on tyhjä.\n");
         return;
     }
     //puun tyhjentäminen rekursiivisesti
@@ -383,6 +382,7 @@ void tyhjennaPuu(NIMIPUU *puu) {
 NIMIPUU *binaariHaku(NIMIPUU *puu, int haettavaNumero, char *tiedostoNimi) {
     NIMIPUU *alkio = NULL;
     if (puu == NULL) {
+        printf("Puu on tyhjä.\n");
         return NULL;
     }
 
