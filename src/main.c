@@ -63,7 +63,7 @@ void listaValikko()
         case 0:
             break;
         default:
-            printf("Tuntematon toimintoValinta, yritä uudestaan.\n");
+            printf("Tuntematon valinta, yritä uudestaan.\n");
             break;
         }
     } while (toimintoValinta != 0);
