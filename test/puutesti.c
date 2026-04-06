@@ -4,7 +4,7 @@
 #include <string.h>
 
 // Test 1
-void varaaMuistifieldit(void)
+void test_varaaMuistifieldit(void)
 {
     NIMIPUU *node = varaaMuistiPuu();
 
@@ -18,7 +18,7 @@ void varaaMuistifieldit(void)
 }
 
 // Test 2
-void lisaaNodePuuhunTesti(void)
+void test_lisaaNodePuuhun(void)
 {
     NIMIPUU *root = NULL;
     NIMIPUU *node = varaaMuistiPuu();
@@ -30,7 +30,7 @@ void lisaaNodePuuhunTesti(void)
 }
 
 // Test 3
-void luoKokoPuu(void)
+void test_luoKokoPuu(void)
 {
     NIMIPUU *root = NULL;
 
@@ -78,7 +78,7 @@ void luoKokoPuu(void)
 }
 
 //Test 4
-void binaariHakuEiLoydaTest(void)
+void test_binaariHakuEiLoyda(void)
 {
     NIMIPUU *root = NULL;
 
@@ -93,7 +93,7 @@ void binaariHakuEiLoydaTest(void)
 }
 
 //Test 5
-void binaariHakuTest(void)
+void test_binaariHaku(void)
 {
     NIMIPUU *root = NULL;
 
@@ -129,7 +129,7 @@ void binaariHakuTest(void)
 
 // Test 6
 /// @brief Poistaa leaf node puusta ja varmistaa että rakenne säilyy
-void poistaLeafNode(void)
+void test_poistaLeafNode(void)
 {
     NIMIPUU *root = NULL;
 
@@ -162,7 +162,7 @@ void poistaLeafNode(void)
 }
 
 // test 7
-void rotaatiotesti(void)
+void test_rotaatiot(void)
 {
     // LL-tilanne eli oikea rotaatio vasemman ylijuoksun takia
     NIMIPUU *root = NULL;

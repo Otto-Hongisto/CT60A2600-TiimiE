@@ -54,7 +54,7 @@ void test_lueTiedotLista(void)
 }
 
 // Test 4
-void test_lueTiedotLista_links_nodes_correctly(void)
+void test_lueTiedotListaLinksNodesCorrectly(void)
 {
     NIMILISTA *lista = lueTiedotLista(strdup(TEST_FILE));
     TEST_ASSERT_NOT_NULL(lista);
@@ -96,7 +96,7 @@ void test_poistaLinkitetystaListasta(void)
 
 // Test 6
 /// @brief Testaa että funktio toimii vaikka käyttäjä antaa nimen jota ei ole listassa
-void test_poistaLinkitetystaListasta_VaaraInput(void)
+void test_poistaLinkitetystaListastaVaaraInput(void)
 {
     NIMILISTA *lista = lueTiedotLista(strdup(TEST_FILE));
     TEST_ASSERT_NOT_NULL(lista);
@@ -148,6 +148,7 @@ void test_LisaaListanKeskelle(void) {
     freeList(lista);
 }
 
+//test 10
 void test_bubbleSortNouseva()
 {
     // Luodaan testilista
@@ -178,6 +179,7 @@ void test_bubbleSortNouseva()
     freeList(lista);
 }
 
+// test 11
 void test_insertionSortLaskeva()
 {
     // Luodaan testilista
