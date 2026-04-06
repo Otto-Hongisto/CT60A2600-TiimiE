@@ -1,6 +1,6 @@
 # C-2025 project base IK
 all:
-	gcc -std=c99 -pedantic -Wall src/main.c src/yleinenkirjasto.c src/puukirjasto.c src/listakirjasto.c -o bin/app
+	gcc -std=c99 -pedantic -Wall src/main.c src/yleinen.c src/puu.c src/lista.c -o bin/app
 
 .PHONY: test
 
@@ -8,7 +8,7 @@ test:
 	gcc -std=c99 -pedantic -Wall -Isrc -Iunity \
 		test/testRunner.c test/puutesti.c test/listatesti.c \
 		unity/unity.c \
-		src/yleinenkirjasto.c src/puukirjasto.c src/listakirjasto.c \
+		src/yleinen.c src/puu.c src/lista.c \
 		-o bin/tests
 		./bin/tests
 

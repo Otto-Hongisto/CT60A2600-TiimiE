@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "yleinenkirjasto.h"
-#include "listakirjasto.h"
-#include "puukirjasto.h"
+#include "yleinen.h"
+#include "lista.h"
+#include "puu.h"
 
 /// @brief linkitetyn listan toimintavalikko
 void listaValikko()

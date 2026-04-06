@@ -1,5 +1,5 @@
-#ifndef PUUKIRJASTO_H
-#define PUUKIRJASTO_H
+#ifndef PUU_H
+#define PUU_H
 #include <stdio.h>
 
 // nimidata prosessoimiseen
@@ -34,4 +34,4 @@ NIMIPUU *binaariHakuRekursio(NIMIPUU *puu, int haettavaNumero, FILE *tiedosto);
 NIMIPUU *poistaNodePuustaNimella(NIMIPUU *puu, char *haettavaNimi);
 NIMIPUU *poistaNodePuustaNumerolla(NIMIPUU *puu, int numero);   
 
-#endif // PUUKIRJASTO_H
+#endif // PUU_H

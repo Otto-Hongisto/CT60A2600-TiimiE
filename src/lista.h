@@ -1,5 +1,5 @@
-#ifndef LISTAKIRJASTO_H
-#define LISTAKIRJASTO_H
+#ifndef LISTA_H
+#define LISTA_H
 
 // Nimidatan prosessointiin tiedostoista
 typedef struct nimilista
@@ -34,4 +34,4 @@ void kirjoitaTiedostoTakaperin();
 NIMILISTA *tyhjennaMuisti();
 NIMILISTA *poistaLinkitetystaListasta(NIMILISTA *pAlku, char *syote);
 
-#endif // LISTAKIRJASTO_H
+#endif // LISTA_H

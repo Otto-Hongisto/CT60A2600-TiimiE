@@ -1,5 +1,5 @@
-#include "listakirjasto.h"
-#include "yleinenkirjasto.h"
+#include "lista.h"
+#include "yleinen.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
