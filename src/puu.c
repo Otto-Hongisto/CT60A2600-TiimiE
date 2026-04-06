@@ -327,7 +327,7 @@ void leveysHaku(NIMIPUU *puu, char *tiedostonNimi, char *haettavaNimi) {
         exit(0);
     }
 
-    NIMIPUU *iJono[1000]; // Enintään 1000 solmua puussa (oletuksena)
+    NIMIPUU *iJono[20000]; // Enintään 20000 solmua puussa (oletuksena)
     int alku = 0;
     int loppu = 0;
     iJono[loppu++] = puu; // Lisätään root jonoon
