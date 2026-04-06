@@ -70,8 +70,6 @@ void listaValikko()
 
     pAlku = tyhjennaMuisti(pAlku);
     pAlku = NULL;
-    printf("Muisti vapautettu.");
-
     return;
 }
 
@@ -144,7 +142,6 @@ void puuValikko()
         case 0:
             tyhjennaPuu(pJuuri);
             pJuuri = NULL;
-            printf("Muisti vapautettu.");
             break;
         default:
             printf("Tuntematon toiminto, yritä uudestaan.\n");

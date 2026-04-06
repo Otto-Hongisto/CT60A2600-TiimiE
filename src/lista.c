@@ -9,6 +9,7 @@
 int toimintoValikkoLista()
 {
     int valinta = 0;
+    printf("\n");
     printf("Valitse haluamasi toiminto:\n");
     printf("1) Luo lista tiedostosta\n");
     printf("2) Kirjoita tiedot tiedostoon\n");
@@ -95,8 +96,7 @@ NIMILISTA *lueTiedotLista(char *tiedostonNimi)
         }
     }
 
-    printf("Tiedosto '%s' luettu.\n\n", tiedostonNimi);
-    printf("\n");
+    printf("Tiedosto '%s' luettu.\n", tiedostonNimi);
 
     fclose(tiedosto);
 
@@ -154,6 +154,9 @@ void bubbleSortNouseva(NIMILISTA *pAlku)
         }
         pLoppu = ptr;
     } while (nodetVaihdettu);
+
+    printf("Lista lajiteltu nousevasti.\n");
+
     return;
 }
 
@@ -211,6 +214,8 @@ NIMILISTA *insertionSortLaskeva(NIMILISTA *pAlku)
         }
     }
 
+    printf("Lista lajiteltu laskevasti.\n");
+
     return pLajiteltuLista;
 }
 
@@ -235,7 +240,7 @@ void kirjoitaTiedosto(NIMILISTA *pAlku) {
         fprintf(TIEDOSTO, "%s,%d\n", ptr->nimi, ptr->nimiLkm);
         ptr = ptr->pNext;
     }
-    printf("Tiedosto '%s' kirjoitettu .\n", tiedostonNimi);
+    printf("Tiedosto '%s' kirjoitettu.\n", tiedostonNimi);
     fclose(TIEDOSTO);
     free(tiedostonNimi);
 
@@ -272,7 +277,7 @@ void kirjoitaTiedostoTakaperin(NIMILISTA *pAlku) {
         fprintf(TIEDOSTO, "%s,%d\n", ptr->nimi, ptr->nimiLkm);
         ptr = ptr->pPrev;
     }
-    printf("Tiedosto '%s' kirjoitettu .\n", tiedostonNimi);
+    printf("Tiedosto '%s' kirjoitettu.\n", tiedostonNimi);
     fclose(TIEDOSTO);
     free(tiedostonNimi);
 
