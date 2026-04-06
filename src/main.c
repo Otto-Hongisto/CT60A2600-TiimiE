@@ -118,7 +118,7 @@ void puuValikko()
             NIMIPUU *hakuTulos = NULL;
             char *binaariHakuTiedosto = tiedostoNimi();
             int binaariHakuNumero = kysyNumero();
-            hakuTulos = binaariHaku(pJuuri, binaariHakuNumero, binaariHakuTiedosto);
+            binaariHaku(pJuuri, binaariHakuNumero, binaariHakuTiedosto);
             free(binaariHakuTiedosto);
             break;
         }

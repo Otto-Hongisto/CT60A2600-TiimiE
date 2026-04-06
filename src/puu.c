@@ -272,7 +272,7 @@ void syvyysHakuPuu(int numero, NIMIPUU *puu, char *tiedostoNimi) {
 
     if (puu == NULL) {
         printf("Puu on tyhjä.\n");
-        return 0;
+        return;
     }
 
     if ((TIEDOSTO = fopen(tiedostoNimi, "w")) == NULL) {
