@@ -253,7 +253,6 @@ void tulostaPuu(NIMIPUU *puu, char *tiedostoNimi) {
 /// @param tiedosto tiedosto johon polku kirjoitetaan
 void tulostaPuuRekursio(NIMIPUU *puu, FILE *tiedosto) {
     if (puu == NULL) {
-        printf("Puu on tyhjä.\n");
         return;
     }
     //puun tulostaminen rekursiivisesti
@@ -294,7 +293,6 @@ void syvyysHakuPuu(int numero, NIMIPUU *puu, char *tiedostoNimi) {
 int syvyysHakuRekursio(int numero, NIMIPUU *puu, FILE *tiedosto)
 {
     if (puu == NULL) {
-        printf("Puu on tyhjä.\n");
         return 0;
     }
 
@@ -410,7 +408,6 @@ NIMIPUU *binaariHaku(NIMIPUU *puu, int haettavaNumero, char *tiedostoNimi) {
 /// @return Osoitin löydettyyn nodeen
 NIMIPUU *binaariHakuRekursio(NIMIPUU *puu, int haettavaNumero, FILE *tiedosto) {
     if (puu == NULL) {
-        printf("Puu on tyhjä.\n");
         return NULL;
     }
 
