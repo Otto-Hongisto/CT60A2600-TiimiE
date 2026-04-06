@@ -234,7 +234,7 @@ void tulostaPuu(NIMIPUU *puu, char *tiedostoNimi) {
         printf("Puu on tyhjä.\n");
         return;
     }
-    
+
     // tiedoston avaus
     if ((TIEDOSTO = fopen(tiedostoNimi, "w")) == NULL) {
         perror("Tiedoston avaaminen epäonnistui, lopetetaan");
@@ -373,7 +373,7 @@ void tyhjennaPuu(NIMIPUU *puu) {
         free(puu->nimi); //nimen varaaman muistin vapautus
     }
     free(puu);
-    printf("Puu tyhjennetty.\n")
+    printf("Puu tyhjennetty.\n");
     return;
 }
 
