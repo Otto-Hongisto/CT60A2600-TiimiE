@@ -23,6 +23,7 @@ int toimintoValikkoPuu()
     return valinta;
 }
 
+/// @brief Vertaa kahta eri nodea ensin nimien lukumäärän perusteella ja sitten aakkosjärjestyksen
 int vertaaNodeja(const NIMIPUU *pA, const NIMIPUU *pB)
 {
     // Verrataan ensin nimien lukumäärää
