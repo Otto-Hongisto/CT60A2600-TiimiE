@@ -1,5 +1,5 @@
 #include "unity.h"
-#include "listakirjasto.h"
+#include "lista.h"
 #include <string.h>
 #include <stdlib.h>
 
