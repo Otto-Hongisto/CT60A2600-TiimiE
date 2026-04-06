@@ -2,7 +2,13 @@
 
 Note: This project resides in https://github.com/LUT-Courses/CT60A2600-TiimiE and https://github.com/Otto-Hongisto/CT60A2600-TiimiE.
 
+## What does the program do?
 This project is made and maintained to process Population information system data (see data) using different data structures.
+The user can:
+    - Load data and create linked lists and binary search trees
+    - Add or remove any entities
+    - Search data based on different values
+    - Sort the data
 
 ---
 
@@ -12,16 +18,16 @@ This project is made and maintained to process Population information system dat
 .
 ├── Makefile              # Build targets: build, run, test, clean, etc.
 ├── src/                  # C source files and headers
-│   ├── main.c
-│   ├── puukirjasto.c
-│   ├── puukirjasto.h
-│   ├── listakirjasto.c
-│   ├── listakirjasto.h
-│   ├── yleinenkirjasto.c
-│   └── yleinenkirjasto.h
+│   ├── main.c            # Controls the program
+│   ├── puu.c             # All functions for the BSTs
+│   ├── puu.h
+│   ├── lista.c           # Doubly linked list
+│   ├── lista.h
+│   ├── yleinen.c         # Helper functions for general use
+│   └── yleinen.h
 ├── bin/                  # Compiled binaries (output of build)
 │   └── app               # Example executable name
-├── test/                 # Test sources (e.g., Unity/CMocka) + fixtures
+├── test/                 # Test sources (Unity framework)
 │   ├── testRunner.c
 │   ├── listatesti.c
 │   └── puutesti.c
@@ -30,6 +36,7 @@ This project is made and maintained to process Population information system dat
 │   └── README.md         # Describe data sources and formats
 └── doc/                  # Documentation (design notes, Doxygen config)
     └── design.md
+    └── html              # Doxygen documentation in HTML
 ```
 
 > **Notes**
@@ -69,49 +76,24 @@ make test
 make memcheck
 ```
 
----
+## Example usage of the program
+1. Start the program:
+    ./bin/app
 
-## 🧭 How to Use This Template (Students)
+2. Load data from a file e.g. "data/miehet_2025.txt"
 
-### 1) Use this template
+3. Choose any operation
 
-### 2) Personalize the Project
+4. Save the results to a new file
 
-- Rename the project in this README.
-- Fill in the description, inputs/outputs, and known issues.
-- Replace sample files in `src/` and `test/` with your implementation.
-- **Modify** this README as your project evolves.
-
-### 3) Branching & Commits (Recommended Workflow)
-
-```bash
-# Create a feature branch
-git checkout -b feature/<short-name>
-# Work & commit small, focused changes
-git add .
-git commit -m "feat: short description"
-# Push and open a Pull Request (PR)
-git push -u origin feature/<short-name>
-```
-
-
-### 4) Give the TA Access to Your Fork
-
-> **Required for grading.** Add the TA as a **collaborator** to *your forked repository*.
-
-1. On GitHub, open **Settings → Collaborators** (or **Settings → Collaborators and teams**).
-2. Click **Add people**, enter the TA's GitHub username (IlKaLUT), choose **Write** access (or as instructed), and **Add**.
-3. If the repo is **private**, ensure the TA accepts the email invite.
-4. (Optional) If your course uses an organization, you may instead add the TA via **Manage access** or your course team. Follow the course's instructions if they differ.
-
-> Also share the **repository URL** and, if required, the **commit/tag** of the submitted version.
+5. End the program
 
 ---
 
 ## 📚 Documentation
 
 - High-level design/usages: `doc/design.md`
-- API docs: generate with Doxygen (currently not in use)
+- API docs: generate with Doxygen
 
 ```bash
 # Generate docs
@@ -131,16 +113,29 @@ doxygen doc/Doxyfile
 
 - Uses Unity framework
 - Unity framwork works without any downloads and all the necessary file are in /unity folder
+- 17 standarized test cases in total of which all pass
+
+- Manual testing with different inputs has been done
+
+- Memory has been checked using Valgrind
 
 ```bash
+
+- To run the tests use:
 make test
 ```
 
 ---
 
-## 🗂️ Version History
+## Maintenance and future development
+- More test cases
+- Even better error handling
 
-> *(Update this table as you progress. Use semantic versioning if possible.)*
+- Improved UI
+- New data structure
+
+
+## 🗂️ Version History
 
 | Version | Date       | Author         | Changes                                               |
 |--------:|------------|----------------|-------------------------------------------------------|
@@ -148,6 +143,7 @@ make test
 | 2.0.0   | 2026-03-15 |                | Binary tree struct                                    |
 | 3.1.0   | 2026-03-21 | Otto Hongisto  | Balanced search tree struct, read file into BST       |
 | 4.0.0   | 2026-03-29 | Jaakko Laitinen |Linked list sorting, adding a new node, removing a node|
+| 4.1.0   | 2026-04-06 | Otto Hongisto  | Finalizing the program, everything work               |
 
 Tag releases:
 - Not in use currently
