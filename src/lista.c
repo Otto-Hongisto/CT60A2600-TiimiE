@@ -14,6 +14,8 @@ int toimintoValikkoLista()
     printf("2) Kirjoita tiedot tiedostoon\n");
     printf("3) Kirjoita tiedot käänteisessä järjestyksessä\n");
     printf("4) Tyhjennä lista\n");
+    printf("5) Lajittele lista nousevasti\n");
+    printf("6) Lajittele lista laskevasti\n");
     printf("7) Lisää alkio listaan\n");
     printf("8) Poista linkitetystä listasta\n");
     printf("0) Valitse datastruktuuri\n");
