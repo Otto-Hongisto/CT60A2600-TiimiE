@@ -1,0 +1,11 @@
+var searchData=
+[
+  ['tasapainopuu_0',['tasapainoPuu',['../puukirjasto_8c.html#aaf451cdf4d3b8328574775ee02062524',1,'tasapainoPuu(NIMIPUU *pNode):&#160;puukirjasto.c'],['../puukirjasto_8h.html#aaf451cdf4d3b8328574775ee02062524',1,'tasapainoPuu(NIMIPUU *pNode):&#160;puukirjasto.c']]],
+  ['tiedostonimi_1',['tiedostoNimi',['../yleinenkirjasto_8c.html#addc0c0adfdd8d9fdd9601299b69f1cc3',1,'tiedostoNimi():&#160;yleinenkirjasto.c'],['../yleinenkirjasto_8h.html#addc0c0adfdd8d9fdd9601299b69f1cc3',1,'tiedostoNimi():&#160;yleinenkirjasto.c']]],
+  ['toimintovalikkolista_2',['toimintoValikkoLista',['../listakirjasto_8c.html#a2352e9fdb22864a07d630ca7e6abc9e0',1,'toimintoValikkoLista():&#160;listakirjasto.c'],['../listakirjasto_8h.html#a2352e9fdb22864a07d630ca7e6abc9e0',1,'toimintoValikkoLista():&#160;listakirjasto.c']]],
+  ['toimintovalikkopuu_3',['toimintoValikkoPuu',['../puukirjasto_8c.html#a34976ec0984ef9e65ce833bc580276cb',1,'toimintoValikkoPuu():&#160;puukirjasto.c'],['../puukirjasto_8h.html#a34976ec0984ef9e65ce833bc580276cb',1,'toimintoValikkoPuu():&#160;puukirjasto.c']]],
+  ['tulostapuu_4',['tulostaPuu',['../puukirjasto_8c.html#ac3be91ac84cec6f33a18a57e8353d11e',1,'tulostaPuu(NIMIPUU *puu, char *tiedostoNimi):&#160;puukirjasto.c'],['../puukirjasto_8h.html#ac3be91ac84cec6f33a18a57e8353d11e',1,'tulostaPuu(NIMIPUU *puu, char *tiedostoNimi):&#160;puukirjasto.c']]],
+  ['tulostapuurekursio_5',['tulostaPuuRekursio',['../puukirjasto_8c.html#a6d71f98b5e1262a09aef38ccc1fab6cf',1,'tulostaPuuRekursio(NIMIPUU *puu, FILE *tiedosto):&#160;puukirjasto.c'],['../puukirjasto_8h.html#a6d71f98b5e1262a09aef38ccc1fab6cf',1,'tulostaPuuRekursio(NIMIPUU *puu, FILE *tiedosto):&#160;puukirjasto.c']]],
+  ['tyhjennamuisti_6',['tyhjennaMuisti',['../listakirjasto_8c.html#aeb568a070a5d348001d746666ac9d0f5',1,'tyhjennaMuisti(NIMILISTA *pA):&#160;listakirjasto.c'],['../listakirjasto_8h.html#aec842fe21540a2912443519e7a8e9cd2',1,'tyhjennaMuisti():&#160;listakirjasto.h']]],
+  ['tyhjennapuu_7',['tyhjennaPuu',['../puukirjasto_8c.html#a6c5093d7da44c0567b0092f993afc4b0',1,'tyhjennaPuu(NIMIPUU *puu):&#160;puukirjasto.c'],['../puukirjasto_8h.html#a6c5093d7da44c0567b0092f993afc4b0',1,'tyhjennaPuu(NIMIPUU *puu):&#160;puukirjasto.c']]]
+];

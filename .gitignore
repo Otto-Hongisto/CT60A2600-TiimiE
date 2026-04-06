@@ -55,5 +55,4 @@ dkms.conf
 *.dwo
 
 # doxygen files
-doc/html
 doc/latex
