@@ -370,7 +370,6 @@ void tyhjennaPuu(NIMIPUU *puu) {
         free(puu->nimi); //nimen varaaman muistin vapautus
     }
     free(puu);
-    printf("Puu tyhjennetty.\n");
     return;
 }
 
