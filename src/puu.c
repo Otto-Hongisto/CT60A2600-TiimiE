@@ -23,6 +23,18 @@ int toimintoValikkoPuu()
     return valinta;
 }
 
+int vertaaNodeja(const NIMIPUU *pA, const NIMIPUU *pB)
+{
+    // Verrataan ensin nimien lukumäärää
+    if (pA->nimiLkm < pB->nimiLkm)
+        return -1;
+    if (pA->nimiLkm > pB->nimiLkm)
+        return 1;
+
+    // Jos lukumäärä sama, verrataan nimiä aakkosjärjestyksessä
+    return strcmp(pA->nimi, pB->nimi);
+}
+
 /// @brief Palauttaa puun korkeuden rekursiivisesti
 /// @brief Tyhjän puun korkeus on 0
 /// @return Plauttaa tämän noden korkeuden (1 + suurenpi alipuu)
@@ -101,46 +113,33 @@ NIMIPUU *lisaaNodePuuhun(NIMIPUU *pJuuri, NIMIPUU *pUusi)
     if (pJuuri == NULL)
         return pUusi;
 
-    // Vertaillaan ensin nimien lukumäärää
-    if (pUusi->nimiLkm < pJuuri->nimiLkm)
-    {
+    if (vertaaNodeja(pUusi, pJuuri) < 0)
         pJuuri->pVasen = lisaaNodePuuhun(pJuuri->pVasen, pUusi);
-    }
-    else if (pUusi->nimiLkm > pJuuri->nimiLkm)
-    {
-        pJuuri->pOikea = lisaaNodePuuhun(pJuuri->pOikea, pUusi);
-    }
     else
-    {
-        // Jos lukumäärä sama, vertaillaan nimiä aakkosjärjestyksessä
-        if (strcmp(pUusi->nimi, pJuuri->nimi) < 0)
-            pJuuri->pVasen = lisaaNodePuuhun(pJuuri->pVasen, pUusi);
-        else
-            pJuuri->pOikea = lisaaNodePuuhun(pJuuri->pOikea, pUusi);
-    }
+        pJuuri->pOikea = lisaaNodePuuhun(pJuuri->pOikea, pUusi);
 
     int puunTasapaino = tasapainoPuu(pJuuri);
 
-    // Vasemman puolen ylikuorma
+    // vasen ylikuorma
     if (puunTasapaino > 1)
     {
-        if (pUusi->nimiLkm < pJuuri->pVasen->nimiLkm)
-            return rotaatioOikeaPuu(pJuuri); // LL-tilanne
+        if (vertaaNodeja(pUusi, pJuuri->pVasen) < 0)
+            return rotaatioOikeaPuu(pJuuri); // LL
         else
         {
-            pJuuri->pVasen = rotaatioVasenPuu(pJuuri->pVasen); // LR-tilanne
+            pJuuri->pVasen = rotaatioVasenPuu(pJuuri->pVasen); // LR
             return rotaatioOikeaPuu(pJuuri);
         }
     }
 
-    // Oikean puolen ylikuorma
+    // Oikea ylikuorma
     if (puunTasapaino < -1)
     {
-        if (pUusi->nimiLkm > pJuuri->pOikea->nimiLkm)
-            return rotaatioVasenPuu(pJuuri); // RR-tilanne
+        if (vertaaNodeja(pUusi, pJuuri->pOikea) > 0)
+            return rotaatioVasenPuu(pJuuri); // RR
         else
         {
-            pJuuri->pOikea = rotaatioOikeaPuu(pJuuri->pOikea); // RL-tilanne
+            pJuuri->pOikea = rotaatioOikeaPuu(pJuuri->pOikea); // RL
             return rotaatioVasenPuu(pJuuri);
         }
     }

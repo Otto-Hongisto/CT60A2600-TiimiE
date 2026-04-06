@@ -22,7 +22,8 @@ NIMIPUU *rotaatioOikeaPuu(NIMIPUU *pVanhaJuuri);
 NIMIPUU *rotaatioVasenPuu(NIMIPUU *pVanhaJuuri);
 NIMIPUU *lisaaNodePuuhun(NIMIPUU *pJuuri, NIMIPUU *uusi);
 
-// 
+//
+int vertaaNodeja(const NIMIPUU *pA, const NIMIPUU *pB);
 void tulostaPuu(NIMIPUU *puu, char *tiedostoNimi);
 void tulostaPuuRekursio(NIMIPUU *puu, FILE *tiedosto);
 void syvyysHakuPuu(int numero, NIMIPUU *puu, char *tiedostoNimi);
