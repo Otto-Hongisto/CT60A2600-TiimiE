@@ -14,4 +14,7 @@ test:
 
 
 clean:
-	rm -f bin/app bin/test
+	rm -f bin/*
+
+valgrind: all
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./bin/app

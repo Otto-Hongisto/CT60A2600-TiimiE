@@ -72,8 +72,8 @@ make
 # Tests
 make test
 
-# Memory check
-make memcheck
+# Valgrind
+make valgrind
 ```
 
 ## Example usage of the program
