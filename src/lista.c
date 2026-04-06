@@ -218,6 +218,11 @@ void kirjoitaTiedosto(NIMILISTA *pAlku) {
     char *tiedostonNimi = tiedostoNimi();
     FILE *TIEDOSTO;
 
+    if (pAlku == NULL) {
+        printf("Lista on tyhjä.\n");
+        return;
+    }
+
     if ((TIEDOSTO = fopen(tiedostonNimi, "w")) == NULL) {
         perror("Tiedoston avaaminen epäonnistui");
         exit(0);
@@ -242,6 +247,11 @@ void kirjoitaTiedostoTakaperin(NIMILISTA *pAlku) {
     char *tiedostonNimi = tiedostoNimi();
     FILE *TIEDOSTO;
     NIMILISTA *ptr = pAlku;
+
+    if (pAlku == NULL) {
+        printf("Lista on tyhjä.\n");
+        return;
+    }
 
     if ((TIEDOSTO = fopen(tiedostonNimi, "w")) == NULL) {
         perror("Tiedoston avaaminen epäonnistui");
