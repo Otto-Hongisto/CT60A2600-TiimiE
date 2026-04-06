@@ -87,7 +87,7 @@ void test_binaariHakuEiLoyda(void)
 
     root = lisaaNodePuuhun(root, node);
 
-    NIMIPUU *found = binaariHaku(root, 20, "not_found");
+    NIMIPUU *found = binaariHaku(root, 20, "bin/not_found");
     TEST_ASSERT_NULL(found);
     tyhjennaPuu(root);
 }
@@ -118,7 +118,7 @@ void test_binaariHaku(void)
     lisaaNodePuuhun(root, node2);
     lisaaNodePuuhun(root, node3);
 
-    char *tiedosto = "test.txt"; 
+    char *tiedosto = "bin/test.txt"; 
     NIMIPUU *found = binaariHaku(root, 15, tiedosto);
 
     // tarkistetaan tulokset

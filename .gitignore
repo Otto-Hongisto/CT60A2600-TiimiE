@@ -56,3 +56,6 @@ dkms.conf
 
 # doxygen files
 doc/latex
+
+# bin
+bin/*
