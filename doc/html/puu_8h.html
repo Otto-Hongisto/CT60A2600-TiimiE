@@ -121,6 +121,8 @@ Functions</h2></td></tr>
 <tr class="memdesc:a2bf231b225740dddb4fb046655e18cb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Suorittaa vasemman rotaation annetulle juurinodelle.  <br /></td></tr>
 <tr class="memitem:ae1e574e5d2dba69b4bcce8689f6e7976" id="r_ae1e574e5d2dba69b4bcce8689f6e7976"><td class="memItemLeft"><a class="el" href="#acaf2053220f54572c20e825bec4046c1">NIMIPUU</a> *&#160;</td><td class="memItemRight"><a class="el" href="#ae1e574e5d2dba69b4bcce8689f6e7976">lisaaNodePuuhun</a> (<a class="el" href="#acaf2053220f54572c20e825bec4046c1">NIMIPUU</a> *pJuuri, <a class="el" href="#acaf2053220f54572c20e825bec4046c1">NIMIPUU</a> *uusi)</td></tr>
 <tr class="memdesc:ae1e574e5d2dba69b4bcce8689f6e7976"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lisää noden puuhun.  <br /></td></tr>
+<tr class="memitem:a6f1c99f53039bf8b5e4d74d6b2a44308" id="r_a6f1c99f53039bf8b5e4d74d6b2a44308"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a6f1c99f53039bf8b5e4d74d6b2a44308">vertaaNodeja</a> (const <a class="el" href="#acaf2053220f54572c20e825bec4046c1">NIMIPUU</a> *pA, const <a class="el" href="#acaf2053220f54572c20e825bec4046c1">NIMIPUU</a> *pB)</td></tr>
+<tr class="memdesc:a6f1c99f53039bf8b5e4d74d6b2a44308"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vertaa kahta eri nodea ensin nimien lukumäärän perusteella ja sitten aakkosjärjestyksen.  <br /></td></tr>
 <tr class="memitem:ac3be91ac84cec6f33a18a57e8353d11e" id="r_ac3be91ac84cec6f33a18a57e8353d11e"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ac3be91ac84cec6f33a18a57e8353d11e">tulostaPuu</a> (<a class="el" href="#acaf2053220f54572c20e825bec4046c1">NIMIPUU</a> *puu, char *<a class="el" href="yleinen_8c.html#addc0c0adfdd8d9fdd9601299b69f1cc3">tiedostoNimi</a>)</td></tr>
 <tr class="memdesc:ac3be91ac84cec6f33a18a57e8353d11e"><td class="mdescLeft">&#160;</td><td class="mdescRight">kutsuu puun rekursiivista tulostusta  <br /></td></tr>
 <tr class="memitem:a6d71f98b5e1262a09aef38ccc1fab6cf" id="r_a6d71f98b5e1262a09aef38ccc1fab6cf"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a6d71f98b5e1262a09aef38ccc1fab6cf">tulostaPuuRekursio</a> (<a class="el" href="#acaf2053220f54572c20e825bec4046c1">NIMIPUU</a> *puu, FILE *tiedosto)</td></tr>
@@ -656,6 +658,29 @@ Functions</h2></td></tr>
 
 <p>varaa muistia uudelle binääripuu nodelle ja palauttaa sen </p>
 <dl class="section return"><dt>Returns</dt><dd>palauttaa binääripuun noden </dd></dl>
+
+</div>
+</div>
+<a id="a6f1c99f53039bf8b5e4d74d6b2a44308" name="a6f1c99f53039bf8b5e4d74d6b2a44308"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f1c99f53039bf8b5e4d74d6b2a44308">&#9670;&#160;</a></span>vertaaNodeja()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int vertaaNodeja </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#acaf2053220f54572c20e825bec4046c1">NIMIPUU</a> *</td>          <td class="paramname"><span class="paramname"><em>pA</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="#acaf2053220f54572c20e825bec4046c1">NIMIPUU</a> *</td>          <td class="paramname"><span class="paramname"><em>pB</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vertaa kahta eri nodea ensin nimien lukumäärän perusteella ja sitten aakkosjärjestyksen. </p>
 
 </div>
 </div>

@@ -17,5 +17,6 @@ var puu_8c =
     [ "tulostaPuu", "puu_8c.html#ac3be91ac84cec6f33a18a57e8353d11e", null ],
     [ "tulostaPuuRekursio", "puu_8c.html#a6d71f98b5e1262a09aef38ccc1fab6cf", null ],
     [ "tyhjennaPuu", "puu_8c.html#a6c5093d7da44c0567b0092f993afc4b0", null ],
-    [ "varaaMuistiPuu", "puu_8c.html#ace9e538482da1308523827d71fc63766", null ]
+    [ "varaaMuistiPuu", "puu_8c.html#ace9e538482da1308523827d71fc63766", null ],
+    [ "vertaaNodeja", "puu_8c.html#a6f1c99f53039bf8b5e4d74d6b2a44308", null ]
 ];
