@@ -115,7 +115,6 @@ void puuValikko()
         break;
         case 5:
         {
-            NIMIPUU *hakuTulos = NULL;
             char *binaariHakuTiedosto = tiedostoNimi();
             int binaariHakuNumero = kysyNumero();
             binaariHaku(pJuuri, binaariHakuNumero, binaariHakuTiedosto);
