@@ -80,9 +80,9 @@ make memcheck
 1. Start the program:
     ./bin/app
 
-2. Load data from a file e.g. "data/miehet_2025.txt"
+2. Choose the data structure and load data from a file e.g. "data/miehet_2025.txt"
 
-3. Choose any operation
+3. Choose any operation(s)
 
 4. Save the results to a new file
 
