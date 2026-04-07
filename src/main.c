@@ -142,7 +142,7 @@ void puuValikko()
         case 0:
             tyhjennaPuu(pJuuri);
             pJuuri = NULL;
-            printf("Muisti vapautettu.\n");
+            printf("Muisti vapautettu.\n\n");
             break;
         default:
             printf("Tuntematon toiminto, yritä uudestaan.\n");

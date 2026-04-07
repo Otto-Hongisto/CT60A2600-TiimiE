@@ -298,7 +298,7 @@ void lisaaAlkioListaan(NIMILISTA **pAlku, int indexUusi, char *uusiNimi, int nim
 
     // tarkistetaan indexin sopivuus
     if (indexUusi < 1) {
-        printf("Annettu indexi on liian pieni.\n");
+        printf("Virheellinen indeksi.\n");
         return;
     }
     // muistin varaaminen nimelle
@@ -321,6 +321,7 @@ void lisaaAlkioListaan(NIMILISTA **pAlku, int indexUusi, char *uusiNimi, int nim
             (*pAlku)->pPrev = uusiAlkio;
         }
         *pAlku = uusiAlkio;
+        printf("Uusi alkio lisätty listan alkuun\n");
         return;
     }
     // edetään indexiä edeltävään alkioon
@@ -329,6 +330,7 @@ void lisaaAlkioListaan(NIMILISTA **pAlku, int indexUusi, char *uusiNimi, int nim
     }
     // tarkistetaan, että lista jatkuu
     if (ptr == NULL) {
+        printf("Virheellinen indeksi.\n");
         free(nimiMuistilohko);
         free(uusiAlkio);
         return;
@@ -357,7 +359,7 @@ NIMILISTA *tyhjennaMuisti(NIMILISTA *pA) {
         free(ptr);
         ptr = pA;
     }
-    printf("Muisti vapautettu.\n");
+    printf("Muisti vapautettu.\n\n");
     return(pA);
 }
 

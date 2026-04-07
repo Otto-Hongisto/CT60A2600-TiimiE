@@ -231,7 +231,7 @@ void tulostaPuu(NIMIPUU *puu, char *tiedostoNimi) {
     FILE *TIEDOSTO = NULL;
 
     if (puu == NULL) {
-        printf("Puu on tyhjä.\n");
+        printf("Puu on tyhjä.\n\n");
         return;
     }
 
@@ -242,6 +242,7 @@ void tulostaPuu(NIMIPUU *puu, char *tiedostoNimi) {
     }
     //rekursion kutsu
     tulostaPuuRekursio(puu, TIEDOSTO);
+    printf("Polku tallennettu tiedostoon '%s'.\n\n", tiedostoNimi);
     fclose(TIEDOSTO);
 
     return;
@@ -267,10 +268,11 @@ void tulostaPuuRekursio(NIMIPUU *puu, FILE *tiedosto) {
 /// @param puu osoitin puun juureen
 /// @param tiedostoNimi tiedosto johon polku kirjoitetaan
 void syvyysHakuPuu(int numero, NIMIPUU *puu, char *tiedostoNimi) {
+    int found = 0;
     FILE *TIEDOSTO = NULL;
 
     if (puu == NULL) {
-        printf("Puu on tyhjä.\n");
+        printf("Puu on tyhjä.\n\n");
         return;
     }
 
@@ -279,7 +281,12 @@ void syvyysHakuPuu(int numero, NIMIPUU *puu, char *tiedostoNimi) {
         exit(0);
     }
     //rekursion kutsu
-    syvyysHakuRekursio(numero, puu, TIEDOSTO);
+    found = syvyysHakuRekursio(numero, puu, TIEDOSTO);
+    if (found) {
+        printf("Löydetty!\n\n");
+    } else {
+        printf("Ei löytynyt.\n\n");
+    }
     fclose(TIEDOSTO);
 
     return;
@@ -379,6 +386,7 @@ void tyhjennaPuu(NIMIPUU *puu) {
 /// @param tiedostonNimi Tiedosto, johon tulokset kirjoitetaan
 /// @return Osoitin löydettyyn nodeen
 NIMIPUU *binaariHaku(NIMIPUU *puu, int haettavaNumero, char *tiedostoNimi) {
+    NIMIPUU *found = NULL;
     NIMIPUU *alkio = NULL;
     if (puu == NULL) {
         printf("Puu on tyhjä.\n");
@@ -393,10 +401,14 @@ NIMIPUU *binaariHaku(NIMIPUU *puu, int haettavaNumero, char *tiedostoNimi) {
     }
     //rekursiivisen binaarihaun kutsuminen
     alkio = binaariHakuRekursio(puu, haettavaNumero, TIEDOSTO);
+    found = binaariHakuRekursio(puu, haettavaNumero, TIEDOSTO);
+    if (found) {
+        printf("Löydetty!\n\n");
+    } else {
+        printf("Ei löytynyt.\n\n");
+    }
     fclose(TIEDOSTO);
-
-    return alkio;
-
+    return(alkio);
 }
 
 /// @brief Suorittaa binäärihaun puuhun rekursiivisesti
