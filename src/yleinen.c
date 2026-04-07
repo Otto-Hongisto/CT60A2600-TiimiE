@@ -24,14 +24,34 @@ char *tiedostoNimi()
 {
     char tiedostoNimi[30];
     char *pMuistilohko = NULL;
-    printf("Anna tiedoston nimi: ");
-    scanf("%s", tiedostoNimi);
 
-    if ((pMuistilohko = (char *)malloc((strlen(tiedostoNimi) + 1) * sizeof(char))) == NULL)
-    {
-        perror("Muistinvaraus epäonnistui, lopetetaan ");
+    printf("Anna tiedoston nimi: ");
+    
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+
+    // luetaan koko rivi
+    if (fgets(tiedostoNimi, sizeof(tiedostoNimi), stdin) == NULL) {
+        printf("Virhe syötteessä.\n");
+        return NULL;
+    }
+
+    // poistetaan rivinvaihto '\n'
+    tiedostoNimi[strcspn(tiedostoNimi, "\n")] = '\0';
+
+    // tarkistetaan tyhjä syöte
+    if (strlen(tiedostoNimi) == 0) {
+        printf("Tiedoston nimi ei voi olla tyhjä.\n");
+        return NULL;
+    }
+
+    // varataan muisti
+    pMuistilohko = malloc(strlen(tiedostoNimi) + 1);
+    if (pMuistilohko == NULL) {
+        perror("Muistinvaraus epäonnistui, lopetetaan");
         exit(0);
     }
+
     strcpy(pMuistilohko, tiedostoNimi);
     return pMuistilohko;
 }

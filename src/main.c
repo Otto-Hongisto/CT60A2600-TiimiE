@@ -18,6 +18,10 @@ void listaValikko()
         case 1:
         {
             char *tiedostonNimi = tiedostoNimi();
+            if (tiedostonNimi == NULL) {
+                printf("Virheellinen tiedostonimi.\n\n");
+                break;
+            }
             pAlku = lueTiedotLista(tiedostonNimi);
             free(tiedostonNimi);
             tiedostonNimi = NULL;
@@ -90,6 +94,10 @@ void puuValikko()
         case 2:
         {
             char *tulostaTiedosto = tiedostoNimi();
+            if (tulostaTiedosto == NULL) {
+                printf("Virheellinen tiedostonimi.\n\n");
+                break;
+            }
             tulostaPuu(pJuuri, tulostaTiedosto);
             free(tulostaTiedosto);
             break;
@@ -98,6 +106,10 @@ void puuValikko()
         {
             int numero = kysyNumero();
             char *syvyysTiedosto = tiedostoNimi();
+            if (syvyysTiedosto == NULL) {
+                printf("Virheellinen tiedostonimi.\n\n");
+                break;
+            }
             syvyysHakuPuu(numero, pJuuri, syvyysTiedosto);
             free(syvyysTiedosto);
             break;
@@ -107,6 +119,10 @@ void puuValikko()
             char haettavaNimi[30];
             kysyNimi(haettavaNimi);
             char *nimi = tiedostoNimi();
+            if (nimi == NULL) {
+                printf("Virheellinen nimi.\n\n");
+                break;
+            }
             leveysHaku(pJuuri, nimi, haettavaNimi);
             free(nimi);
         }
@@ -114,6 +130,10 @@ void puuValikko()
         case 5:
         {
             char *binaariHakuTiedosto = tiedostoNimi();
+            if (binaariHakuTiedosto == NULL) {
+                printf("Virheellinen tiedostonimi.\n\n");
+                break;
+            }
             int binaariHakuNumero = kysyNumero();
             binaariHaku(pJuuri, binaariHakuNumero, binaariHakuTiedosto);
             free(binaariHakuTiedosto);
